@@ -1,0 +1,11 @@
+prefetch SRR9057278 --verify yes
+fasterq-dump --split-files SRR9057278 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
+
+prefetch SRR9057279 --verify yes
+fasterq-dump --split-files SRR9057279 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
+
+prefetch SRR9057280 --verify yes
+fasterq-dump --split-files SRR9057280 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
+
+prefetch SRR9057281 --verify yes
+fasterq-dump --split-files SRR9057281 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
