@@ -1,0 +1,74 @@
+# ==============================================================================
+# 1. INSTALL AND LOAD REQUIRED PACKAGES
+# ==============================================================================
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+if (!requireNamespace("org.Hs.eg.db", quietly = TRUE))
+  BiocManager::install("org.Hs.eg.db")
+
+if (!requireNamespace("dplyr", quietly = TRUE))
+  install.packages("dplyr")
+
+library(org.Hs.eg.db)
+library(dplyr)
+
+# ==============================================================================
+# 2. DEFINE PATHS AND LOAD DATA
+# ==============================================================================
+dir_path <- "C:/Users/rabia/OneDrive/Desktop/Bioinformatics Stuff/Cardiomyocyte project/Data/GSE122380"
+file_path <- file.path(dir_path, "matrix.tsv")
+
+# CRITICAL FIX: Set row.names = NULL. 
+# This stops R from trying to turn the duplicate gene symbols into row names on import.
+counts_data <- read.delim(file_path, header = TRUE, row.names = NULL, check.names = FALSE)
+
+# Rename the first column (the gene symbols) so we can reference it easily
+colnames(counts_data)[1] <- "Gene_Symbol"
+
+# ==============================================================================
+# 3. MAP GENE SYMBOLS TO ENSEMBL IDs
+# ==============================================================================
+gene_symbols <- counts_data$Gene_Symbol
+
+ensembl_mappings <- mapIds(
+  org.Hs.eg.db,
+  keys = gene_symbols,
+  column = "ENSEMBL",
+  keytype = "SYMBOL",
+  multiVals = "first"  # Choose the primary Ensembl ID mapping if multi-mapped
+)
+
+# Add the mapped Ensembl IDs as a column
+counts_data$ensembl_id <- ensembl_mappings
+
+# Filter out rows where the gene symbol could not be mapped (NA values)
+counts_data <- counts_data[!is.na(counts_data$ensembl_id), ]
+
+# Remove the original Gene_Symbol text column now that we have Ensembl IDs
+counts_data$Gene_Symbol <- NULL
+
+# ==============================================================================
+# 4. COLLAPSE & SUM DUPLICATES
+# ==============================================================================
+# Group by the Ensembl ID and sum the counts across all samples.
+# This cleanly consolidates both the pre-existing duplicate symbols and any 
+# new duplicates created by synonymous aliases mapping to the same Ensembl locus.
+final_counts <- counts_data %>%
+  group_by(ensembl_id) %>%
+  summarise(across(everything(), sum)) %>%
+  as.data.frame()
+
+# Now that the Ensembl IDs are guaranteed to be unique, set them as row names
+rownames(final_counts) <- final_counts$ensembl_id
+final_counts$ensembl_id <- NULL
+
+# ==============================================================================
+# 5. SAVE THE PROCESSED MATRIX
+# ==============================================================================
+output_file <- file.path(dir_path, "matrix_ensembl.tsv")
+
+# Write the final table back to your project directory
+write.table(final_counts, file = output_file, sep = "\t", quote = FALSE, col.names = NA)
+
+cat("Success! Ensembl-mapped matrix saved to:\n", output_file, "\n")
