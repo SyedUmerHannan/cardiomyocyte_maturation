@@ -1,0 +1,2096 @@
+{
+  "GSM2343107": {
+    "characteristics": "tissue_type: thyroid gland,biomaterial_type: tissue,description: Thyroid Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS624WYQ (SAMN05897384),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS624WYQ at ENCODE; https://www.encodeproject.org/ENCBS624WYQ/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE87964",
+    "source": "Homo sapiens thyroid gland tissue male adult (54 years)",
+    "title": "total RNA-seq from thyroid gland (ENCLB976GLA)"
+  },
+  "GSM2343108": {
+    "characteristics": "tissue_type: thyroid gland,biomaterial_type: tissue,description: Thyroid Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS624WYQ (SAMN05897384),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS624WYQ at ENCODE; https://www.encodeproject.org/ENCBS624WYQ/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE87964",
+    "source": "Homo sapiens thyroid gland tissue male adult (54 years)",
+    "title": "total RNA-seq from thyroid gland (ENCLB002CRS)"
+  },
+  "GSM2343109": {
+    "characteristics": "tissue_type: ovary,biomaterial_type: tissue,description: Ovary tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS711CPB (SAMN05897475),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS711CPB at ENCODE; https://www.encodeproject.org/ENCBS711CPB/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE87965",
+    "source": "Homo sapiens ovary tissue female adult (51 year)",
+    "title": "small RNA-seq from ovary (ENCLB343BMC)"
+  },
+  "GSM2343125": {
+    "characteristics": "tissue_type: body of pancreas,biomaterial_type: tissue,description: Pancreas tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS273XDV (SAMN05897043),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS273XDV at ENCODE; https://www.encodeproject.org/ENCBS273XDV/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE87976",
+    "source": "Homo sapiens body of pancreas tissue female adult (53 years)",
+    "title": "small RNA-seq from body of pancreas (ENCLB874RRJ)"
+  },
+  "GSM2343138": {
+    "characteristics": "tissue_type: ovary,biomaterial_type: tissue,description: Ovary tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS711CPB (SAMN05897475),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS711CPB at ENCODE; https://www.encodeproject.org/ENCBS711CPB/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE87984",
+    "source": "Homo sapiens ovary tissue female adult (51 year)",
+    "title": "total RNA-seq from ovary (ENCLB038BJJ)"
+  },
+  "GSM2343213": {
+    "characteristics": "tissue_type: esophagus muscularis mucosa,biomaterial_type: tissue,description: Esophagus muscle layer tissue sent from GTEx to the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS571LWZ (SAMN05897325),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS571LWZ at ENCODE; https://www.encodeproject.org/ENCBS571LWZ/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88025",
+    "source": "Homo sapiens esophagus muscularis mucosa tissue female adult (53 years)",
+    "title": "total RNA-seq from esophagus muscularis mucosa (ENCLB159BNG)"
+  },
+  "GSM2343216": {
+    "characteristics": "tissue_type: body of pancreas,biomaterial_type: tissue,description: Pancreas tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS389HVX (SAMN05897145),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS389HVX at ENCODE; https://www.encodeproject.org/ENCBS389HVX/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88027",
+    "source": "Homo sapiens body of pancreas tissue female adult (51 year)",
+    "title": "small RNA-seq from body of pancreas (ENCLB244ENT)"
+  },
+  "GSM2343350": {
+    "characteristics": "tissue_type: esophagus muscularis mucosa,biomaterial_type: tissue,description: Esophagus muscle layer tissue sent from GTEx to the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS146EHL (SAMN05896911),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS146EHL at ENCODE; https://www.encodeproject.org/ENCBS146EHL/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88090",
+    "source": "Homo sapiens esophagus muscularis mucosa tissue male adult (37 years)",
+    "title": "total RNA-seq from esophagus muscularis mucosa (ENCLB275IVH)"
+  },
+  "GSM2343393": {
+    "characteristics": "tissue_type: tibial nerve,biomaterial_type: tissue,description: Tibial nerve tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS986CBC (SAMN05897772),dev stage: adult,Sex: male,donor_id: ENCDO845WKR,age: 37 year,lab: Thomas Gingeras, CSHL,link: ENCBS986CBC at ENCODE; https://www.encodeproject.org/ENCBS986CBC/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88103",
+    "source": "Homo sapiens tibial nerve tissue male adult (37 years)",
+    "title": "small RNA-seq from tibial nerve (ENCLB057AMZ)"
+  },
+  "GSM2343447": {
+    "characteristics": "tissue_type: right lobe of liver,biomaterial_type: tissue,description: Liver tissue from a 53 year old female received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS773RMK (SAMN05897547),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS773RMK at ENCODE; https://www.encodeproject.org/ENCBS773RMK/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88121",
+    "source": "Homo sapiens right lobe of liver tissue female adult (53 years)",
+    "title": "total RNA-seq from right lobe of liver (ENCLB139JXN)"
+  },
+  "GSM2343458": {
+    "characteristics": "tissue_type: esophagus muscularis mucosa,biomaterial_type: tissue,description: Esophagus muscle layer tissue sent from GTEx to the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS146EHL (SAMN05896911),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS146EHL at ENCODE; https://www.encodeproject.org/ENCBS146EHL/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88128",
+    "source": "Homo sapiens esophagus muscularis mucosa tissue male adult (37 years)",
+    "title": "small RNA-seq from esophagus muscularis mucosa (ENCLB748FXR)"
+  },
+  "GSM2343503": {
+    "characteristics": "tissue_type: tibial nerve,biomaterial_type: tissue,description: Tibial nerve tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS473HNM (SAMN05897230),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS473HNM at ENCODE; https://www.encodeproject.org/ENCBS473HNM/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88155",
+    "source": "Homo sapiens tibial nerve tissue female adult (51 year)",
+    "title": "total RNA-seq from tibial nerve (ENCLB966RBB)"
+  },
+  "GSM2343506": {
+    "characteristics": "tissue_type: adrenal gland,biomaterial_type: tissue,description: Adrenal Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS227VDO (SAMN05897001),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS227VDO at ENCODE; https://www.encodeproject.org/ENCBS227VDO/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88157",
+    "source": "Homo sapiens adrenal gland tissue male adult (37 years)",
+    "title": "total RNA-seq from adrenal gland (ENCLB879WXT)"
+  },
+  "GSM2343507": {
+    "characteristics": "tissue_type: adrenal gland,biomaterial_type: tissue,description: Adrenal Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS227VDO (SAMN05897001),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS227VDO at ENCODE; https://www.encodeproject.org/ENCBS227VDO/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88157",
+    "source": "Homo sapiens adrenal gland tissue male adult (37 years)",
+    "title": "total RNA-seq from adrenal gland (ENCLB033URW)"
+  },
+  "GSM2343527": {
+    "characteristics": "tissue_type: esophagus muscularis mucosa,biomaterial_type: tissue,description: Esophagus muscle layer tissue sent from GTEx to the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS072KNR (SAMN05896839),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS072KNR at ENCODE; https://www.encodeproject.org/ENCBS072KNR/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88169",
+    "source": "Homo sapiens esophagus muscularis mucosa tissue female adult (51 year)",
+    "title": "small RNA-seq from esophagus muscularis mucosa (ENCLB871TQM)"
+  },
+  "GSM2343558": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS320PNF (SAMN05897083),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS320PNF at ENCODE; https://www.encodeproject.org/ENCBS320PNF/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88186",
+    "source": "Homo sapiens upper lobe of left lung tissue male adult (37 years)",
+    "title": "total RNA-seq from upper lobe of left lung (ENCLB381WRT)"
+  },
+  "GSM2343641": {
+    "characteristics": "tissue_type: esophagus muscularis mucosa,biomaterial_type: tissue,description: Esophagus muscle layer tissue sent from GTEx to the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS571LWZ (SAMN05897325),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS571LWZ at ENCODE; https://www.encodeproject.org/ENCBS571LWZ/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88236",
+    "source": "Homo sapiens esophagus muscularis mucosa tissue female adult (53 years)",
+    "title": "small RNA-seq from esophagus muscularis mucosa (ENCLB368NKG)"
+  },
+  "GSM2343662": {
+    "characteristics": "tissue_type: heart left ventricle,biomaterial_type: tissue,description: Heart (left ventricle) tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS323ATG (SAMN05897087),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS323ATG at ENCODE; https://www.encodeproject.org/ENCBS323ATG/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88247",
+    "source": "Homo sapiens heart left ventricle tissue female adult (53 years)",
+    "title": "total RNA-seq from heart left ventricle (ENCLB273VNM)"
+  },
+  "GSM2343673": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS596PXT (SAMN05897353),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS596PXT at ENCODE; https://www.encodeproject.org/ENCBS596PXT/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88254",
+    "source": "Homo sapiens upper lobe of left lung tissue female adult (53 years)",
+    "title": "total RNA-seq from upper lobe of left lung (ENCLB837IVL)"
+  },
+  "GSM2343696": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS711XVO (SAMN05897476),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS711XVO at ENCODE; https://www.encodeproject.org/ENCBS711XVO/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88267",
+    "source": "Homo sapiens upper lobe of left lung tissue female adult (51 year)",
+    "title": "total RNA-seq from upper lobe of left lung (ENCLB308EJA)"
+  },
+  "GSM2343699": {
+    "characteristics": "tissue_type: thoracic aorta,biomaterial_type: tissue,description: Aorta GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS636GUU (SAMN05897395),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS636GUU at ENCODE; https://www.encodeproject.org/ENCBS636GUU/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88269",
+    "source": "Homo sapiens thoracic aorta tissue male adult (37 years)",
+    "title": "total RNA-seq from thoracic aorta (ENCLB952YYH)"
+  },
+  "GSM2343700": {
+    "characteristics": "tissue_type: thoracic aorta,biomaterial_type: tissue,description: Aorta GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS636GUU (SAMN05897395),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS636GUU at ENCODE; https://www.encodeproject.org/ENCBS636GUU/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88269",
+    "source": "Homo sapiens thoracic aorta tissue male adult (37 years)",
+    "title": "total RNA-seq from thoracic aorta (ENCLB093BKT)"
+  },
+  "GSM2343702": {
+    "characteristics": "tissue_type: heart left ventricle,biomaterial_type: tissue,description: Heart (left ventricle) tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS038PFI (SAMN05896802),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS038PFI at ENCODE; https://www.encodeproject.org/ENCBS038PFI/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88271",
+    "source": "Homo sapiens heart left ventricle tissue female adult (51 year)",
+    "title": "total RNA-seq from heart left ventricle (ENCLB327BGU)"
+  },
+  "GSM2343722": {
+    "characteristics": "tissue_type: right atrium auricular region,biomaterial_type: tissue,description: Atrial appendage tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS269BVG (SAMN05897036),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS269BVG at ENCODE; https://www.encodeproject.org/ENCBS269BVG/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88284",
+    "source": "Homo sapiens right atrium auricular region tissue female adult (51 year)",
+    "title": "total RNA-seq from right atrium auricular region (ENCLB789RBC)"
+  },
+  "GSM2343776": {
+    "characteristics": "tissue_type: right lobe of liver,biomaterial_type: tissue,description: Liver tissue from a 53 year old female received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS796JPW (SAMN05897573),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS796JPW at ENCODE; https://www.encodeproject.org/ENCBS796JPW/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88318",
+    "source": "Homo sapiens right lobe of liver tissue female adult (53 years)",
+    "title": "total RNA-seq from right lobe of liver (ENCLB381PQE)"
+  },
+  "GSM2343816": {
+    "characteristics": "tissue_type: thyroid gland,biomaterial_type: tissue,description: Thyroid Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS376ASB (SAMN05897132),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS376ASB at ENCODE; https://www.encodeproject.org/ENCBS376ASB/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88340",
+    "source": "Homo sapiens thyroid gland tissue male adult (37 years)",
+    "title": "total RNA-seq from thyroid gland (ENCLB637GXV)"
+  },
+  "GSM2343817": {
+    "characteristics": "tissue_type: thyroid gland,biomaterial_type: tissue,description: Thyroid Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS376ASB (SAMN05897132),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS376ASB at ENCODE; https://www.encodeproject.org/ENCBS376ASB/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88340",
+    "source": "Homo sapiens thyroid gland tissue male adult (37 years)",
+    "title": "total RNA-seq from thyroid gland (ENCLB109UZW)"
+  },
+  "GSM2343824": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS320PNF (SAMN05897083),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS320PNF at ENCODE; https://www.encodeproject.org/ENCBS320PNF/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88344",
+    "source": "Homo sapiens upper lobe of left lung tissue male adult (37 years)",
+    "title": "small RNA-seq from upper lobe of left lung (ENCLB483BRP)"
+  },
+  "GSM2343865": {
+    "characteristics": "tissue_type: right atrium auricular region,biomaterial_type: tissue,description: Atrial appendage tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS357SRJ (SAMN05897119),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS357SRJ at ENCODE; https://www.encodeproject.org/ENCBS357SRJ/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88367",
+    "source": "Homo sapiens right atrium auricular region tissue female adult (53 years)",
+    "title": "total RNA-seq from right atrium auricular region (ENCLB471FWT)"
+  },
+  "GSM2343885": {
+    "characteristics": "tissue_type: body of pancreas,biomaterial_type: tissue,description: Pancreas tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS273XDV (SAMN05897043),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS273XDV at ENCODE; https://www.encodeproject.org/ENCBS273XDV/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88378",
+    "source": "Homo sapiens body of pancreas tissue female adult (53 years)",
+    "title": "total RNA-seq from body of pancreas (ENCLB778YTC)"
+  },
+  "GSM2343909": {
+    "characteristics": "tissue_type: right lobe of liver,biomaterial_type: tissue,description: Liver tissue from a 53 year old female received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS796JPW (SAMN05897573),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS796JPW at ENCODE; https://www.encodeproject.org/ENCBS796JPW/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88393",
+    "source": "Homo sapiens right lobe of liver tissue female adult (53 years)",
+    "title": "small RNA-seq from right lobe of liver (ENCLB496AQV)"
+  },
+  "GSM2343917": {
+    "characteristics": "tissue_type: gastrocnemius medialis,biomaterial_type: tissue,biosample encode accession: ENCBS094ENG (SAMN05896859),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: ENCODE Consortium,link: ENCBS094ENG at ENCODE; https://www.encodeproject.org/ENCBS094ENG/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/,link: extraction protocol; https://www.encodeproject.org/documents/3cede565-25cc-4d1a-86fd-3cb2bc10fca1/@@download/attachment/GTEx%20Tissue%20Harvesting%20Work%20Instruction.pdf,link: data sheet; https://www.encodeproject.org/documents/40ac95fd-dcb1-4172-9163-a32fdde3a101/@@download/attachment/Encode%20Public%20IDs.pdf,link: high resolution pathology slide image; https://www.encodeproject.org/documents/40a4131c-e9c4-4adc-b0f7-e5ec9c35571c/@@download/attachment/84265.svs",
+    "series": "GSE88398",
+    "source": "Homo sapiens gastrocnemius medialis tissue female adult (51 year)",
+    "title": "total RNA-seq from gastrocnemius medialis (ENCLB669XXD)"
+  },
+  "GSM2343934": {
+    "characteristics": "tissue_type: esophagus muscularis mucosa,biomaterial_type: tissue,description: Esophagus muscle layer tissue sent from GTEx to the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS072KNR (SAMN05896839),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS072KNR at ENCODE; https://www.encodeproject.org/ENCBS072KNR/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88409",
+    "source": "Homo sapiens esophagus muscularis mucosa tissue female adult (51 year)",
+    "title": "total RNA-seq from esophagus muscularis mucosa (ENCLB391TZJ)"
+  },
+  "GSM2343960": {
+    "characteristics": "tissue_type: right lobe of liver,biomaterial_type: tissue,description: Liver tissue from a 53 year old female received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS773RMK (SAMN05897547),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS773RMK at ENCODE; https://www.encodeproject.org/ENCBS773RMK/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88424",
+    "source": "Homo sapiens right lobe of liver tissue female adult (53 years)",
+    "title": "small RNA-seq from right lobe of liver (ENCLB238JDJ)"
+  },
+  "GSM2343978": {
+    "characteristics": "tissue_type: tibial nerve,biomaterial_type: tissue,description: Tibial nerve tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS649YYM (SAMN05897409),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS649YYM at ENCODE; https://www.encodeproject.org/ENCBS649YYM/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE88435",
+    "source": "Homo sapiens tibial nerve tissue male adult (54 years)",
+    "title": "total RNA-seq from tibial nerve (ENCLB575RKD)"
+  },
+  "GSM2344001": {
+    "characteristics": "tissue_type: body of pancreas,biomaterial_type: tissue,description: Pancreas tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS389HVX (SAMN05897145),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS389HVX at ENCODE; https://www.encodeproject.org/ENCBS389HVX/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88449",
+    "source": "Homo sapiens body of pancreas tissue female adult (51 year)",
+    "title": "total RNA-seq from body of pancreas (ENCLB538OCX)"
+  },
+  "GSM2344016": {
+    "characteristics": "tissue_type: gastrocnemius medialis,biomaterial_type: tissue,description: Skeletal muscle tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS868XRL (SAMN05897646),dev stage: adult,Sex: female,donor_id: ENCDO793LXB,age: 53 year,lab: Thomas Gingeras, CSHL,link: ENCBS868XRL at ENCODE; https://www.encodeproject.org/ENCBS868XRL/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88458",
+    "source": "Homo sapiens gastrocnemius medialis tissue female adult (53 years)",
+    "title": "total RNA-seq from gastrocnemius medialis (ENCLB468MFC)"
+  },
+  "GSM2344085": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS596PXT (SAMN05897353),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS596PXT at ENCODE; https://www.encodeproject.org/ENCBS596PXT/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88499",
+    "source": "Homo sapiens upper lobe of left lung tissue female adult (53 years)",
+    "title": "small RNA-seq from upper lobe of left lung (ENCLB983DVP)"
+  },
+  "GSM2344101": {
+    "characteristics": "tissue_type: esophagus muscularis mucosa,biomaterial_type: tissue,description: Esophagus muscle layer tissue sent from GTEx to the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS730TAX (SAMN05897500),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS730TAX at ENCODE; https://www.encodeproject.org/ENCBS730TAX/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE88509",
+    "source": "Homo sapiens esophagus muscularis mucosa tissue male adult (54 years)",
+    "title": "total RNA-seq from esophagus muscularis mucosa (ENCLB581IKK)"
+  },
+  "GSM2344168": {
+    "characteristics": "tissue_type: tibial nerve,biomaterial_type: tissue,description: Tibial nerve tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS986CBC (SAMN05897772),dev stage: adult,Sex: male,donor_id: ENCDO845WKR,age: 37 year,lab: Thomas Gingeras, CSHL,link: ENCBS986CBC at ENCODE; https://www.encodeproject.org/ENCBS986CBC/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88546",
+    "source": "Homo sapiens tibial nerve tissue male adult (37 years)",
+    "title": "total RNA-seq from tibial nerve (ENCLB478GSY)"
+  },
+  "GSM2344225": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS271JIM (SAMN05897040),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS271JIM at ENCODE; https://www.encodeproject.org/ENCBS271JIM/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE88579",
+    "source": "Homo sapiens upper lobe of left lung tissue male adult (54 years)",
+    "title": "total RNA-seq from upper lobe of left lung (ENCLB692XZA)"
+  },
+  "GSM2344226": {
+    "characteristics": "tissue_type: ovary,biomaterial_type: tissue,description: Ovary tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS688BQS (SAMN05897445),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS688BQS at ENCODE; https://www.encodeproject.org/ENCBS688BQS/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88580",
+    "source": "Homo sapiens ovary tissue female adult (53 years)",
+    "title": "total RNA-seq from ovary (ENCLB024MDB)"
+  },
+  "GSM2344246": {
+    "characteristics": "tissue_type: gastrocnemius medialis,biomaterial_type: tissue,description: Skeletal Muscle GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS543SZC (SAMN05897297),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS543SZC at ENCODE; https://www.encodeproject.org/ENCBS543SZC/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88592",
+    "source": "Homo sapiens gastrocnemius medialis tissue male adult (37 years)",
+    "title": "total RNA-seq from gastrocnemius medialis (ENCLB236RKR)"
+  },
+  "GSM2344247": {
+    "characteristics": "tissue_type: gastrocnemius medialis,biomaterial_type: tissue,description: Skeletal Muscle GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS543SZC (SAMN05897297),age: 37 year,dev stage: adult,donor_id: ENCDO845WKR,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS543SZC at ENCODE; https://www.encodeproject.org/ENCBS543SZC/,link: Derived from ENCODE donor ENCDO845WKR; https://www.encodeproject.org/ENCDO845WKR/",
+    "series": "GSE88592",
+    "source": "Homo sapiens gastrocnemius medialis tissue male adult (37 years)",
+    "title": "total RNA-seq from gastrocnemius medialis (ENCLB011CNK)"
+  },
+  "GSM2344259": {
+    "characteristics": "tissue_type: tibial nerve,biomaterial_type: tissue,description: Tibial nerve tissue from received by the Gingeras lab to do RNA-Seq assay on from GTEx.,biosample encode accession: ENCBS358ZMI (SAMN05897120),age: 53 year,dev stage: adult,donor_id: ENCDO793LXB,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS358ZMI at ENCODE; https://www.encodeproject.org/ENCBS358ZMI/,link: Derived from ENCODE donor ENCDO793LXB; https://www.encodeproject.org/ENCDO793LXB/",
+    "series": "GSE88600",
+    "source": "Homo sapiens tibial nerve tissue female adult (53 years)",
+    "title": "total RNA-seq from tibial nerve (ENCLB464VVH)"
+  },
+  "GSM2344380": {
+    "characteristics": "tissue_type: adrenal gland,biomaterial_type: tissue,description: Adrenal Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS724UYV (SAMN05897494),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS724UYV at ENCODE; https://www.encodeproject.org/ENCBS724UYV/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE88668",
+    "source": "Homo sapiens adrenal gland tissue male adult (54 years)",
+    "title": "total RNA-seq from adrenal gland (ENCLB102CKX)"
+  },
+  "GSM2344381": {
+    "characteristics": "tissue_type: adrenal gland,biomaterial_type: tissue,description: Adrenal Gland GTEx tissue aliquot received by the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS724UYV (SAMN05897494),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS724UYV at ENCODE; https://www.encodeproject.org/ENCBS724UYV/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE88668",
+    "source": "Homo sapiens adrenal gland tissue male adult (54 years)",
+    "title": "total RNA-seq from adrenal gland (ENCLB325SDI)"
+  },
+  "GSM2344389": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS711XVO (SAMN05897476),age: 51 year,dev stage: adult,donor_id: ENCDO271OUW,Sex: female,lab: Thomas Gingeras, CSHL,link: ENCBS711XVO at ENCODE; https://www.encodeproject.org/ENCBS711XVO/,link: Derived from ENCODE donor ENCDO271OUW; https://www.encodeproject.org/ENCDO271OUW/",
+    "series": "GSE88673",
+    "source": "Homo sapiens upper lobe of left lung tissue female adult (51 year)",
+    "title": "small RNA-seq from upper lobe of left lung (ENCLB072XZS)"
+  },
+  "GSM2344396": {
+    "characteristics": "tissue_type: gastrocnemius medialis,biomaterial_type: tissue,description: skeletal muscle tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS472LWI (SAMN05897229),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS472LWI at ENCODE; https://www.encodeproject.org/ENCBS472LWI/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE88677",
+    "source": "Homo sapiens gastrocnemius medialis tissue male adult (54 years)",
+    "title": "total RNA-seq from gastrocnemius medialis (ENCLB257CMY)"
+  },
+  "GSM2344426": {
+    "characteristics": "tissue_type: upper lobe of left lung,biomaterial_type: tissue,description: Lung tissue obtained from GTEx for the Gingeras lab to conduct RNA-Seq assays on.,biosample encode accession: ENCBS271JIM (SAMN05897040),age: 54 year,dev stage: adult,donor_id: ENCDO451RUA,Sex: male,lab: Thomas Gingeras, CSHL,link: ENCBS271JIM at ENCODE; https://www.encodeproject.org/ENCBS271JIM/,link: Derived from ENCODE donor ENCDO451RUA; https://www.encodeproject.org/ENCDO451RUA/",
+    "series": "GSE88694",
+    "source": "Homo sapiens upper lobe of left lung tissue male adult (54 years)",
+    "title": "small RNA-seq from upper lobe of left lung (ENCLB365RNP)"
+  },
+  "GSM6912296": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1A8G6"
+  },
+  "GSM6912297": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1A8G7"
+  },
+  "GSM6912298": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1B8L1"
+  },
+  "GSM6912299": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1B8SG"
+  },
+  "GSM6912300": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1B933"
+  },
+  "GSM6912301": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1C6VR"
+  },
+  "GSM6912302": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1C6WA"
+  },
+  "GSM6912303": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1C64N"
+  },
+  "GSM6912304": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1CB4G"
+  },
+  "GSM6912305": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1CB4H"
+  },
+  "GSM6912306": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1EKGG"
+  },
+  "GSM6912307": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1EMGI"
+  },
+  "GSM6912308": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1EU9M"
+  },
+  "GSM6912309": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1F6I4"
+  },
+  "GSM6912310": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1F48J"
+  },
+  "GSM6912311": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1F75A"
+  },
+  "GSM6912312": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1F75W"
+  },
+  "GSM6912313": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1GF9V"
+  },
+  "GSM6912314": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1GF9W"
+  },
+  "GSM6912315": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1GN73"
+  },
+  "GSM6912316": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1GTWX"
+  },
+  "GSM6912317": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1GZ2Q"
+  },
+  "GSM6912318": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1GZ4I"
+  },
+  "GSM6912319": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1H1CY"
+  },
+  "GSM6912320": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1H3NZ"
+  },
+  "GSM6912321": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1H3O1"
+  },
+  "GSM6912322": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1H3VE"
+  },
+  "GSM6912323": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1HBPI"
+  },
+  "GSM6912324": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1HCVE"
+  },
+  "GSM6912325": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1HSKV"
+  },
+  "GSM6912326": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1HSMO"
+  },
+  "GSM6912327": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1I1CD"
+  },
+  "GSM6912328": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1I1HK"
+  },
+  "GSM6912329": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1IDJH"
+  },
+  "GSM6912330": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1IKOH"
+  },
+  "GSM6912331": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1IL2V"
+  },
+  "GSM6912332": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1JJ6O"
+  },
+  "GSM6912333": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1JJEA"
+  },
+  "GSM6912334": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1JMLX"
+  },
+  "GSM6912335": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1JN1M"
+  },
+  "GSM6912336": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1KANB"
+  },
+  "GSM6912337": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1KD4Q"
+  },
+  "GSM6912338": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1KWVE"
+  },
+  "GSM6912339": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1MJK2"
+  },
+  "GSM6912340": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1P4AB"
+  },
+  "GSM6912341": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1PIIG"
+  },
+  "GSM6912342": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1PWST"
+  },
+  "GSM6912343": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1R9PO"
+  },
+  "GSM6912344": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1R46S"
+  },
+  "GSM6912345": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1RDX4"
+  },
+  "GSM6912346": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11DXY"
+  },
+  "GSM6912347": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11DZ1"
+  },
+  "GSM6912348": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11EI6"
+  },
+  "GSM6912349": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11GSO"
+  },
+  "GSM6912350": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11GSP"
+  },
+  "GSM6912351": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11NUK"
+  },
+  "GSM6912352": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11NV4"
+  },
+  "GSM6912353": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11O72"
+  },
+  "GSM6912354": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11OC5"
+  },
+  "GSM6912355": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11ONC"
+  },
+  "GSM6912356": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11ZTS"
+  },
+  "GSM6912357": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-11ZUS"
+  },
+  "GSM6912358": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-12WSC"
+  },
+  "GSM6912359": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-12WSD"
+  },
+  "GSM6912360": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-12WSE"
+  },
+  "GSM6912361": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-12WSH"
+  },
+  "GSM6912362": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-12WSM"
+  },
+  "GSM6912363": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-12ZZX"
+  },
+  "GSM6912364": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13FHO"
+  },
+  "GSM6912365": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13FHP"
+  },
+  "GSM6912366": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13G51"
+  },
+  "GSM6912367": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13JUV"
+  },
+  "GSM6912368": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13JVG"
+  },
+  "GSM6912369": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13NYB"
+  },
+  "GSM6912370": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13O3O"
+  },
+  "GSM6912371": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13O3Q"
+  },
+  "GSM6912372": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13OVL"
+  },
+  "GSM6912373": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13QIC"
+  },
+  "GSM6912374": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13S7M"
+  },
+  "GSM6912375": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13SLX"
+  },
+  "GSM6912376": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13VXU"
+  },
+  "GSM6912377": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13X6I"
+  },
+  "GSM6912378": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13X6J"
+  },
+  "GSM6912379": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-13X6K"
+  },
+  "GSM6912380": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14A5I"
+  },
+  "GSM6912381": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14ABY"
+  },
+  "GSM6912382": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14BMV"
+  },
+  "GSM6912383": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14DAQ"
+  },
+  "GSM6912384": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14E6D"
+  },
+  "GSM6912385": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14E7W"
+  },
+  "GSM6912386": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14JFF"
+  },
+  "GSM6912387": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-14PJM"
+  },
+  "GSM6912388": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-15DYW"
+  },
+  "GSM6912389": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-15EO6"
+  },
+  "GSM6912390": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-15G19"
+  },
+  "GSM6912391": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-15SHU"
+  },
+  "GSM6912392": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-16XZZ"
+  },
+  "GSM6912393": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-16YQH"
+  },
+  "GSM6912394": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-16Z82"
+  },
+  "GSM6912395": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-17HG3"
+  },
+  "GSM6912396": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-17HHY"
+  },
+  "GSM6912397": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-17HII"
+  },
+  "GSM6912398": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-17JCI"
+  },
+  "GSM6912399": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-111FC"
+  },
+  "GSM6912400": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-131XH"
+  },
+  "GSM6912401": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-131YS"
+  },
+  "GSM6912402": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-132Q8"
+  },
+  "GSM6912403": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-139TS"
+  },
+  "GSM6912404": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-139TT"
+  },
+  "GSM6912405": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-144GL"
+  },
+  "GSM6912406": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-145LS"
+  },
+  "GSM6912407": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-145LU"
+  },
+  "GSM6912408": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-145MG"
+  },
+  "GSM6912409": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-145MH"
+  },
+  "GSM6912410": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-147F4"
+  },
+  "GSM6912411": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-147GR"
+  },
+  "GSM6912412": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-183WM"
+  },
+  "GSM6912413": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-1269C"
+  },
+  "GSM6912414": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-12126"
+  },
+  "GSM6912415": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-18465"
+  },
+  "GSM6912416": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-NPJ7"
+  },
+  "GSM6912417": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-OHPN"
+  },
+  "GSM6912418": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-P44H"
+  },
+  "GSM6912419": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-PWO3"
+  },
+  "GSM6912420": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-Q2AG"
+  },
+  "GSM6912421": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-QDT8"
+  },
+  "GSM6912422": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-QMR6"
+  },
+  "GSM6912423": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-QVJO"
+  },
+  "GSM6912424": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-R55E"
+  },
+  "GSM6912425": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-RNOR"
+  },
+  "GSM6912426": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-RU72"
+  },
+  "GSM6912427": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-S7SE"
+  },
+  "GSM6912428": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-T5JC"
+  },
+  "GSM6912429": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-T6MN"
+  },
+  "GSM6912430": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-UTHO"
+  },
+  "GSM6912431": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-WHSE"
+  },
+  "GSM6912432": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-WL46"
+  },
+  "GSM6912433": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-WVLH"
+  },
+  "GSM6912434": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-WWYW"
+  },
+  "GSM6912435": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-WZTO"
+  },
+  "GSM6912436": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-X4XX"
+  },
+  "GSM6912437": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-XLM4"
+  },
+  "GSM6912438": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-XMD1"
+  },
+  "GSM6912439": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-Z93S"
+  },
+  "GSM6912440": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-ZAB4"
+  },
+  "GSM6912441": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-ZAJG"
+  },
+  "GSM6912442": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-ZAK1"
+  },
+  "GSM6912443": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-ZF28"
+  },
+  "GSM6912444": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-ZVT3"
+  },
+  "GSM6912445": {
+    "characteristics": "tissue: Cerebellum (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Cerebellum (simulated)",
+    "title": "Cerebellum, simulated reads, GTEX-ZZPT"
+  },
+  "GSM6912446": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1AX8Z"
+  },
+  "GSM6912447": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1AX9J"
+  },
+  "GSM6912448": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1B97I"
+  },
+  "GSM6912449": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1B932"
+  },
+  "GSM6912450": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1C6VQ"
+  },
+  "GSM6912451": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1CAMQ"
+  },
+  "GSM6912452": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1CAMS"
+  },
+  "GSM6912453": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1CB4F"
+  },
+  "GSM6912454": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1CB4J"
+  },
+  "GSM6912455": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1F7RK"
+  },
+  "GSM6912456": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1FIGZ"
+  },
+  "GSM6912457": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1GN1W"
+  },
+  "GSM6912458": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1GZ4H"
+  },
+  "GSM6912459": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1H3VY"
+  },
+  "GSM6912460": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1HC8U"
+  },
+  "GSM6912461": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1HFI7"
+  },
+  "GSM6912462": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1HSGN"
+  },
+  "GSM6912463": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1HSMP"
+  },
+  "GSM6912464": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1HSMQ"
+  },
+  "GSM6912465": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1I1GS"
+  },
+  "GSM6912466": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1I1GU"
+  },
+  "GSM6912467": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1IDJC"
+  },
+  "GSM6912468": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1IDJF"
+  },
+  "GSM6912469": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1IGQW"
+  },
+  "GSM6912470": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1IOXB"
+  },
+  "GSM6912471": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1J1R8"
+  },
+  "GSM6912472": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1J8Q3"
+  },
+  "GSM6912473": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1J8QM"
+  },
+  "GSM6912474": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1JMQI"
+  },
+  "GSM6912475": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1JMQL"
+  },
+  "GSM6912476": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1JN76"
+  },
+  "GSM6912477": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1K9T9"
+  },
+  "GSM6912478": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1KANC"
+  },
+  "GSM6912479": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1KD5A"
+  },
+  "GSM6912480": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1L5NE"
+  },
+  "GSM6912481": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1LB8K"
+  },
+  "GSM6912482": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1LG7Z"
+  },
+  "GSM6912483": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1LNCM"
+  },
+  "GSM6912484": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1LSNL"
+  },
+  "GSM6912485": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1LVAM"
+  },
+  "GSM6912486": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1M4P7"
+  },
+  "GSM6912487": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1MUQO"
+  },
+  "GSM6912488": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1N2DW"
+  },
+  "GSM6912489": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1N2EF"
+  },
+  "GSM6912490": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1O9I2"
+  },
+  "GSM6912491": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1PIEJ"
+  },
+  "GSM6912492": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1PIGE"
+  },
+  "GSM6912493": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1QW4Y"
+  },
+  "GSM6912494": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1R9PM"
+  },
+  "GSM6912495": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1RAZA"
+  },
+  "GSM6912497": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11DXX"
+  },
+  "GSM6912498": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11EQ8"
+  },
+  "GSM6912499": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11H98"
+  },
+  "GSM6912500": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11LCK"
+  },
+  "GSM6912501": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11NSD"
+  },
+  "GSM6912502": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11UD1"
+  },
+  "GSM6912503": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11UD2"
+  },
+  "GSM6912504": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-11WQC"
+  },
+  "GSM6912505": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-12WSF"
+  },
+  "GSM6912506": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-13NYS"
+  },
+  "GSM6912507": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-13NZA"
+  },
+  "GSM6912508": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-13O3P"
+  },
+  "GSM6912509": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-13OVI"
+  },
+  "GSM6912510": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-13PLJ"
+  },
+  "GSM6912511": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-13QJ3"
+  },
+  "GSM6912512": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-13SLW"
+  },
+  "GSM6912513": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14A5H"
+  },
+  "GSM6912514": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14AS3"
+  },
+  "GSM6912515": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14E1K"
+  },
+  "GSM6912516": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14E6E"
+  },
+  "GSM6912517": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14ICL"
+  },
+  "GSM6912518": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14JG6"
+  },
+  "GSM6912519": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14LLW"
+  },
+  "GSM6912520": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14PII"
+  },
+  "GSM6912521": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-15DZA"
+  },
+  "GSM6912522": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-15F5U"
+  },
+  "GSM6912523": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-15G1A"
+  },
+  "GSM6912524": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-15UF6"
+  },
+  "GSM6912525": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-16MT8"
+  },
+  "GSM6912526": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-16NPV"
+  },
+  "GSM6912527": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-16NPX"
+  },
+  "GSM6912528": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-17EUY"
+  },
+  "GSM6912529": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-17F98"
+  },
+  "GSM6912530": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-18A6Q"
+  },
+  "GSM6912531": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-18A67"
+  },
+  "GSM6912532": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-18D9U"
+  },
+  "GSM6912533": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-18QFQ"
+  },
+  "GSM6912534": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-111CU"
+  },
+  "GSM6912535": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-132AR"
+  },
+  "GSM6912536": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-139T4"
+  },
+  "GSM6912537": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-139TU"
+  },
+  "GSM6912538": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-145LT"
+  },
+  "GSM6912539": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-145MI"
+  },
+  "GSM6912540": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-145MN"
+  },
+  "GSM6912541": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-146FH"
+  },
+  "GSM6912542": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-146FQ"
+  },
+  "GSM6912543": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1212Z"
+  },
+  "GSM6912544": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1314G"
+  },
+  "GSM6912545": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1399R"
+  },
+  "GSM6912546": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-1399U"
+  },
+  "GSM6912547": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-12696"
+  },
+  "GSM6912548": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-14753"
+  },
+  "GSM6912549": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-OIZG"
+  },
+  "GSM6912550": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-OIZI"
+  },
+  "GSM6912551": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-P4PQ"
+  },
+  "GSM6912552": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-P4QS"
+  },
+  "GSM6912553": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-PLZ6"
+  },
+  "GSM6912554": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-POYW"
+  },
+  "GSM6912555": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-PWCY"
+  },
+  "GSM6912556": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-PWN1"
+  },
+  "GSM6912557": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-PX3G"
+  },
+  "GSM6912558": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-QDVJ"
+  },
+  "GSM6912559": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-QEG4"
+  },
+  "GSM6912560": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-QEL4"
+  },
+  "GSM6912561": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-QV31"
+  },
+  "GSM6912562": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-SJXC"
+  },
+  "GSM6912563": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-SNOS"
+  },
+  "GSM6912564": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-TML8"
+  },
+  "GSM6912565": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-U4B1"
+  },
+  "GSM6912566": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-UJHI"
+  },
+  "GSM6912567": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-V1D1"
+  },
+  "GSM6912568": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-V955"
+  },
+  "GSM6912569": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-VJWN"
+  },
+  "GSM6912570": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-VJYA"
+  },
+  "GSM6912571": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-WEY5"
+  },
+  "GSM6912572": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-WK11"
+  },
+  "GSM6912573": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-WRHU"
+  },
+  "GSM6912574": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-WYJK"
+  },
+  "GSM6912575": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-WYVS"
+  },
+  "GSM6912576": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-XBEW"
+  },
+  "GSM6912577": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-XOT4"
+  },
+  "GSM6912578": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-XPT6"
+  },
+  "GSM6912579": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-XV7Q"
+  },
+  "GSM6912580": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-Y3I4"
+  },
+  "GSM6912581": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-Y5LM"
+  },
+  "GSM6912582": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-Y5V6"
+  },
+  "GSM6912583": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-YEC4"
+  },
+  "GSM6912584": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZDYS"
+  },
+  "GSM6912585": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZE9C"
+  },
+  "GSM6912586": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZEX8"
+  },
+  "GSM6912587": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZF2S"
+  },
+  "GSM6912588": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZLV1"
+  },
+  "GSM6912589": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZTPG"
+  },
+  "GSM6912590": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZV7C"
+  },
+  "GSM6912591": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZVTK"
+  },
+  "GSM6912592": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZVZP"
+  },
+  "GSM6912593": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZWKS"
+  },
+  "GSM6912594": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZYT6"
+  },
+  "GSM6912595": {
+    "characteristics": "tissue: Muscle (simulated),genotype: WT",
+    "series": "GSE222044",
+    "source": "Muscle (simulated)",
+    "title": "Muscle, simulated reads, GTEX-ZYW4"
+  }
+}
