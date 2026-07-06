@@ -1,0 +1,2186 @@
+{
+  "GSM4215858": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 18",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00039"
+  },
+  "GSM4215859": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 26",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00055"
+  },
+  "GSM4215860": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 17",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00074"
+  },
+  "GSM4215861": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00085"
+  },
+  "GSM4215862": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00105"
+  },
+  "GSM4215863": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 50",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00120"
+  },
+  "GSM4215864": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 15",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00132"
+  },
+  "GSM4215865": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00158"
+  },
+  "GSM4215866": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00168"
+  },
+  "GSM4215867": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 16",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00186"
+  },
+  "GSM4215868": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00188"
+  },
+  "GSM4215869": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 25",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00190"
+  },
+  "GSM4215870": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00192"
+  },
+  "GSM4215871": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00193"
+  },
+  "GSM4215872": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 75",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00195"
+  },
+  "GSM4215873": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00196"
+  },
+  "GSM4215874": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00197"
+  },
+  "GSM4215875": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 33",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00198"
+  },
+  "GSM4215876": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00199"
+  },
+  "GSM4215877": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C00202"
+  },
+  "GSM4215878": {
+    "characteristics": "etiology: Peripartum cardiomyopathy (PPCM),Sex: Female,race: Caucasian,age: 30",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01413"
+  },
+  "GSM4215879": {
+    "characteristics": "etiology: Peripartum cardiomyopathy (PPCM),Sex: Female,race: Caucasian,age: 25",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01418"
+  },
+  "GSM4215880": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 38",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01631"
+  },
+  "GSM4215881": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 32",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01776"
+  },
+  "GSM4215882": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01783"
+  },
+  "GSM4215883": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 41",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01794"
+  },
+  "GSM4215884": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 28",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01809"
+  },
+  "GSM4215885": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01814"
+  },
+  "GSM4215886": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01816"
+  },
+  "GSM4215887": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 21",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01862"
+  },
+  "GSM4215888": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01875"
+  },
+  "GSM4215889": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 41",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01881"
+  },
+  "GSM4215891": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01902"
+  },
+  "GSM4215892": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01904"
+  },
+  "GSM4215893": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01905"
+  },
+  "GSM4215894": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01910"
+  },
+  "GSM4215895": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01912"
+  },
+  "GSM4215896": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01914"
+  },
+  "GSM4215897": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01926"
+  },
+  "GSM4215898": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 50",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01929"
+  },
+  "GSM4215899": {
+    "characteristics": "etiology: Peripartum cardiomyopathy (PPCM),Sex: Female,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01931"
+  },
+  "GSM4215900": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01945"
+  },
+  "GSM4215901": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01952"
+  },
+  "GSM4215902": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 47",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01957"
+  },
+  "GSM4215903": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01960"
+  },
+  "GSM4215904": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C01997"
+  },
+  "GSM4215905": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02014"
+  },
+  "GSM4215906": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 55",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02018"
+  },
+  "GSM4215907": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02022"
+  },
+  "GSM4215908": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02029"
+  },
+  "GSM4215909": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02045"
+  },
+  "GSM4215910": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02050"
+  },
+  "GSM4215911": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02054"
+  },
+  "GSM4215912": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02056"
+  },
+  "GSM4215913": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02058"
+  },
+  "GSM4215914": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02065"
+  },
+  "GSM4215915": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02067"
+  },
+  "GSM4215916": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02069"
+  },
+  "GSM4215917": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 60",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02080"
+  },
+  "GSM4215918": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02081"
+  },
+  "GSM4215919": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02085"
+  },
+  "GSM4215920": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02095"
+  },
+  "GSM4215921": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02096"
+  },
+  "GSM4215922": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02101"
+  },
+  "GSM4215923": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 25",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02108"
+  },
+  "GSM4215924": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02109"
+  },
+  "GSM4215925": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02116"
+  },
+  "GSM4215926": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02164"
+  },
+  "GSM4215927": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 47",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02172"
+  },
+  "GSM4215928": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02190"
+  },
+  "GSM4215929": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02205"
+  },
+  "GSM4215930": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 20",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02210"
+  },
+  "GSM4215931": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02233"
+  },
+  "GSM4215932": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02242"
+  },
+  "GSM4215933": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02272"
+  },
+  "GSM4215934": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02276"
+  },
+  "GSM4215935": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02280"
+  },
+  "GSM4215936": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 45",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02297"
+  },
+  "GSM4215937": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 66",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02298"
+  },
+  "GSM4215938": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02301"
+  },
+  "GSM4215939": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02303"
+  },
+  "GSM4215940": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02305"
+  },
+  "GSM4215941": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02312"
+  },
+  "GSM4215942": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 34",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02318"
+  },
+  "GSM4215943": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02327"
+  },
+  "GSM4215944": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02328"
+  },
+  "GSM4215945": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 41",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02329"
+  },
+  "GSM4215946": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 32",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02340"
+  },
+  "GSM4215947": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02344"
+  },
+  "GSM4215948": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 21",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02349"
+  },
+  "GSM4215949": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02350"
+  },
+  "GSM4215950": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 30",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02351"
+  },
+  "GSM4215951": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02352"
+  },
+  "GSM4215952": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02354"
+  },
+  "GSM4215953": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 47",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02355"
+  },
+  "GSM4215954": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02356"
+  },
+  "GSM4215955": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 34",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02360"
+  },
+  "GSM4215956": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02363"
+  },
+  "GSM4215957": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 55",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02364"
+  },
+  "GSM4215958": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02374"
+  },
+  "GSM4215959": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 50",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02375"
+  },
+  "GSM4215960": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02380"
+  },
+  "GSM4215961": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 45",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02387"
+  },
+  "GSM4215962": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 33",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02397"
+  },
+  "GSM4215963": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 63.4",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02420"
+  },
+  "GSM4215964": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 44.3",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02452"
+  },
+  "GSM4215965": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02458"
+  },
+  "GSM4215966": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02464"
+  },
+  "GSM4215967": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02468"
+  },
+  "GSM4215968": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02475"
+  },
+  "GSM4215969": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02491"
+  },
+  "GSM4215970": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02496"
+  },
+  "GSM4215971": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02510"
+  },
+  "GSM4215972": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02516"
+  },
+  "GSM4215973": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02529"
+  },
+  "GSM4215974": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 33",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02530"
+  },
+  "GSM4215975": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 29",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02546"
+  },
+  "GSM4215976": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02592"
+  },
+  "GSM4215977": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02645"
+  },
+  "GSM4215978": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 42",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02660"
+  },
+  "GSM4215979": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02665"
+  },
+  "GSM4215980": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02698"
+  },
+  "GSM4215981": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02720"
+  },
+  "GSM4215982": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02724"
+  },
+  "GSM4215983": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "C02728"
+  },
+  "GSM4215984": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 60",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01007"
+  },
+  "GSM4215985": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: African American,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01027"
+  },
+  "GSM4215986": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01032"
+  },
+  "GSM4215987": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 20",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01044"
+  },
+  "GSM4215988": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01045"
+  },
+  "GSM4215989": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01052"
+  },
+  "GSM4215990": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01054"
+  },
+  "GSM4215991": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 66",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01067"
+  },
+  "GSM4215992": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 71",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01070"
+  },
+  "GSM4215993": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 38",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01071"
+  },
+  "GSM4215994": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01076"
+  },
+  "GSM4215995": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 50",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01077"
+  },
+  "GSM4215996": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 39",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01095"
+  },
+  "GSM4215997": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01097"
+  },
+  "GSM4215998": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01100"
+  },
+  "GSM4215999": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01101"
+  },
+  "GSM4216000": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01104"
+  },
+  "GSM4216001": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01106"
+  },
+  "GSM4216002": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01109"
+  },
+  "GSM4216003": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01110"
+  },
+  "GSM4216004": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 69",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01116"
+  },
+  "GSM4216005": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01117"
+  },
+  "GSM4216006": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01118"
+  },
+  "GSM4216007": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01119"
+  },
+  "GSM4216008": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 33",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01121"
+  },
+  "GSM4216009": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01122"
+  },
+  "GSM4216010": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 73",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01124"
+  },
+  "GSM4216011": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01127"
+  },
+  "GSM4216012": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 68",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01134"
+  },
+  "GSM4216013": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 26",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01135"
+  },
+  "GSM4216014": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01137"
+  },
+  "GSM4216015": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01140"
+  },
+  "GSM4216016": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 55",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01146"
+  },
+  "GSM4216017": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 80",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01151"
+  },
+  "GSM4216018": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 20",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01155"
+  },
+  "GSM4216019": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01163"
+  },
+  "GSM4216020": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 45",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01164"
+  },
+  "GSM4216021": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01165"
+  },
+  "GSM4216022": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01167"
+  },
+  "GSM4216023": {
+    "characteristics": "etiology: Peripartum cardiomyopathy (PPCM),Sex: Female,race: African American,age: 26",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01168"
+  },
+  "GSM4216024": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01171"
+  },
+  "GSM4216025": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01173"
+  },
+  "GSM4216026": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 40",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01179"
+  },
+  "GSM4216027": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01183"
+  },
+  "GSM4216028": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 45",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01184"
+  },
+  "GSM4216029": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01185"
+  },
+  "GSM4216030": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 34",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01197"
+  },
+  "GSM4216031": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 24",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01199"
+  },
+  "GSM4216032": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01202"
+  },
+  "GSM4216033": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01204"
+  },
+  "GSM4216034": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01205"
+  },
+  "GSM4216035": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 37",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01206"
+  },
+  "GSM4216036": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01207"
+  },
+  "GSM4216037": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01208"
+  },
+  "GSM4216038": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01209"
+  },
+  "GSM4216039": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01211"
+  },
+  "GSM4216040": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01215"
+  },
+  "GSM4216041": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01217"
+  },
+  "GSM4216042": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01221"
+  },
+  "GSM4216043": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01222"
+  },
+  "GSM4216044": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01224"
+  },
+  "GSM4216045": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 42",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01226"
+  },
+  "GSM4216046": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 35",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01228"
+  },
+  "GSM4216047": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 48",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01233"
+  },
+  "GSM4216048": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01238"
+  },
+  "GSM4216049": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 50",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01241"
+  },
+  "GSM4216050": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01245"
+  },
+  "GSM4216051": {
+    "characteristics": "etiology: Peripartum cardiomyopathy (PPCM),Sex: Female,race: African American,age: 33",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01246"
+  },
+  "GSM4216052": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01247"
+  },
+  "GSM4216053": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01248"
+  },
+  "GSM4216054": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01252"
+  },
+  "GSM4216055": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01254"
+  },
+  "GSM4216056": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01259"
+  },
+  "GSM4216057": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 42",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01262"
+  },
+  "GSM4216058": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01264"
+  },
+  "GSM4216059": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01266"
+  },
+  "GSM4216060": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01275"
+  },
+  "GSM4216061": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01279"
+  },
+  "GSM4216062": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01282"
+  },
+  "GSM4216063": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 78",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01287"
+  },
+  "GSM4216064": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01288"
+  },
+  "GSM4216065": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01289"
+  },
+  "GSM4216066": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01290"
+  },
+  "GSM4216067": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 26",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01292"
+  },
+  "GSM4216068": {
+    "characteristics": "etiology: Peripartum cardiomyopathy (PPCM),Sex: Female,race: Caucasian,age: 43",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01293"
+  },
+  "GSM4216069": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01294"
+  },
+  "GSM4216070": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01296"
+  },
+  "GSM4216071": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 40",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01298"
+  },
+  "GSM4216072": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 45",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01300"
+  },
+  "GSM4216073": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01304"
+  },
+  "GSM4216074": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01305"
+  },
+  "GSM4216075": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01307"
+  },
+  "GSM4216076": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01309"
+  },
+  "GSM4216077": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01310"
+  },
+  "GSM4216078": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01318"
+  },
+  "GSM4216079": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 26",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01320"
+  },
+  "GSM4216080": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01322"
+  },
+  "GSM4216081": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01323"
+  },
+  "GSM4216082": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01325"
+  },
+  "GSM4216083": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 66",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01329"
+  },
+  "GSM4216084": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01330"
+  },
+  "GSM4216085": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 77",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01334"
+  },
+  "GSM4216086": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 74",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01337"
+  },
+  "GSM4216087": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 36",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01339"
+  },
+  "GSM4216088": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01340"
+  },
+  "GSM4216089": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01347"
+  },
+  "GSM4216090": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 68",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01348"
+  },
+  "GSM4216091": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01350"
+  },
+  "GSM4216092": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 21",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01352"
+  },
+  "GSM4216093": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01354"
+  },
+  "GSM4216094": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01356"
+  },
+  "GSM4216095": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 75",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01357"
+  },
+  "GSM4216096": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 42",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01358"
+  },
+  "GSM4216097": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01359"
+  },
+  "GSM4216098": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 75",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01360"
+  },
+  "GSM4216099": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01362"
+  },
+  "GSM4216100": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 69",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01365"
+  },
+  "GSM4216101": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01367"
+  },
+  "GSM4216102": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 75",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01369"
+  },
+  "GSM4216103": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01371"
+  },
+  "GSM4216104": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 60",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01374"
+  },
+  "GSM4216105": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 41",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01375"
+  },
+  "GSM4216106": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 77",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01377"
+  },
+  "GSM4216107": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 42",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01379"
+  },
+  "GSM4216108": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01380"
+  },
+  "GSM4216109": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01381"
+  },
+  "GSM4216110": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01383"
+  },
+  "GSM4216111": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 38",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01385"
+  },
+  "GSM4216112": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01387"
+  },
+  "GSM4216113": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01388"
+  },
+  "GSM4216114": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01396"
+  },
+  "GSM4216115": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 38",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01397"
+  },
+  "GSM4216116": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 22",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01400"
+  },
+  "GSM4216117": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 40",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01402"
+  },
+  "GSM4216118": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 50",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01404"
+  },
+  "GSM4216119": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01406"
+  },
+  "GSM4216120": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01412"
+  },
+  "GSM4216121": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01413"
+  },
+  "GSM4216122": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 74",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01414"
+  },
+  "GSM4216123": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01420"
+  },
+  "GSM4216124": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01421"
+  },
+  "GSM4216125": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01422"
+  },
+  "GSM4216126": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 40",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01425"
+  },
+  "GSM4216127": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01430"
+  },
+  "GSM4216128": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01433"
+  },
+  "GSM4216129": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01436"
+  },
+  "GSM4216130": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01437"
+  },
+  "GSM4216131": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 74",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01440"
+  },
+  "GSM4216132": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01444"
+  },
+  "GSM4216133": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01447"
+  },
+  "GSM4216134": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 47",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01452"
+  },
+  "GSM4216135": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01454"
+  },
+  "GSM4216136": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 71",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01457"
+  },
+  "GSM4216137": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01462"
+  },
+  "GSM4216138": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 83",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01463"
+  },
+  "GSM4216139": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01465"
+  },
+  "GSM4216140": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01466"
+  },
+  "GSM4216141": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01469"
+  },
+  "GSM4216142": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 55",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01471"
+  },
+  "GSM4216143": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 41",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01472"
+  },
+  "GSM4216144": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 47",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01473"
+  },
+  "GSM4216145": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 29",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01479"
+  },
+  "GSM4216146": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 76",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01481"
+  },
+  "GSM4216147": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 78",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01485"
+  },
+  "GSM4216148": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 81",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01488"
+  },
+  "GSM4216149": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 71",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01490"
+  },
+  "GSM4216150": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 60",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01492"
+  },
+  "GSM4216151": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01497"
+  },
+  "GSM4216152": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 73",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01498"
+  },
+  "GSM4216153": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01500"
+  },
+  "GSM4216154": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 25",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01503"
+  },
+  "GSM4216155": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01504"
+  },
+  "GSM4216156": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01507"
+  },
+  "GSM4216157": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Female,race: Caucasian,age: 60",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01508"
+  },
+  "GSM4216158": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01509"
+  },
+  "GSM4216159": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01510"
+  },
+  "GSM4216160": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 75",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01513"
+  },
+  "GSM4216161": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01515"
+  },
+  "GSM4216162": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 66",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01516"
+  },
+  "GSM4216163": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01521"
+  },
+  "GSM4216164": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01528"
+  },
+  "GSM4216165": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01532"
+  },
+  "GSM4216166": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01535"
+  },
+  "GSM4216167": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01537"
+  },
+  "GSM4216168": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01538"
+  },
+  "GSM4216169": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 47",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01539"
+  },
+  "GSM4216170": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 72",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01540"
+  },
+  "GSM4216171": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 69",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01543"
+  },
+  "GSM4216172": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 44",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01545"
+  },
+  "GSM4216173": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01547"
+  },
+  "GSM4216174": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01549"
+  },
+  "GSM4216175": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01556"
+  },
+  "GSM4216176": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01558"
+  },
+  "GSM4216177": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 60",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01559"
+  },
+  "GSM4216178": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 65",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01561"
+  },
+  "GSM4216179": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01562"
+  },
+  "GSM4216180": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01563"
+  },
+  "GSM4216181": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01567"
+  },
+  "GSM4216182": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01568"
+  },
+  "GSM4216183": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01573"
+  },
+  "GSM4216184": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01578"
+  },
+  "GSM4216185": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: African American,age: 35",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01580"
+  },
+  "GSM4216186": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 66",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01581"
+  },
+  "GSM4216187": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 58",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01582"
+  },
+  "GSM4216188": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 22",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01584"
+  },
+  "GSM4216189": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01585"
+  },
+  "GSM4216190": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 69",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01588"
+  },
+  "GSM4216191": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01590"
+  },
+  "GSM4216192": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 69",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01591"
+  },
+  "GSM4216193": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01592"
+  },
+  "GSM4216194": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01593"
+  },
+  "GSM4216195": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 40",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01595"
+  },
+  "GSM4216196": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 67",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01596"
+  },
+  "GSM4216197": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 34",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01597"
+  },
+  "GSM4216198": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 51",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01600"
+  },
+  "GSM4216199": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01602"
+  },
+  "GSM4216200": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 69",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01603"
+  },
+  "GSM4216201": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 57",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01605"
+  },
+  "GSM4216203": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 59",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01608"
+  },
+  "GSM4216204": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 66",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01609"
+  },
+  "GSM4216205": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 63",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01610"
+  },
+  "GSM4216206": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: African American,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01611"
+  },
+  "GSM4216207": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01615"
+  },
+  "GSM4216208": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 75",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01616"
+  },
+  "GSM4216209": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 64",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01617"
+  },
+  "GSM4216210": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 53",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01618"
+  },
+  "GSM4216211": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01621"
+  },
+  "GSM4216212": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01622"
+  },
+  "GSM4216213": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01623"
+  },
+  "GSM4216214": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: Caucasian,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01626"
+  },
+  "GSM4216215": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Male,race: Caucasian,age: 61",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01627"
+  },
+  "GSM4216216": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Male,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01628"
+  },
+  "GSM4216217": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: Caucasian,age: 52",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01629"
+  },
+  "GSM4216218": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01630"
+  },
+  "GSM4216219": {
+    "characteristics": "etiology: Hypertrophic cardiomyopathy (HCM),Sex: Male,race: Caucasian,age: 46",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01631"
+  },
+  "GSM4216221": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 54",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01634"
+  },
+  "GSM4216224": {
+    "characteristics": "etiology: Non-Failing Donor,Sex: Female,race: African American,age: 62",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01635"
+  },
+  "GSM4216226": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 56",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01639"
+  },
+  "GSM4216228": {
+    "characteristics": "etiology: Dilated cardiomyopathy (DCM),Sex: Female,race: African American,age: 49",
+    "series": "GSE141910",
+    "source": "Left Ventricle",
+    "title": "P01640"
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "GSM3273196": {
+    "characteristics": "cell line: H20682,Sex: Female,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20682_A"
+  },
+  "GSM3273197": {
+    "characteristics": "cell line: H20682,Sex: Female,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20682_B"
+  },
+  "GSM3273198": {
+    "characteristics": "cell line: H20682,Sex: Female,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20682_C"
+  },
+  "GSM3273199": {
+    "characteristics": "cell line: H20682,Sex: Female,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20682_D"
+  },
+  "GSM3273200": {
+    "characteristics": "cell line: H20961,Sex: Male,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20961_A"
+  },
+  "GSM3273201": {
+    "characteristics": "cell line: H20961,Sex: Male,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20961_B"
+  },
+  "GSM3273202": {
+    "characteristics": "cell line: H20961,Sex: Male,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20961_C"
+  },
+  "GSM3273203": {
+    "characteristics": "cell line: H20961,Sex: Male,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H20961_D"
+  },
+  "GSM3273204": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792_A"
+  },
+  "GSM3273205": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792_B"
+  },
+  "GSM3273206": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792_C"
+  },
+  "GSM3273207": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792_D"
+  },
+  "GSM3273208": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792R_A"
+  },
+  "GSM3273209": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792R_B"
+  },
+  "GSM3273210": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792R_C"
+  },
+  "GSM3273211": {
+    "characteristics": "cell line: H21792,Sex: Female,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H21792R_D"
+  },
+  "GSM3273212": {
+    "characteristics": "cell line: H22422,Sex: Female,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H22422_A"
+  },
+  "GSM3273213": {
+    "characteristics": "cell line: H22422,Sex: Female,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H22422_B"
+  },
+  "GSM3273214": {
+    "characteristics": "cell line: H22422,Sex: Female,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H22422_C"
+  },
+  "GSM3273215": {
+    "characteristics": "cell line: H22422,Sex: Female,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H22422_D"
+  },
+  "GSM3273216": {
+    "characteristics": "cell line: H24280,Sex: Female,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H24280_A"
+  },
+  "GSM3273217": {
+    "characteristics": "cell line: H24280,Sex: Female,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H24280_B"
+  },
+  "GSM3273218": {
+    "characteristics": "cell line: H24280,Sex: Female,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H24280_C"
+  },
+  "GSM3273219": {
+    "characteristics": "cell line: H24280,Sex: Female,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H24280_D"
+  },
+  "GSM3273220": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237_A"
+  },
+  "GSM3273221": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237_B"
+  },
+  "GSM3273222": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237_C"
+  },
+  "GSM3273223": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237_D"
+  },
+  "GSM3273224": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237R_A"
+  },
+  "GSM3273225": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237R_B"
+  },
+  "GSM3273226": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237R_C"
+  },
+  "GSM3273227": {
+    "characteristics": "cell line: H25237,Sex: Female,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H25237R_D"
+  },
+  "GSM3273228": {
+    "characteristics": "cell line: H28126,Sex: Male,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28126_A"
+  },
+  "GSM3273229": {
+    "characteristics": "cell line: H28126,Sex: Male,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28126_B"
+  },
+  "GSM3273230": {
+    "characteristics": "cell line: H28126,Sex: Male,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28126_C"
+  },
+  "GSM3273231": {
+    "characteristics": "cell line: H28126,Sex: Male,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28126_D"
+  },
+  "GSM3273232": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815_A"
+  },
+  "GSM3273233": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815_B"
+  },
+  "GSM3273234": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815_C"
+  },
+  "GSM3273235": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815_D"
+  },
+  "GSM3273236": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: normoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815R_A"
+  },
+  "GSM3273237": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: hypoxia",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815R_B"
+  },
+  "GSM3273238": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: re-oxygenation1",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815R_C"
+  },
+  "GSM3273239": {
+    "characteristics": "cell line: H28815,Sex: Male,population: Caucasian,treatment: re-oxygenation2",
+    "series": "GSE117192",
+    "source": "induced pluripotent stem cell-derived cardiomyocytes",
+    "title": "H28815R_D"
+  }
+}

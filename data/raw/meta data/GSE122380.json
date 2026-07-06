@@ -1,0 +1,1784 @@
+{
+  "GSM3465274": {
+    "characteristics": "individual: 18489,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18489_0"
+  },
+  "GSM3465275": {
+    "characteristics": "individual: 18489,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_10"
+  },
+  "GSM3465276": {
+    "characteristics": "individual: 18489,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_11"
+  },
+  "GSM3465277": {
+    "characteristics": "individual: 18489,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_12"
+  },
+  "GSM3465278": {
+    "characteristics": "individual: 18489,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_13"
+  },
+  "GSM3465279": {
+    "characteristics": "individual: 18489,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_14"
+  },
+  "GSM3465280": {
+    "characteristics": "individual: 18489,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_15"
+  },
+  "GSM3465281": {
+    "characteristics": "individual: 18489,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_1"
+  },
+  "GSM3465282": {
+    "characteristics": "individual: 18489,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_2"
+  },
+  "GSM3465283": {
+    "characteristics": "individual: 18489,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_3"
+  },
+  "GSM3465284": {
+    "characteristics": "individual: 18489,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_4"
+  },
+  "GSM3465285": {
+    "characteristics": "individual: 18489,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_5"
+  },
+  "GSM3465286": {
+    "characteristics": "individual: 18489,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_6"
+  },
+  "GSM3465287": {
+    "characteristics": "individual: 18489,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_7"
+  },
+  "GSM3465288": {
+    "characteristics": "individual: 18489,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_8"
+  },
+  "GSM3465289": {
+    "characteristics": "individual: 18489,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18489_9"
+  },
+  "GSM3465290": {
+    "characteristics": "individual: 18499,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18499_0"
+  },
+  "GSM3465291": {
+    "characteristics": "individual: 18499,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_10"
+  },
+  "GSM3465292": {
+    "characteristics": "individual: 18499,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_11"
+  },
+  "GSM3465293": {
+    "characteristics": "individual: 18499,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_12"
+  },
+  "GSM3465294": {
+    "characteristics": "individual: 18499,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_13"
+  },
+  "GSM3465295": {
+    "characteristics": "individual: 18499,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_14"
+  },
+  "GSM3465296": {
+    "characteristics": "individual: 18499,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_15"
+  },
+  "GSM3465297": {
+    "characteristics": "individual: 18499,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_1"
+  },
+  "GSM3465298": {
+    "characteristics": "individual: 18499,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_2"
+  },
+  "GSM3465299": {
+    "characteristics": "individual: 18499,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_3"
+  },
+  "GSM3465300": {
+    "characteristics": "individual: 18499,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_4"
+  },
+  "GSM3465301": {
+    "characteristics": "individual: 18499,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_5"
+  },
+  "GSM3465302": {
+    "characteristics": "individual: 18499,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_6"
+  },
+  "GSM3465303": {
+    "characteristics": "individual: 18499,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_7"
+  },
+  "GSM3465304": {
+    "characteristics": "individual: 18499,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_8"
+  },
+  "GSM3465305": {
+    "characteristics": "individual: 18499,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18499_9"
+  },
+  "GSM3465306": {
+    "characteristics": "individual: 18505,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18505_0"
+  },
+  "GSM3465307": {
+    "characteristics": "individual: 18505,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_10"
+  },
+  "GSM3465308": {
+    "characteristics": "individual: 18505,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_11"
+  },
+  "GSM3465309": {
+    "characteristics": "individual: 18505,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_12"
+  },
+  "GSM3465310": {
+    "characteristics": "individual: 18505,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_13"
+  },
+  "GSM3465311": {
+    "characteristics": "individual: 18505,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_14"
+  },
+  "GSM3465312": {
+    "characteristics": "individual: 18505,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_15"
+  },
+  "GSM3465313": {
+    "characteristics": "individual: 18505,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_1"
+  },
+  "GSM3465314": {
+    "characteristics": "individual: 18505,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_2"
+  },
+  "GSM3465315": {
+    "characteristics": "individual: 18505,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_3"
+  },
+  "GSM3465316": {
+    "characteristics": "individual: 18505,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_4"
+  },
+  "GSM3465317": {
+    "characteristics": "individual: 18505,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_5"
+  },
+  "GSM3465318": {
+    "characteristics": "individual: 18505,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_6"
+  },
+  "GSM3465319": {
+    "characteristics": "individual: 18505,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_7"
+  },
+  "GSM3465320": {
+    "characteristics": "individual: 18505,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_8"
+  },
+  "GSM3465321": {
+    "characteristics": "individual: 18505,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18505_9"
+  },
+  "GSM3465322": {
+    "characteristics": "individual: 18508,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18508_0"
+  },
+  "GSM3465323": {
+    "characteristics": "individual: 18508,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_10"
+  },
+  "GSM3465324": {
+    "characteristics": "individual: 18508,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_11"
+  },
+  "GSM3465325": {
+    "characteristics": "individual: 18508,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_12"
+  },
+  "GSM3465326": {
+    "characteristics": "individual: 18508,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_13"
+  },
+  "GSM3465327": {
+    "characteristics": "individual: 18508,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_14"
+  },
+  "GSM3465328": {
+    "characteristics": "individual: 18508,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_15"
+  },
+  "GSM3465329": {
+    "characteristics": "individual: 18508,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_1"
+  },
+  "GSM3465330": {
+    "characteristics": "individual: 18508,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_2"
+  },
+  "GSM3465331": {
+    "characteristics": "individual: 18508,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_3"
+  },
+  "GSM3465332": {
+    "characteristics": "individual: 18508,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_4"
+  },
+  "GSM3465333": {
+    "characteristics": "individual: 18508,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_5"
+  },
+  "GSM3465334": {
+    "characteristics": "individual: 18508,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_6"
+  },
+  "GSM3465335": {
+    "characteristics": "individual: 18508,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_7"
+  },
+  "GSM3465336": {
+    "characteristics": "individual: 18508,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_8"
+  },
+  "GSM3465337": {
+    "characteristics": "individual: 18508,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18508_9"
+  },
+  "GSM3465338": {
+    "characteristics": "individual: 18511,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18511_0"
+  },
+  "GSM3465339": {
+    "characteristics": "individual: 18511,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_10"
+  },
+  "GSM3465340": {
+    "characteristics": "individual: 18511,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_11"
+  },
+  "GSM3465341": {
+    "characteristics": "individual: 18511,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_12"
+  },
+  "GSM3465342": {
+    "characteristics": "individual: 18511,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_13"
+  },
+  "GSM3465343": {
+    "characteristics": "individual: 18511,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_14"
+  },
+  "GSM3465344": {
+    "characteristics": "individual: 18511,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_15"
+  },
+  "GSM3465345": {
+    "characteristics": "individual: 18511,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_1"
+  },
+  "GSM3465346": {
+    "characteristics": "individual: 18511,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_2"
+  },
+  "GSM3465347": {
+    "characteristics": "individual: 18511,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_3"
+  },
+  "GSM3465348": {
+    "characteristics": "individual: 18511,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_4"
+  },
+  "GSM3465349": {
+    "characteristics": "individual: 18511,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_5"
+  },
+  "GSM3465350": {
+    "characteristics": "individual: 18511,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_6"
+  },
+  "GSM3465351": {
+    "characteristics": "individual: 18511,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_7"
+  },
+  "GSM3465352": {
+    "characteristics": "individual: 18511,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_8"
+  },
+  "GSM3465353": {
+    "characteristics": "individual: 18511,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18511_9"
+  },
+  "GSM3465354": {
+    "characteristics": "individual: 18517,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18517_0"
+  },
+  "GSM3465355": {
+    "characteristics": "individual: 18517,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_10"
+  },
+  "GSM3465356": {
+    "characteristics": "individual: 18517,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_11"
+  },
+  "GSM3465357": {
+    "characteristics": "individual: 18517,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_12"
+  },
+  "GSM3465358": {
+    "characteristics": "individual: 18517,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_13"
+  },
+  "GSM3465359": {
+    "characteristics": "individual: 18517,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_14"
+  },
+  "GSM3465360": {
+    "characteristics": "individual: 18517,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_15"
+  },
+  "GSM3465361": {
+    "characteristics": "individual: 18517,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_1"
+  },
+  "GSM3465362": {
+    "characteristics": "individual: 18517,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_2"
+  },
+  "GSM3465363": {
+    "characteristics": "individual: 18517,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_3"
+  },
+  "GSM3465364": {
+    "characteristics": "individual: 18517,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_4"
+  },
+  "GSM3465365": {
+    "characteristics": "individual: 18517,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_5"
+  },
+  "GSM3465366": {
+    "characteristics": "individual: 18517,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_6"
+  },
+  "GSM3465367": {
+    "characteristics": "individual: 18517,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_7"
+  },
+  "GSM3465368": {
+    "characteristics": "individual: 18517,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_8"
+  },
+  "GSM3465369": {
+    "characteristics": "individual: 18517,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18517_9"
+  },
+  "GSM3465370": {
+    "characteristics": "individual: 18520,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18520_0"
+  },
+  "GSM3465371": {
+    "characteristics": "individual: 18520,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_10"
+  },
+  "GSM3465372": {
+    "characteristics": "individual: 18520,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_11"
+  },
+  "GSM3465373": {
+    "characteristics": "individual: 18520,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_12"
+  },
+  "GSM3465374": {
+    "characteristics": "individual: 18520,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_13"
+  },
+  "GSM3465375": {
+    "characteristics": "individual: 18520,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_14"
+  },
+  "GSM3465376": {
+    "characteristics": "individual: 18520,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_15"
+  },
+  "GSM3465377": {
+    "characteristics": "individual: 18520,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_1"
+  },
+  "GSM3465378": {
+    "characteristics": "individual: 18520,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_3"
+  },
+  "GSM3465379": {
+    "characteristics": "individual: 18520,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_4"
+  },
+  "GSM3465380": {
+    "characteristics": "individual: 18520,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_5"
+  },
+  "GSM3465381": {
+    "characteristics": "individual: 18520,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_6"
+  },
+  "GSM3465382": {
+    "characteristics": "individual: 18520,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_7"
+  },
+  "GSM3465383": {
+    "characteristics": "individual: 18520,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_8"
+  },
+  "GSM3465384": {
+    "characteristics": "individual: 18520,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18520_9"
+  },
+  "GSM3465385": {
+    "characteristics": "individual: 18855,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18855_0"
+  },
+  "GSM3465386": {
+    "characteristics": "individual: 18855,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_10"
+  },
+  "GSM3465387": {
+    "characteristics": "individual: 18855,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_11"
+  },
+  "GSM3465388": {
+    "characteristics": "individual: 18855,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_12"
+  },
+  "GSM3465389": {
+    "characteristics": "individual: 18855,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_13"
+  },
+  "GSM3465390": {
+    "characteristics": "individual: 18855,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_14"
+  },
+  "GSM3465391": {
+    "characteristics": "individual: 18855,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_15"
+  },
+  "GSM3465392": {
+    "characteristics": "individual: 18855,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_1"
+  },
+  "GSM3465393": {
+    "characteristics": "individual: 18855,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_3"
+  },
+  "GSM3465394": {
+    "characteristics": "individual: 18855,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_4"
+  },
+  "GSM3465395": {
+    "characteristics": "individual: 18855,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_5"
+  },
+  "GSM3465396": {
+    "characteristics": "individual: 18855,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_6"
+  },
+  "GSM3465397": {
+    "characteristics": "individual: 18855,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_7"
+  },
+  "GSM3465398": {
+    "characteristics": "individual: 18855,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_8"
+  },
+  "GSM3465399": {
+    "characteristics": "individual: 18855,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18855_9"
+  },
+  "GSM3465400": {
+    "characteristics": "individual: 18858,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18858_0"
+  },
+  "GSM3465401": {
+    "characteristics": "individual: 18858,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_10"
+  },
+  "GSM3465402": {
+    "characteristics": "individual: 18858,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_11"
+  },
+  "GSM3465403": {
+    "characteristics": "individual: 18858,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_12"
+  },
+  "GSM3465404": {
+    "characteristics": "individual: 18858,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_13"
+  },
+  "GSM3465405": {
+    "characteristics": "individual: 18858,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_14"
+  },
+  "GSM3465406": {
+    "characteristics": "individual: 18858,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_15"
+  },
+  "GSM3465407": {
+    "characteristics": "individual: 18858,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_1"
+  },
+  "GSM3465408": {
+    "characteristics": "individual: 18858,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_2"
+  },
+  "GSM3465409": {
+    "characteristics": "individual: 18858,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_3"
+  },
+  "GSM3465410": {
+    "characteristics": "individual: 18858,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_4"
+  },
+  "GSM3465411": {
+    "characteristics": "individual: 18858,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_5"
+  },
+  "GSM3465412": {
+    "characteristics": "individual: 18858,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_6"
+  },
+  "GSM3465413": {
+    "characteristics": "individual: 18858,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_7"
+  },
+  "GSM3465414": {
+    "characteristics": "individual: 18858,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_8"
+  },
+  "GSM3465415": {
+    "characteristics": "individual: 18858,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18858_9"
+  },
+  "GSM3465416": {
+    "characteristics": "individual: 18870,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18870_0"
+  },
+  "GSM3465417": {
+    "characteristics": "individual: 18870,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_10"
+  },
+  "GSM3465418": {
+    "characteristics": "individual: 18870,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_11"
+  },
+  "GSM3465419": {
+    "characteristics": "individual: 18870,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_12"
+  },
+  "GSM3465420": {
+    "characteristics": "individual: 18870,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_13"
+  },
+  "GSM3465421": {
+    "characteristics": "individual: 18870,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_14"
+  },
+  "GSM3465422": {
+    "characteristics": "individual: 18870,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_15"
+  },
+  "GSM3465423": {
+    "characteristics": "individual: 18870,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_1"
+  },
+  "GSM3465424": {
+    "characteristics": "individual: 18870,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_2"
+  },
+  "GSM3465425": {
+    "characteristics": "individual: 18870,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_3"
+  },
+  "GSM3465426": {
+    "characteristics": "individual: 18870,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_5"
+  },
+  "GSM3465427": {
+    "characteristics": "individual: 18870,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_6"
+  },
+  "GSM3465428": {
+    "characteristics": "individual: 18870,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_7"
+  },
+  "GSM3465429": {
+    "characteristics": "individual: 18870,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_8"
+  },
+  "GSM3465430": {
+    "characteristics": "individual: 18870,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18870_9"
+  },
+  "GSM3465431": {
+    "characteristics": "individual: 18907,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18907_0"
+  },
+  "GSM3465432": {
+    "characteristics": "individual: 18907,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_10"
+  },
+  "GSM3465433": {
+    "characteristics": "individual: 18907,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_11"
+  },
+  "GSM3465434": {
+    "characteristics": "individual: 18907,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_12"
+  },
+  "GSM3465435": {
+    "characteristics": "individual: 18907,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_13"
+  },
+  "GSM3465436": {
+    "characteristics": "individual: 18907,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_14"
+  },
+  "GSM3465437": {
+    "characteristics": "individual: 18907,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_15"
+  },
+  "GSM3465438": {
+    "characteristics": "individual: 18907,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_1"
+  },
+  "GSM3465439": {
+    "characteristics": "individual: 18907,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_2"
+  },
+  "GSM3465440": {
+    "characteristics": "individual: 18907,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_3"
+  },
+  "GSM3465441": {
+    "characteristics": "individual: 18907,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_4"
+  },
+  "GSM3465442": {
+    "characteristics": "individual: 18907,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_5"
+  },
+  "GSM3465443": {
+    "characteristics": "individual: 18907,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_6"
+  },
+  "GSM3465444": {
+    "characteristics": "individual: 18907,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_7"
+  },
+  "GSM3465445": {
+    "characteristics": "individual: 18907,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_8"
+  },
+  "GSM3465446": {
+    "characteristics": "individual: 18907,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18907_9"
+  },
+  "GSM3465447": {
+    "characteristics": "individual: 18912,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "18912_0"
+  },
+  "GSM3465448": {
+    "characteristics": "individual: 18912,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_10"
+  },
+  "GSM3465449": {
+    "characteristics": "individual: 18912,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_11"
+  },
+  "GSM3465450": {
+    "characteristics": "individual: 18912,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_12"
+  },
+  "GSM3465451": {
+    "characteristics": "individual: 18912,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_13"
+  },
+  "GSM3465452": {
+    "characteristics": "individual: 18912,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_14"
+  },
+  "GSM3465453": {
+    "characteristics": "individual: 18912,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_15"
+  },
+  "GSM3465454": {
+    "characteristics": "individual: 18912,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_1"
+  },
+  "GSM3465455": {
+    "characteristics": "individual: 18912,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_2"
+  },
+  "GSM3465456": {
+    "characteristics": "individual: 18912,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_3"
+  },
+  "GSM3465457": {
+    "characteristics": "individual: 18912,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_4"
+  },
+  "GSM3465458": {
+    "characteristics": "individual: 18912,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_5"
+  },
+  "GSM3465459": {
+    "characteristics": "individual: 18912,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_6"
+  },
+  "GSM3465460": {
+    "characteristics": "individual: 18912,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_7"
+  },
+  "GSM3465461": {
+    "characteristics": "individual: 18912,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_8"
+  },
+  "GSM3465462": {
+    "characteristics": "individual: 18912,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "18912_9"
+  },
+  "GSM3465463": {
+    "characteristics": "individual: 19093,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "19093_0"
+  },
+  "GSM3465464": {
+    "characteristics": "individual: 19093,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_10"
+  },
+  "GSM3465465": {
+    "characteristics": "individual: 19093,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_11"
+  },
+  "GSM3465466": {
+    "characteristics": "individual: 19093,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_12"
+  },
+  "GSM3465467": {
+    "characteristics": "individual: 19093,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_13"
+  },
+  "GSM3465468": {
+    "characteristics": "individual: 19093,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_14"
+  },
+  "GSM3465469": {
+    "characteristics": "individual: 19093,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_15"
+  },
+  "GSM3465470": {
+    "characteristics": "individual: 19093,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_1"
+  },
+  "GSM3465471": {
+    "characteristics": "individual: 19093,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_2"
+  },
+  "GSM3465472": {
+    "characteristics": "individual: 19093,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_3"
+  },
+  "GSM3465473": {
+    "characteristics": "individual: 19093,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_4"
+  },
+  "GSM3465474": {
+    "characteristics": "individual: 19093,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_5"
+  },
+  "GSM3465475": {
+    "characteristics": "individual: 19093,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_6"
+  },
+  "GSM3465476": {
+    "characteristics": "individual: 19093,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_7"
+  },
+  "GSM3465477": {
+    "characteristics": "individual: 19093,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_8"
+  },
+  "GSM3465478": {
+    "characteristics": "individual: 19093,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19093_9"
+  },
+  "GSM3465479": {
+    "characteristics": "individual: 19108,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "19108_0"
+  },
+  "GSM3465480": {
+    "characteristics": "individual: 19108,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_10"
+  },
+  "GSM3465481": {
+    "characteristics": "individual: 19108,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_11"
+  },
+  "GSM3465482": {
+    "characteristics": "individual: 19108,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_12"
+  },
+  "GSM3465483": {
+    "characteristics": "individual: 19108,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_13"
+  },
+  "GSM3465484": {
+    "characteristics": "individual: 19108,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_14"
+  },
+  "GSM3465485": {
+    "characteristics": "individual: 19108,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_15"
+  },
+  "GSM3465486": {
+    "characteristics": "individual: 19108,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_1"
+  },
+  "GSM3465487": {
+    "characteristics": "individual: 19108,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_2"
+  },
+  "GSM3465488": {
+    "characteristics": "individual: 19108,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_3"
+  },
+  "GSM3465489": {
+    "characteristics": "individual: 19108,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_5"
+  },
+  "GSM3465490": {
+    "characteristics": "individual: 19108,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_6"
+  },
+  "GSM3465491": {
+    "characteristics": "individual: 19108,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_7"
+  },
+  "GSM3465492": {
+    "characteristics": "individual: 19108,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_8"
+  },
+  "GSM3465493": {
+    "characteristics": "individual: 19108,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19108_9"
+  },
+  "GSM3465494": {
+    "characteristics": "individual: 19127,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "19127_0"
+  },
+  "GSM3465495": {
+    "characteristics": "individual: 19127,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_10"
+  },
+  "GSM3465496": {
+    "characteristics": "individual: 19127,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_11"
+  },
+  "GSM3465497": {
+    "characteristics": "individual: 19127,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_12"
+  },
+  "GSM3465498": {
+    "characteristics": "individual: 19127,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_13"
+  },
+  "GSM3465499": {
+    "characteristics": "individual: 19127,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_14"
+  },
+  "GSM3465500": {
+    "characteristics": "individual: 19127,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_15"
+  },
+  "GSM3465501": {
+    "characteristics": "individual: 19127,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_1"
+  },
+  "GSM3465502": {
+    "characteristics": "individual: 19127,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_2"
+  },
+  "GSM3465503": {
+    "characteristics": "individual: 19127,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_3"
+  },
+  "GSM3465504": {
+    "characteristics": "individual: 19127,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_4"
+  },
+  "GSM3465505": {
+    "characteristics": "individual: 19127,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_5"
+  },
+  "GSM3465506": {
+    "characteristics": "individual: 19127,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_6"
+  },
+  "GSM3465507": {
+    "characteristics": "individual: 19127,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_7"
+  },
+  "GSM3465508": {
+    "characteristics": "individual: 19127,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_8"
+  },
+  "GSM3465509": {
+    "characteristics": "individual: 19127,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19127_9"
+  },
+  "GSM3465510": {
+    "characteristics": "individual: 19159,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "19159_0"
+  },
+  "GSM3465511": {
+    "characteristics": "individual: 19159,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_10"
+  },
+  "GSM3465512": {
+    "characteristics": "individual: 19159,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_11"
+  },
+  "GSM3465513": {
+    "characteristics": "individual: 19159,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_12"
+  },
+  "GSM3465514": {
+    "characteristics": "individual: 19159,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_13"
+  },
+  "GSM3465515": {
+    "characteristics": "individual: 19159,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_14"
+  },
+  "GSM3465516": {
+    "characteristics": "individual: 19159,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_15"
+  },
+  "GSM3465517": {
+    "characteristics": "individual: 19159,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_1"
+  },
+  "GSM3465518": {
+    "characteristics": "individual: 19159,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_2"
+  },
+  "GSM3465519": {
+    "characteristics": "individual: 19159,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_3"
+  },
+  "GSM3465520": {
+    "characteristics": "individual: 19159,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_4"
+  },
+  "GSM3465521": {
+    "characteristics": "individual: 19159,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_5"
+  },
+  "GSM3465522": {
+    "characteristics": "individual: 19159,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_6"
+  },
+  "GSM3465523": {
+    "characteristics": "individual: 19159,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_7"
+  },
+  "GSM3465524": {
+    "characteristics": "individual: 19159,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_8"
+  },
+  "GSM3465525": {
+    "characteristics": "individual: 19159,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19159_9"
+  },
+  "GSM3465526": {
+    "characteristics": "individual: 19190,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "19190_0"
+  },
+  "GSM3465527": {
+    "characteristics": "individual: 19190,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_10"
+  },
+  "GSM3465528": {
+    "characteristics": "individual: 19190,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_11"
+  },
+  "GSM3465529": {
+    "characteristics": "individual: 19190,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_12"
+  },
+  "GSM3465530": {
+    "characteristics": "individual: 19190,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_13"
+  },
+  "GSM3465531": {
+    "characteristics": "individual: 19190,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_14"
+  },
+  "GSM3465532": {
+    "characteristics": "individual: 19190,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_15"
+  },
+  "GSM3465533": {
+    "characteristics": "individual: 19190,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_1"
+  },
+  "GSM3465534": {
+    "characteristics": "individual: 19190,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_2"
+  },
+  "GSM3465535": {
+    "characteristics": "individual: 19190,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_3"
+  },
+  "GSM3465536": {
+    "characteristics": "individual: 19190,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_4"
+  },
+  "GSM3465537": {
+    "characteristics": "individual: 19190,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_5"
+  },
+  "GSM3465538": {
+    "characteristics": "individual: 19190,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_6"
+  },
+  "GSM3465539": {
+    "characteristics": "individual: 19190,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_7"
+  },
+  "GSM3465540": {
+    "characteristics": "individual: 19190,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_8"
+  },
+  "GSM3465541": {
+    "characteristics": "individual: 19190,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19190_9"
+  },
+  "GSM3465542": {
+    "characteristics": "individual: 19193,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "19193_0"
+  },
+  "GSM3465543": {
+    "characteristics": "individual: 19193,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_10"
+  },
+  "GSM3465544": {
+    "characteristics": "individual: 19193,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_11"
+  },
+  "GSM3465545": {
+    "characteristics": "individual: 19193,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_12"
+  },
+  "GSM3465546": {
+    "characteristics": "individual: 19193,time: differentiation day 13,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_13"
+  },
+  "GSM3465547": {
+    "characteristics": "individual: 19193,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_14"
+  },
+  "GSM3465548": {
+    "characteristics": "individual: 19193,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_15"
+  },
+  "GSM3465549": {
+    "characteristics": "individual: 19193,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_1"
+  },
+  "GSM3465550": {
+    "characteristics": "individual: 19193,time: differentiation day 2,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_2"
+  },
+  "GSM3465551": {
+    "characteristics": "individual: 19193,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_3"
+  },
+  "GSM3465552": {
+    "characteristics": "individual: 19193,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_5"
+  },
+  "GSM3465553": {
+    "characteristics": "individual: 19193,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_6"
+  },
+  "GSM3465554": {
+    "characteristics": "individual: 19193,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_7"
+  },
+  "GSM3465555": {
+    "characteristics": "individual: 19193,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_8"
+  },
+  "GSM3465556": {
+    "characteristics": "individual: 19193,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19193_9"
+  },
+  "GSM3465557": {
+    "characteristics": "individual: 19209,time: differentiation day 0,cell type: iPSCs",
+    "series": "GSE122380",
+    "source": "iPSCs",
+    "title": "19209_0"
+  },
+  "GSM3465558": {
+    "characteristics": "individual: 19209,time: differentiation day 10,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_10"
+  },
+  "GSM3465559": {
+    "characteristics": "individual: 19209,time: differentiation day 11,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_11"
+  },
+  "GSM3465560": {
+    "characteristics": "individual: 19209,time: differentiation day 12,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_12"
+  },
+  "GSM3465561": {
+    "characteristics": "individual: 19209,time: differentiation day 14,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_14"
+  },
+  "GSM3465562": {
+    "characteristics": "individual: 19209,time: differentiation day 15,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_15"
+  },
+  "GSM3465563": {
+    "characteristics": "individual: 19209,time: differentiation day 1,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_1"
+  },
+  "GSM3465564": {
+    "characteristics": "individual: 19209,time: differentiation day 3,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_3"
+  },
+  "GSM3465565": {
+    "characteristics": "individual: 19209,time: differentiation day 4,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_4"
+  },
+  "GSM3465566": {
+    "characteristics": "individual: 19209,time: differentiation day 5,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_5"
+  },
+  "GSM3465567": {
+    "characteristics": "individual: 19209,time: differentiation day 6,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_6"
+  },
+  "GSM3465568": {
+    "characteristics": "individual: 19209,time: differentiation day 7,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_7"
+  },
+  "GSM3465569": {
+    "characteristics": "individual: 19209,time: differentiation day 8,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_8"
+  },
+  "GSM3465570": {
+    "characteristics": "individual: 19209,time: differentiation day 9,cell type: differentiating iPSC-derived cardiomyocytes",
+    "series": "GSE122380",
+    "source": "differentiating iPSC-derived cardiomyocytes",
+    "title": "19209_9"
+  }
+}
