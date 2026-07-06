@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+import os
+import time
+import requests
+
+BASE_URL = "https://maayanlab.cloud/sigpy"
+
+# GEO accessions to download
+ACCESSIONS = [
+    "GSE122380",
+    "GSE141910",
+    "GSE117192",
+    "GSM8102175",
+]
+
+OUTDIR = "ARCHS4_downloads"
+os.makedirs(OUTDIR, exist_ok=True)
+
+
+def quick_search(query):
+    """Resolve a GEO accession."""
+    r = requests.get(
+        f"{BASE_URL}/meta/quicksearch",
+        params={"query": query, "species": "human"},
+    )
+    r.raise_for_status()
+    return r.json()
+
+
+def submit_samples(gsm_ids):
+    """Submit GSM IDs for extraction."""
+    r = requests.post(
+        f"{BASE_URL}/data/samples",
+        json={
+            "gsm_ids": gsm_ids,
+            "species": "human",
+        },
+    )
+    r.raise_for_status()
+    return r.json()["task_id"]
+
+
+def wait_for_task(task_id):
+    while True:
+        r = requests.get(f"{BASE_URL}/data/samples/status/{task_id}")
+        r.raise_for_status()
+        status = r.json()["status"]
+
+        print(f"{task_id}: {status}")
+
+        if status.lower() == "completed":
+            return
+
+        if status.lower() in ["failed", "error"]:
+            raise RuntimeError(f"Task failed: {task_id}")
+
+        time.sleep(10)
+
+
+def download(task_id, outfile):
+    r = requests.get(
+        f"{BASE_URL}/data/samples/download/{task_id}",
+        stream=True,
+    )
+    r.raise_for_status()
+
+    with open(outfile, "wb") as f:
+        for chunk in r.iter_content(8192):
+            f.write(chunk)
+
+
+for accession in ACCESSIONS:
+
+    print(f"\nSearching {accession}")
+
+    result = quick_search(accession)
+
+    if len(result) == 0:
+        print("Not found")
+        continue
+
+    # Collect GSM IDs
+    gsm_ids = sorted(
+        {
+            x["geo_accession"]
+            for x in result
+            if x["geo_accession"].startswith("GSM")
+        }
+    )
+
+    print(f"Found {len(gsm_ids)} GSM samples")
+
+    task = submit_samples(gsm_ids)
+
+    wait_for_task(task)
+
+    outfile = os.path.join(OUTDIR, accession + ".zip")
+    download(task, outfile)
+
+    print(f"Saved -> {outfile}")
+
+print("\nDone!")
