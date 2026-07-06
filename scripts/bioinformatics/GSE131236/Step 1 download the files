@@ -1,11 +1,16 @@
-prefetch SRR9057278 --verify yes
-fasterq-dump --split-files SRR9057278 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
+SRRS=(
+    SRR9057278
+    SRR9057279
+    SRR9057280
+    SRR9057281
+)
 
-prefetch SRR9057279 --verify yes
-fasterq-dump --split-files SRR9057279 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
-
-prefetch SRR9057280 --verify yes
-fasterq-dump --split-files SRR9057280 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
-
-prefetch SRR9057281 --verify yes
-fasterq-dump --split-files SRR9057281 --outdir ~/fastq1 --threads 1 --mem 500MB --temp ~/fastq1/tmp
+for SRR in "${SRRS[@]}"; do
+    prefetch "$SRR" --verify yes &&
+    fasterq-dump "$SRR" \
+        --split-files \
+        --outdir ~/fastq1 \
+        --threads 8 \
+        --mem 8G \
+        --temp ~/fastq1/tmp
+done
