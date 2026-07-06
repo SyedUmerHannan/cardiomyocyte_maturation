@@ -1,0 +1,23 @@
+import h5py
+import pandas as pd
+
+H5 = "gtex_matrix.h5"
+
+with h5py.File(H5, "r") as f:
+
+    tissues = [x.decode() for x in f["meta"]["samples"]["smts"][:]]
+    sample_ids = [x.decode() for x in f["meta"]["samples"]["external_id"][:]]
+
+lv_samples = pd.DataFrame(
+    {
+        "Sample": sample_ids,
+        "Tissue": tissues,
+    }
+)
+
+lv_samples = lv_samples[
+    lv_samples["Tissue"] == "Heart - Left Ventricle"
+]
+
+print(lv_samples.head())
+print(f"\nLV samples: {len(lv_samples)}")
