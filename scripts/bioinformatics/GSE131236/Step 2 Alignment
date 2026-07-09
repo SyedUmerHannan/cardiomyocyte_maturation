@@ -1,34 +1,310 @@
-# Download human transcriptome (GENCODE, current release)
-wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/gencode.v46.transcripts.fa.gz
+%%bash
+apt-get update -qq
+apt-get install -y -qq \
+    build-essential \
+    cmake \
+    autoconf \
+    automake \
+    libtool \
+    zlib1g-dev \
+    libhdf5-dev \
+    libcurl4-openssl-dev \
+    libbz2-dev \
+    liblzma-dev \
+    git \
+    pkg-config
 
-# Build salmon index
-salmon index -t gencode.v46.transcripts.fa.gz -i ~/salmon_index -p 8
+echo "----- Locating HDF5 install -----"
+find /usr -iname "hdf5.h" 2>/dev/null
+find /usr -iname "libhdf5.so*" 2>/dev/null
 
-for srr in SRR9057278 SRR9057279 SRR9057280 SRR9057281; do
-  salmon quant -i ~/salmon_index -l A \
-    -r ~/fastq1/${srr}_1.fastq \
-    -p 8 --validateMappings -o ~/salmon_out/${srr}
+%%bash
+# Ubuntu ships HDF5 headers/libs under a "serial" subdir that CMake's
+# find_package(HDF5) doesn't search by default. Symlink them into the
+# standard include/lib paths so the build can find them.
+
+HDF5_INCLUDE_DIR=$(dirname $(find /usr -iname "hdf5.h" 2>/dev/null | head -n1))
+HDF5_LIB_DIR=$(dirname $(find /usr -iname "libhdf5.so" 2>/dev/null | head -n1))
+
+echo "HDF5 include dir: $HDF5_INCLUDE_DIR"
+echo "HDF5 lib dir: $HDF5_LIB_DIR"
+
+# Symlink headers
+for f in "$HDF5_INCLUDE_DIR"/*.h; do
+    ln -sf "$f" "/usr/include/$(basename "$f")"
 done
 
-cd ~/fastq1  # or wherever your gencode.v46.transcripts.fa.gz is
-wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/GRCh38.primary_assembly.genome.fa.gz
-
-gunzip -k GRCh38.primary_assembly.genome.fa.gz
-grep "^>" GRCh38.primary_assembly.genome.fa | sed 's/>//' | cut -d ' ' -f 1 > decoys.txt
-wc -l decoys.txt 
-
-cat gencode.v46.transcripts.fa.gz GRCh38.primary_assembly.genome.fa.gz > gentrome.fa.gz
-
-salmon index \
-  -t gentrome.fa.gz \
-  -d decoys.txt \
-  -i ~/salmon_index_decoy \
-  -p 8 \
-  --gencode \
-  -k 31
-
-for srr in SRR9057278 SRR9057279 SRR9057280 SRR9057281; do
-  salmon quant -i ~/salmon_index_decoy -l A \
-    -r ~/fastq1/${srr}_1.fastq \
-    -p 8 --validateMappings --gcBias -o ~/salmon_out/${srr}
+# Symlink libraries (both .so and versioned .so.x)
+for f in "$HDF5_LIB_DIR"/libhdf5*; do
+    ln -sf "$f" "/usr/lib/x86_64-linux-gnu/$(basename "$f")"
 done
+
+echo "----- Verifying symlinks -----"
+ls -la /usr/include/hdf5.h
+ls -la /usr/lib/x86_64-linux-gnu/libhdf5.so
+
+%%bash
+cd /content
+rm -rf kallisto
+git clone --depth 1 https://github.com/pachterlab/kallisto.git
+cd kallisto
+mkdir -p build
+cd build
+
+HDF5_LIB=$(find /usr -iname "libhdf5.so" 2>/dev/null | head -n1)
+echo "Linking against: $HDF5_LIB"
+
+cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_HDF5=ON \
+    -DHDF5_C_LIBRARY="$HDF5_LIB" \
+    -DHDF5_LIBRARIES="$HDF5_LIB" \
+    -DCMAKE_EXE_LINKER_FLAGS="-L$(dirname $HDF5_LIB) -lhdf5"
+
+make -j$(nproc)
+
+echo "----- Build complete -----"
+find /content/kallisto/build -name "kallisto" -type f
+
+import os, subprocess
+
+KALLISTO_BIN = None
+for root, dirs, files in os.walk("/content/kallisto/build"):
+    if "kallisto" in files:
+        KALLISTO_BIN = os.path.join(root, "kallisto")
+        break
+
+assert KALLISTO_BIN is not None, "kallisto binary not found — check build logs in Cell 3"
+
+os.environ["PATH"] = os.path.dirname(KALLISTO_BIN) + ":" + os.environ["PATH"]
+print("kallisto binary:", KALLISTO_BIN)
+
+result = subprocess.run([KALLISTO_BIN, "version"], capture_output=True, text=True)
+print(result.stdout, result.stderr)
+
+%%bash
+cd "/content/drive/MyDrive/Research/Cardiac Maturation AI/reference"
+
+if [ ! -f gencode.v46.transcripts.fa.gz ]; then
+    wget -q https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/gencode.v46.transcripts.fa.gz
+fi
+
+echo "Reference download check complete."
+ls -lh gencode.v46.transcripts.fa.gz
+
+%%bash
+export PATH="/content/kallisto/build/src:$PATH"
+cd "/content/drive/MyDrive/Research/Cardiac Maturation AI/reference"
+
+kallisto index \
+    -i kallisto_index_k21.idx \
+    -k 21 \
+    gencode.v46.transcripts.fa.gz
+
+echo "----- Index build complete -----"
+ls -lh kallisto_index_k21.idx
+
+from Bio import SeqIO
+import os
+import gzip # Import the gzip module
+import io # Import io module for TextIOWrapper
+
+# Ensure INDEX_DIR is defined from previous cells
+# INDEX_DIR = "/content/drive/MyDrive/Research/Cardiac Maturation AI/reference"
+
+# Path to the downloaded gencode reference file
+GENCODE_FASTA = f"{INDEX_DIR}/gencode.v46.transcripts.fa.gz"
+TX2GENE_FILE = f"{INDEX_DIR}/gencode_v46_tx2gene.tsv"
+
+print(f"Generating tx2gene map for {GENCODE_FASTA} to {TX2GENE_FILE}...")
+
+tx2gene_entries = []
+# Open the gzipped file in binary mode ('rb')
+with gzip.open(GENCODE_FASTA, "rb") as fh_gz:
+    # Wrap the binary stream in a TextIOWrapper to provide a text stream to SeqIO.parse
+    fasta_text_handle = io.TextIOWrapper(fh_gz, encoding='utf-8')
+    with open(TX2GENE_FILE, "w") as outfile:
+        for record in SeqIO.parse(fasta_text_handle, "fasta"):
+            transcript_id = record.id.split(".")[0] # e.g., ENST00000456328.2 -> ENST00000456328
+
+            # Extract gene_id from description or header
+            # Example header: >ENST00000456328.2|ENSG00000223972.5|OTTHUMT00000362751.1|OTTHUMG00000085871.4|DDX11L1-202|DDX11L1|1657|processed_transcript|1|\
+            description_parts = record.description.split("|")
+            gene_id = None
+            for part in description_parts:
+                if part.startswith("ENSG"):
+                    gene_id = part.split(".")[0] # e.g., ENSG00000223972.5 -> ENSG00000223972
+                    break
+
+            if gene_id:
+                tx2gene_entries.append(f"{transcript_id}\t{gene_id}\n")
+
+        outfile.writelines(tx2gene_entries)
+
+print(f"Created tx2gene mapping file: {TX2GENE_FILE} with {len(tx2gene_entries)} entries.")
+
+# Verify the first few lines
+with open(TX2GENE_FILE, 'r') as f:
+    for i, line in enumerate(f):
+        if i >= 5: # Print first 5 lines
+            break
+        print(line.strip())
+
+import re, os
+from collections import defaultdict
+
+fastq_files = sorted(os.listdir(FASTQ_DIR))
+samples = defaultdict(list)
+
+for f in fastq_files:
+    if not (f.endswith(".fastq.gz") or f.endswith(".fq.gz") or f.endswith(".fastq") or f.endswith(".fq")):
+        continue
+    m = re.match(r"(SRR\d+)(_[12])?\.(fastq|fq)(\.gz)?$", f)
+    if m:
+        srr = m.group(1)
+        samples[srr].append(f)
+
+for srr, files in samples.items():
+    layout = "paired" if len(files) == 2 else "single"
+    print(f"{srr}: {sorted(files)} -> {layout}-end")
+
+KNOWN_GAPS_NOTE = "SRR9057279 flagged for low mapping rate previously (salmon, ~48%) due to stranded-forward chemistry / short reads (25-44bp) — re-check kallisto rate against this."
+
+# Set fragment length assumptions for single-end mode (kallisto requires these).
+# These are ESTIMATES since no fragment length distribution is known — flagged explicitly.
+FRAG_LEN_MEAN = 200
+FRAG_LEN_SD = 20
+
+kallisto_bin = "/content/kallisto/build/src/kallisto"
+index_path = f"{INDEX_DIR}/kallisto_index_k21.idx"
+
+log_lines = []
+
+for srr, files in samples.items():
+    out_dir = f"{RESULTS_DIR}/{srr}"
+    os.makedirs(out_dir, exist_ok=True)
+    files_sorted = sorted(files)
+    file_paths = [f"{FASTQ_DIR}/{f}" for f in files_sorted]
+
+    if len(files_sorted) == 2:
+        # paired-end
+        cmd = [
+            kallisto_bin, "quant",
+            "-i", index_path,
+            "-o", out_dir,
+            "-b", "0",          # no bootstraps by default; add -b 100 if needed for downstream uncertainty estimation
+            file_paths[0], file_paths[1]
+        ]
+    else:
+        # single-end — requires --single -l -s
+        cmd = [
+            kallisto_bin, "quant",
+            "-i", index_path,
+            "-o", out_dir,
+            "--single",
+            "-l", str(FRAG_LEN_MEAN),
+            "-s", str(FRAG_LEN_SD),
+            file_paths[0]
+        ]
+
+    print(f"Running: {' '.join(cmd)}")
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    print(result.stdout)
+    print(result.stderr)
+
+    log_lines.append({
+        "sample": srr,
+        "layout": "paired" if len(files_sorted) == 2 else "single",
+        "returncode": result.returncode,
+        "stderr_tail": result.stderr[-500:] if result.stderr else ""
+    })
+
+print("All samples processed.")
+
+import pandas as pd
+
+log_df = pd.DataFrame(log_lines)
+log_df["note"] = ""
+log_df.loc[log_df["sample"] == "SRR9057279", "note"] = KNOWN_GAPS_NOTE
+log_df["index_kmer"] = 21
+log_df["reference"] = "GENCODE v46 transcript-only"
+log_df["frag_len_mean_assumed"] = FRAG_LEN_MEAN
+log_df["frag_len_sd_assumed"] = FRAG_LEN_SD
+
+log_path = f"{RESULTS_DIR}/kallisto_run_log.csv"
+log_df.to_csv(log_path, index=False)
+print(f"Saved run log to {log_path}")
+log_df
+
+# Install rpy2 to enable R in Colab
+%pip install rpy2
+%load_ext rpy2.ipython
+
+%%R
+# Install required R packages if not already installed
+if (!requireNamespace("BiocManager", quietly = TRUE)){
+    install.packages("BiocManager")
+}
+BiocManager::install(c("tximport", "rhdf5"), update = FALSE, ask = FALSE)
+install.packages("tidyverse", repos = "http://cran.us.r-project.org")
+
+# aggregate_kallisto_gse131236.R
+library(tximport)
+library(tidyverse)
+
+# Directory structure assumed: kallisto_out/<sample_id>/abundance.h5
+kallisto_dir <- "/content/drive/MyDrive/Research/Cardiac Maturation AI/kallisto_results"
+samples <- list.dirs(kallisto_dir, full.names = FALSE, recursive = FALSE)
+
+# Filter samples to only include SRR9057278, SRR9057279, SRR9057280, SRR9057281
+allowed_samples <- c("SRR9057278", "SRR9057279", "SRR9057280", "SRR9057281")
+samples <- samples[samples %in% allowed_samples]
+
+files <- file.path(kallisto_dir, samples, "abundance.h5")
+names(files) <- samples
+stopifnot(all(file.exists(files)))
+
+# Reuse the same tx2gene mapping you built (or will build) for GENCODE v46
+# used with your salmon index — this keeps gene IDs consistent across datasets
+tx2gene <- read_tsv("/content/drive/MyDrive/Research/Cardiac Maturation AI/reference/gencode_v46_tx2gene.tsv",
+                     col_names = c("TXNAME", "GENEID"))
+
+txi <- tximport(files, type = "kallisto", tx2gene = tx2gene,
+                ignoreTxVersion = TRUE)
+
+# txi$counts = gene-level counts matrix (genes x samples)
+# txi$abundance = gene-level TPM matrix (genes x samples)
+
+counts_df <- as.data.frame(txi$counts) %>% rownames_to_column("gene_id")
+tpm_df    <- as.data.frame(txi$abundance) %>% rownames_to_column("gene_id")
+
+write_csv(counts_df, "GSE131236_gene_counts.csv")
+write_csv(tpm_df, "GSE131236_gene_tpm.csv")
+
+# Install GEOparse
+!pip -q install GEOparse pandas
+
+import GEOparse
+import pandas as pd
+
+# Download GEO dataset
+gse = GEOparse.get_GEO(geo="GSE131236", destdir=".")
+
+# Get first 4 samples
+first_four = list(gse.gsms.items())[:4]
+
+metadata = []
+
+for gsm_id, gsm in first_four:
+    row = {"GSM_ID": gsm_id}
+
+    for key, value in gsm.metadata.items():
+        row[key] = " | ".join(value) if isinstance(value, list) else value
+
+    metadata.append(row)
+
+metadata_df = pd.DataFrame(metadata)
+
+# Display metadata
+metadata_df
+
+metadata_df.to_csv("/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Meta/GSE131236_metadata.csv", index=False)
+print("Saved as GSE131236_metadata.csv")
