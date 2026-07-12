@@ -1,0 +1,621 @@
+#!/usr/bin/env python3
+"""
+srr_to_gsm_mapper.py
+
+Run once per dataset:
+    python srr_to_gsm_mapper.py GSE131236
+    python srr_to_gsm_mapper.py GSE117192
+    python srr_to_gsm_mapper.py GSE122380
+    python srr_to_gsm_mapper.py GSE141910
+
+Output: cache/<GSE_ID>_srr_to_gsm.json
+  {
+    "srr_to_gsm": {"SRR...": "GSM...", ...},
+    "multi_run_gsms": {"GSM...": ["SRR...", "SRR..."], ...}
+  }
+
+multi_run_gsms lists GSMs backed by more than one SRR run. These
+MUST be summed at the raw-count level before CPM normalization,
+never simply relabeled -- CPM values are not additive across runs.
+"""
+import gzip
+import json
+import re
+import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from collections import defaultdict
+from pathlib import Path
+
+ENTREZ_EMAIL = "your_email@school.edu"
+NCBI_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+RATE_LIMIT_SEC = 0.34  # ~3 req/sec without an NCBI API key
+CACHE_DIR = Path("cache")
+
+
+def fetch_series_matrices(gse_id: str) -> list:
+    
+    prefix = gse_id[:-3] + "nnn"  # e.g. GSE131236 -> GSE131nnn
+    base_url = f"https://ftp.ncbi.nlm.nih.gov/geo/series/{prefix}/{gse_id}/matrix/"
+    plain_url = f"{base_url}{gse_id}_series_matrix.txt.gz"
+
+    try:
+        with urllib.request.urlopen(plain_url) as resp:
+            return [gzip.decompress(resp.read()).decode("utf-8", errors="replace")]
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise
+        print(f"  NOTE: {plain_url} -> 404. This series is likely split by "
+              f"platform (multi-platform series never publish the plain "
+              f"filename); listing the matrix directory instead.")
+
+    try:
+        with urllib.request.urlopen(base_url) as resp:
+            html = resp.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(
+            f"[{gse_id}] Could not list matrix directory at {base_url} "
+            f"(HTTP {e.code}). Confirm the GSE accession is correct and has "
+            f"a public series matrix on GEO."
+        ) from e
+
+    filenames = sorted(set(re.findall(r'href="([^"]*_series_matrix\.txt\.gz)"', html)))
+    if not filenames:
+        raise RuntimeError(
+            f"[{gse_id}] No *_series_matrix.txt.gz files found in directory "
+            f"listing at {base_url}. The series may use a non-standard "
+            f"layout, or the accession may be wrong."
+        )
+
+    texts = []
+    for fname in filenames:
+        file_url = fname if fname.startswith("http") else base_url + fname
+        print(f"  Fetching platform file: {file_url}")
+        with urllib.request.urlopen(file_url) as resp:
+            texts.append(gzip.decompress(resp.read()).decode("utf-8", errors="replace"))
+
+    return texts
+
+
+def parse_gsm_to_srx(matrix_text: str) -> dict:
+    """
+    Extract GSM -> SRX from !Sample_relation lines, e.g.:
+      !Sample_relation = SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX5678901
+    """
+    lines = {}
+    for ln in matrix_text.splitlines():
+        if ln.startswith("!Sample_geo_accession") or ln.startswith("!Sample_relation"):
+            parts = ln.split("\t")
+            lines.setdefault(parts[0], []).append(parts[1:])
+
+    if "!Sample_geo_accession" not in lines:
+        raise ValueError("Could not find !Sample_geo_accession row in series matrix")
+
+    gsm_ids = [x.strip('"') for x in lines["!Sample_geo_accession"][0]]
+
+    gsm_to_srx = {}
+    for relation_row in lines.get("!Sample_relation", []):
+        for i, val in enumerate(relation_row):
+            val = val.strip('"')
+            m = re.search(r"(SRX\d+)", val)
+            if m:
+                gsm_to_srx[gsm_ids[i]] = m.group(1)
+
+    missing = set(gsm_ids) - set(gsm_to_srx.keys())
+    if missing:
+        print(f"  WARNING: {len(missing)} GSMs had no SRX in relation lines: {sorted(missing)}")
+
+    return gsm_to_srx
+
+
+def _parse_runinfo_csv(runinfo_text):
+    """Parse SRA runinfo CSV properly and return valid, full SRR accessions
+    from the Run column only (not a text-wide regex search)."""
+    import csv
+    import io
+
+    lines = [ln for ln in runinfo_text.splitlines() if ln.strip()]
+    if not lines:
+        return []
+
+    reader = csv.DictReader(io.StringIO("\n".join(lines)))
+    if reader.fieldnames is None or "Run" not in reader.fieldnames:
+        return []
+
+    valid_pattern = re.compile(r"^[SED]RR[0-9]{6,}$")
+    runs = []
+    for row in reader:
+        run = (row.get("Run") or "").strip()
+        if valid_pattern.match(run):
+            runs.append(run)
+    return sorted(set(runs))
+
+
+def srx_to_srr(srx_id: str) -> list:
+    
+    search_url = (f"{NCBI_BASE}/esearch.fcgi?db=sra&term={srx_id}[Accession]"
+                  f"&retmode=json&email={urllib.parse.quote(ENTREZ_EMAIL)}")
+    with urllib.request.urlopen(search_url) as resp:
+        search_result = json.loads(resp.read())
+    uids = search_result["esearchresult"]["idlist"]
+    if not uids:
+        return []
+    time.sleep(RATE_LIMIT_SEC)
+
+    fetch_url = (f"{NCBI_BASE}/efetch.fcgi?db=sra&id={uids[0]}"
+                 f"&rettype=runinfo&retmode=text&email={urllib.parse.quote(ENTREZ_EMAIL)}")
+    with urllib.request.urlopen(fetch_url) as resp:
+        runinfo_text = resp.read().decode("utf-8", errors="replace")
+    time.sleep(RATE_LIMIT_SEC)
+
+    return _parse_runinfo_csv(runinfo_text)
+
+
+def build_srr_to_gsm(gse_id: str, force_refresh: bool = False) -> dict:
+    """
+    Returns {"srr_to_gsm": {...}, "multi_run_gsms": {...}}.
+    """
+    CACHE_DIR.mkdir(exist_ok=True)
+    cache_path = CACHE_DIR / f"{gse_id}_srr_to_gsm.json"
+
+    if cache_path.exists() and not force_refresh:
+        print(f"[{gse_id}] Using cached mapping: {cache_path}")
+        with open(cache_path) as f:
+            return json.load(f)
+
+    print(f"[{gse_id}] Fetching series matrix ...")
+    matrix_texts = fetch_series_matrices(gse_id)
+
+    print(f"[{gse_id}] Parsing GSM -> SRX ({len(matrix_texts)} file(s)) ...")
+    gsm_to_srx = {}
+    for text in matrix_texts:
+        part = parse_gsm_to_srx(text)
+        collisions = set(part) & set(gsm_to_srx)
+        if collisions:
+            print(f"  WARNING: {len(collisions)} GSM(s) appeared in more than "
+                  f"one platform file, keeping the first-seen mapping: "
+                  f"{sorted(collisions)}")
+        gsm_to_srx.update({k: v for k, v in part.items() if k not in gsm_to_srx})
+    print(f"  Resolved {len(gsm_to_srx)} GSM -> SRX pairs")
+
+    srr_to_gsm = {}
+    gsm_to_srr_list = defaultdict(list)
+
+    for gsm, srx in gsm_to_srx.items():
+        srrs = srx_to_srr(srx)
+        if not srrs:
+            print(f"  WARNING: no SRR found for {gsm} ({srx})")
+            continue
+        for srr in srrs:
+            srr_to_gsm[srr] = gsm
+            gsm_to_srr_list[gsm].append(srr)
+        print(f"  {gsm} -> {srx} -> {srrs}")
+
+    multi_run_gsms = {gsm: runs for gsm, runs in gsm_to_srr_list.items() if len(runs) > 1}
+    if multi_run_gsms:
+        print(f"\n  WARNING: {len(multi_run_gsms)} GSMs have multiple SRR runs "
+              f"(sum raw counts pre-CPM, do not just relabel):")
+        for gsm, runs in multi_run_gsms.items():
+            print(f"    {gsm}: {runs}")
+
+    result = {"srr_to_gsm": srr_to_gsm, "multi_run_gsms": multi_run_gsms}
+    with open(cache_path, "w") as f:
+        json.dump(result, f, indent=2)
+    print(f"[{gse_id}] Wrote {len(srr_to_gsm)} SRR->GSM mappings to {cache_path}\n")
+
+    return result
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 2:
+        build_srr_to_gsm(sys.argv[1])
+    else:
+        # Default dataset when running in a notebook
+        build_srr_to_gsm("GSE131236")
+
+#!/usr/bin/env python3
+"""
+build_master_matrix.py
+
+End-to-end build of:
+  - master_expression_matrix.csv  (genes x samples, CPM, columns = GSM IDs)
+  - master_sample_metadata.csv    (one row per GSM, with day/stage estimate)
+
+Pipeline order:
+  1. Load raw counts per dataset.
+  2. CPM-normalize each dataset independently.
+  3. Resolve SRR -> GSM per dataset that needs it (kallisto output is
+     SRR-labeled; GEO metadata is GSM-labeled). Sum multi-run GSMs on
+     RAW counts before CPM was applied is wrong -- so multi-run
+     handling happens on raw counts, then CPM is (re-)computed. See
+     note in step 2 below.
+  4. Validate: every expression column has a GSM mapping, no GSM
+     collisions left un-summed, no leftover SRR-looking column names.
+  5. Intersect gene sets across all datasets; verify marker genes survive.
+  6. Concatenate into master_expression_matrix.csv.
+  7. Parse GEO metadata JSONs into master_sample_metadata.csv, with a
+     day/stage estimate extracted from `characteristics`.
+  8. Cross-check expression-matrix columns against metadata sample_ids.
+
+Run:
+    python build_master_matrix.py
+"""
+import json
+import re
+import sys
+from pathlib import Path
+import pandas as pd
+
+
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+
+# Datasets whose expression files are still keyed by SRR (kallisto output)
+# and need SRR -> GSM resolution before merging.
+SRR_KEYED_DATASETS = {
+    "GSE131236": {
+        "counts_path": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Data/GSE131236_matrix_ensembl.csv",
+        "sep": ",",
+        "gene_col": "gene_id",
+        "meta_json": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Meta/GSE131236.csv",
+    },
+}
+
+# Datasets already keyed by GSM directly (no SRR resolution needed)
+GSM_KEYED_DATASETS = {
+    # "GSE256519": {
+    #     "counts_path": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Meta/GSM8102175.json",
+    #     "sep": "\t",
+    #     "gene_col": None,  # first column is the index already
+    #     "meta_json": "/content/drive/MyDrive/Cardiac Maturation AI/ARCHS4 Data/Meta/GSM8102175.json",
+    # },
+    "GSE117192": {
+        "counts_path": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Data/GSE117192_matrix_ensembl.tsv",
+        "sep": "\t",
+        "gene_col": "Unnamed: 0",
+        "meta_json": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Meta/GSE117192.json",
+    },
+    "GTEx": {
+        "counts_path": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Data/GTEx_heart_ensembl.tsv",
+        "sep": "\t",
+        "gene_col": "Ensembl_ID",
+        "meta_json": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Meta/GTEx.json",
+    },
+    "GSE122380": {
+        "counts_path": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Data/GSE122380_matrix_ensembl.tsv",
+        "sep": "\t",
+        "gene_col": "Unnamed: 0",
+        "meta_json": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Meta/GSE122380.json",
+    },
+    "GSE141910": {
+        "counts_path": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Data/GSE141910_matrix_ensembl.tsv",
+        "sep": "\t",
+        "gene_col": "Unnamed: 0",
+        "meta_json": "/content/drive/MyDrive/Research/Cardiac Maturation AI/ARCHS4 Data/Meta/GSE141910.json",
+    },
+}
+
+MARKER_GENES = {
+    "TNNI3": "ENSG00000129991",
+    "MYH7": "ENSG00000092054",
+    "MYH6": "ENSG00000197616",
+    "TNNI1": "ENSG00000151632",
+}
+
+OUT_EXPR = "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/master_expression_matrix.csv"
+OUT_META = "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/master_sample_metadata.csv"
+
+
+# ---------------------------------------------------------------------------
+# STEP 1-2: load raw counts, CPM-normalize
+# ---------------------------------------------------------------------------
+
+def load_raw_counts(path: str, sep: str, gene_col: str | None) -> pd.DataFrame:
+    """
+    Loads a raw counts file and sets the gene identifier as the index.
+
+    gene_col is treated as a hint, not an assumption: if it's missing from
+    the file's actual columns (naming varies dataset to dataset -- gene_id,
+    Gene, ensembl_id, or no header at all), fall back to the first column
+    and print what was actually used, instead of raising a KeyError deep
+    inside set_index().
+    """
+    df = pd.read_csv(path, sep=sep)
+
+    if gene_col is not None and gene_col in df.columns:
+        df = df.set_index(gene_col)
+    else:
+        actual_first_col = df.columns[0]
+        if gene_col is not None:
+            print(f"  NOTE: expected gene column '{gene_col}' not found in "
+                  f"{path}; using first column '{actual_first_col}' instead. "
+                  f"Verify this is really the gene ID column, not a sample.")
+        df = df.set_index(actual_first_col)
+
+    return df
+
+
+def to_cpm(df: pd.DataFrame) -> pd.DataFrame:
+    """Per-sample CPM. df: genes x samples, raw counts."""
+    return df.div(df.sum(axis=0), axis=1) * 1e6
+
+
+# ---------------------------------------------------------------------------
+# STEP 3-4: resolve SRR -> GSM, sum multi-run GSMs on RAW counts, validate
+# ---------------------------------------------------------------------------
+
+def resolve_srr_dataset(gse_id: str, cfg: dict) -> pd.DataFrame:
+    """
+    Loads raw counts (SRR-keyed), sums any multi-run GSMs at the raw-count
+    level, renames remaining columns to GSM, validates full coverage, then
+    returns CPM-normalized data keyed by GSM.
+    """
+    print(f"\n=== {gse_id} (SRR-keyed) ===")
+    raw = load_raw_counts(cfg["counts_path"], cfg["sep"], cfg["gene_col"])
+    print(f"  Raw counts: {raw.shape[0]} genes x {raw.shape[1]} samples")
+
+    mapping = build_srr_to_gsm(gse_id)
+    srr_to_gsm = mapping["srr_to_gsm"]
+    multi_run_gsms = mapping["multi_run_gsms"]
+
+    # Coverage check BEFORE touching anything
+    expr_srrs = set(raw.columns)
+    mapped_srrs = set(srr_to_gsm.keys())
+    unmapped = expr_srrs - mapped_srrs
+    if unmapped:
+        raise ValueError(
+            f"[{gse_id}] {len(unmapped)} expression columns have no SRR->GSM "
+            f"mapping, resolve before proceeding: {sorted(unmapped)}"
+        )
+
+    # Sum multi-run GSMs on RAW counts (must happen before CPM -- CPM values
+    # from separate runs are not additive)
+    working = raw.copy()
+    for gsm, srrs in multi_run_gsms.items():
+        present = [s for s in srrs if s in working.columns]
+        if len(present) > 1:
+            summed = working[present].sum(axis=1)
+            working = working.drop(columns=present)
+            working[gsm] = summed
+            print(f"  Summed {present} -> single raw-count column '{gsm}'")
+
+    # Rename remaining single-run SRR columns to GSM
+    remaining_srr_cols = [c for c in working.columns if c in srr_to_gsm]
+    working = working.rename(columns={c: srr_to_gsm[c] for c in remaining_srr_cols})
+
+    # Confirm no SRR-looking names survived the rename
+    still_srr = [c for c in working.columns if re.match(r"^SRR\d+$", c)]
+    if still_srr:
+        raise ValueError(f"[{gse_id}] Rename incomplete, still SRR-named: {still_srr}")
+
+    print(f"  Final columns after SRR->GSM resolution: {list(working.columns)}")
+
+    cpm = to_cpm(working)
+    return cpm
+
+
+def load_gsm_dataset(gse_id: str, cfg: dict) -> pd.DataFrame:
+    """
+    Datasets already keyed by GSM -- just CPM-normalize.
+    """
+    print(f"\n=== {gse_id} (already GSM-keyed) ===")
+    raw = load_raw_counts(cfg["counts_path"], cfg["sep"], cfg["gene_col"])
+    print(f"  Raw counts: {raw.shape[0]} genes x {raw.shape[1]} samples")
+    cpm = to_cpm(raw)
+    return cpm
+
+
+# ---------------------------------------------------------------------------
+# STEP 5-6: intersect gene sets, verify markers, concatenate
+# ---------------------------------------------------------------------------
+
+def build_expression_matrix(cpm_tables: dict) -> pd.DataFrame:
+    common_genes = None
+    for name, df in cpm_tables.items():
+        genes = set(df.index)
+        common_genes = genes if common_genes is None else common_genes & genes
+    common_genes = sorted(list(common_genes)) # Convert set to list for sorting
+    print(f"\nCommon genes across all {len(cpm_tables)} datasets: {len(common_genes)}")
+
+    missing_markers = []
+    for name, gid in MARKER_GENES.items():
+        status = "present" if gid in common_genes else "MISSING"
+        print(f"  Marker {name} ({gid}): {status}")
+        if status == "MISSING":
+            missing_markers.append(name)
+    if missing_markers:
+        raise ValueError(
+            f"Marker gene(s) {missing_markers} dropped from common gene set -- "
+            f"investigate before building the matrix, fitting will silently "
+            f"use the wrong genes or fail if you proceed."
+        )
+
+    aligned = [df.loc[common_genes] for df in cpm_tables.values()]
+    master_expr = pd.concat(aligned, axis=1)
+    master_expr.index.name = "gene_id"
+
+    # Duplicate-column sanity check (would indicate an unresolved GSM collision)
+    dupe_cols = master_expr.columns[master_expr.columns.duplicated()].tolist()
+    if dupe_cols:
+        raise ValueError(
+            f"Duplicate sample columns in master matrix -- an SRR->GSM "
+            f"resolution step upstream missed a multi-run collision: {dupe_cols}"
+        )
+
+    return master_expr
+
+
+# ---------------------------------------------------------------------------
+# STEP 7: parse GEO metadata JSONs, extract day/stage estimate
+# ---------------------------------------------------------------------------
+
+def parse_geo_json(path: str, series_name: str) -> pd.DataFrame:
+    path_obj = Path(path)
+
+    # ---------------- CSV ----------------
+    if path_obj.suffix.lower() == ".csv":
+        df = pd.read_csv(path)
+
+        # Normalize sample ID column names
+        if "sample_id" not in df.columns:
+            if "GSM_ID" in df.columns:
+                df = df.rename(columns={"GSM_ID": "sample_id"})
+            elif "geo_accession" in df.columns:
+                df = df.rename(columns={"geo_accession": "sample_id"})
+            else:
+                raise ValueError(
+                    f"{path} has no recognizable sample ID column. "
+                    f"Columns: {list(df.columns)}"
+                )
+
+        # Normalize characteristics column names
+        if "characteristics" not in df.columns:
+            if "characteristics_ch1" in df.columns:
+                df = df.rename(
+                    columns={"characteristics_ch1": "characteristics"}
+                )
+
+        df["series"] = series_name
+
+        return df[
+            [
+                "sample_id",
+                "series",
+                "title",
+                "characteristics",
+            ]
+        ]
+
+    # ---------------- JSON ----------------
+    with open(path) as f:
+        data = json.load(f)
+
+    rows = []
+
+    for gsm, info in data.items():
+        rows.append(
+            {
+                "sample_id": gsm,
+                "series": series_name,
+                "title": info.get("title", ""),
+                "characteristics": info.get("characteristics", ""),
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
+
+def extract_day_estimate(characteristics):
+    if pd.isna(characteristics):
+        return None
+
+    c = str(characteristics).lower()
+
+    m = re.search(r"differentiation day (\d+)", c)
+    if m:
+        return int(m.group(1))
+
+    m = re.search(r"age:\s*([\d.]+)\s*year", c)
+    if m:
+        return float(m.group(1)) * 365.0
+
+    if "fetal" in c:
+        return None  # needs manual assignment -- no day count in characteristics
+
+    if "ipscs" in c and "differentiation day" not in c:
+        return 0  # undifferentiated iPSC baseline
+
+    return None
+
+
+def build_sample_metadata(meta_json_map: dict) -> pd.DataFrame:
+    all_meta = pd.concat(
+        [parse_geo_json(path, name) for name, path in meta_json_map.items()],
+        ignore_index=True,
+    )
+    all_meta["day_estimate"] = all_meta["characteristics"].apply(extract_day_estimate)
+
+    n_missing = all_meta["day_estimate"].isna().sum()
+    if n_missing:
+        print(f"\nWARNING: {n_missing} samples have no day_estimate parsed "
+              f"(e.g. fetal tissue) -- assign manually before curve fitting:")
+        print(all_meta.loc[all_meta["day_estimate"].isna(),
+                            ["sample_id", "series", "title", "characteristics"]])
+
+    return all_meta
+
+
+# ---------------------------------------------------------------------------
+# STEP 8: cross-check expression columns against metadata
+# ---------------------------------------------------------------------------
+
+def validate_expr_vs_meta(master_expr: pd.DataFrame, master_meta: pd.DataFrame):
+    expr_samples = set(master_expr.columns.astype(str))
+
+    meta_samples = set(
+        master_meta["sample_id"]
+        .dropna()
+        .astype(str)
+    )
+
+    only_in_expr = expr_samples - meta_samples
+    only_in_meta = meta_samples - expr_samples
+
+    if only_in_expr:
+        print(f"\nWARNING: {len(only_in_expr)} expression columns have no "
+              f"matching metadata row: {sorted(only_in_expr)}")
+    if only_in_meta:
+        print(f"WARNING: {len(only_in_meta)} metadata rows have no matching "
+              f"expression column (expected if a GSM had no usable counts): "
+              f"{sorted(only_in_meta)}")
+
+    if not only_in_expr and not only_in_meta:
+        print("\nExpression matrix and metadata sample sets match exactly.")
+
+
+# ---------------------------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------------------------
+
+def main():
+    cpm_tables = {}
+
+    for gse_id, cfg in SRR_KEYED_DATASETS.items():
+        try:
+            cpm_tables[gse_id] = resolve_srr_dataset(gse_id, cfg)
+        except FileNotFoundError:
+            print(f"SKIP {gse_id}: counts file not found at {cfg['counts_path']}")
+
+    for gse_id, cfg in GSM_KEYED_DATASETS.items():
+        try:
+            cpm_tables[gse_id] = load_gsm_dataset(gse_id, cfg)
+        except FileNotFoundError:
+            print(f"SKIP {gse_id}: counts file not found at {cfg['counts_path']}")
+
+    if not cpm_tables:
+        print("No datasets loaded -- check counts_path entries in CONFIG. Exiting.")
+        sys.exit(1)
+
+    master_expr = build_expression_matrix(cpm_tables)
+    master_expr.to_csv(OUT_EXPR)
+    print(f"\nWrote {OUT_EXPR}: {master_expr.shape[0]} genes x {master_expr.shape[1]} samples")
+
+    meta_json_map = {}
+    for gse_id, cfg in {**SRR_KEYED_DATASETS, **GSM_KEYED_DATASETS}.items():
+        if Path(cfg["meta_json"]).exists():
+            meta_json_map[gse_id] = cfg["meta_json"]
+        else:
+            print(f"SKIP metadata for {gse_id}: {cfg['meta_json']} not found")
+
+    master_meta = build_sample_metadata(meta_json_map)
+    master_meta.to_csv(OUT_META, index=False)
+    print(f"Wrote {OUT_META}: {len(master_meta)} sample rows")
+
+    validate_expr_vs_meta(master_expr, master_meta)
+
+
+if __name__ == "__main__":
+    main()
