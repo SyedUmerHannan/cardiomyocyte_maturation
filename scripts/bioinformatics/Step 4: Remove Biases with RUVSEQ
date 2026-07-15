@@ -1,0 +1,178 @@
+#!/usr/bin/env Rscript
+# ============================================================
+# RUVSeq: Remove Unwanted Variation from RNA-seq counts
+# Supports RUVg (control genes), RUVs (replicate/group), RUVr (residuals)
+# Modified to prevent crashes, optimize filtering, and export for ML
+# ============================================================
+
+suppressMessages({
+  library(RUVSeq)
+  library(EDASeq)
+  library(edgeR)
+  library(RColorBrewer)
+  library(limma)  # REQUIRED for regressing out W factors for ML
+})
+
+# ------------------------------------------------------------
+# 1. INPUT
+# ------------------------------------------------------------
+counts_file  <- "counts.csv"      # rows = genes, cols = samples
+coldata_file <- "coldata.csv"     # rownames = samples
+
+# FIX 1: Read without setting row.names to bypass duplicate symbol crashes
+counts_raw <- read.csv(counts_file, row.names = NULL, check.names = FALSE)
+
+# Check for duplicates and aggregate by summing raw integer counts
+if (any(duplicated(counts_raw[, 1]))) {
+  cat("Warning: Duplicate gene identifiers found. Collapsing and summing counts...\n")
+  library(dplyr)
+  counts_df <- counts_raw %>%
+    group_by_at(1) %>%
+    summarise(across(everything(), sum)) %>%
+    as.data.frame()
+  rownames(counts_df) <- counts_df[, 1]
+  counts <- as.matrix(counts_df[, -1])
+} else {
+  rownames(counts_raw) <- counts_raw[, 1]
+  counts <- as.matrix(counts_raw[, -1])
+}
+
+coldata <- read.csv(coldata_file, row.names = 1)
+coldata$condition <- factor(coldata$condition)
+
+# Align samples in counts and coldata
+common_samples <- intersect(colnames(counts), rownames(coldata))
+counts  <- counts[, common_samples]
+coldata <- coldata[common_samples, , drop = FALSE]
+
+stopifnot(all(colnames(counts) == rownames(coldata)))
+
+# ------------------------------------------------------------
+# 2. FILTER LOW-COUNT GENES (Optimized & Vectorized)
+# ------------------------------------------------------------
+# FIX 2: Replaced slow row-by-row apply() with edgeR's gold-standard filterByExpr
+filter <- filterByExpr(counts, group = coldata$condition)
+filtered <- counts[filter, ]
+cat(sprintf("Genes retained after filtering: %d / %d\n", nrow(filtered), nrow(counts)))
+
+set <- newSeqExpressionSet(
+  as.matrix(filtered),
+  phenoData = coldata
+)
+
+# Upper-quartile normalization before RUV
+set <- betweenLaneNormalization(set, which = "upper")
+
+# ------------------------------------------------------------
+# 3. DIAGNOSTIC PLOTS — BEFORE CORRECTION
+# ------------------------------------------------------------
+# FIX 3: Dynamic color interpolation to prevent RColorBrewer Set2 max-8 crash
+num_conditions <- nlevels(coldata$condition)
+colors <- colorRampPalette(brewer.pal(min(8, max(3, num_conditions)), "Set2"))(num_conditions)
+
+pdf("ruvseq_before_correction.pdf")
+plotRLE(set, outline = FALSE, col = colors[coldata$condition],
+        main = "RLE — before RUV")
+plotPCA(set, col = colors[coldata$condition], cex = 1.2,
+        main = "PCA — before RUV")
+dev.off()
+
+# ------------------------------------------------------------
+# 4. CHOOSE A RUVSeq STRATEGY
+# ------------------------------------------------------------
+k <- 2  # number of unwanted-variation factors to estimate; tune via diagnostics
+
+## --- Option A: RUVg — empirical negative control genes ------------
+run_RUVg <- function(set, control_genes, k) {
+  RUVg(set, control_genes, k = k)
+}
+
+## --- Option B: RUVs — uses replicate/group structure ---------------
+run_RUVs <- function(set, coldata, k) {
+  differences <- makeGroups(coldata$condition)
+  RUVs(set, rownames(set), k = k, differences = differences)
+}
+
+## --- Option C: RUVr — uses residuals from a first-pass GLM ---------
+run_RUVr <- function(set, coldata, k) {
+  design <- model.matrix(~condition, data = coldata)
+  y <- DGEList(counts = counts(set), group = coldata$condition)
+  y <- calcNormFactors(y, method = "upperquartile")
+  y <- estimateGLMCommonDisp(y, design)
+  y <- estimateGLMTagwiseDisp(y, design)
+  fit <- glmFit(y, design)
+  res <- residuals(fit, type = "deviance")
+  RUVr(set, rownames(set), k = k, res)
+}
+
+# ---- Pick ONE strategy (e.g., RUVg) ----
+strategy <- "RUVg"   # "RUVg" | "RUVs" | "RUVr"
+
+set_ruv <- switch(strategy,
+  RUVg = {
+    # FIX 4: CRITICAL BIOLOGICAL FIX
+    # Do NOT use all genes. Use validated cardiomyocyte maturation housekeepers (empirical anchors).
+    # (If your identifiers are Ensembl IDs, map these symbols to their Ensembl equivalents first!)
+    validated_housekeepers <- c("EDF1", "DDB1", "KIAA1429", "ZNF384") 
+    control_genes <- intersect(validated_housekeepers, rownames(filtered))
+    
+    if (length(control_genes) == 0) {
+      stop("Fatal: None of your validated housekeeping genes were found in the filtered count matrix. Verify identifier formats (Symbols vs Ensembl)!")
+    }
+    cat(sprintf("Running RUVg with %d validated housekeeping control genes.\n", length(control_genes)))
+    run_RUVg(set, control_genes, k)
+  },
+  RUVs = run_RUVs(set, coldata, k),
+  RUVr = run_RUVr(set, coldata, k)
+)
+
+# ------------------------------------------------------------
+# 5. DIAGNOSTIC PLOTS — AFTER CORRECTION
+# ------------------------------------------------------------
+pdf("ruvseq_after_correction.pdf")
+plotRLE(set_ruv, outline = FALSE, col = colors[coldata$condition],
+        main = paste("RLE — after", strategy))
+plotPCA(set_ruv, col = colors[coldata$condition], cex = 1.2,
+        main = paste("PCA — after", strategy))
+dev.off()
+
+# ------------------------------------------------------------
+# 6. DOWNSTREAM DE WITH edgeR & ML EXPRESSION MATRIX EXPORT
+# ------------------------------------------------------------
+# FIX 5: Cleaned up messy design formula. This grep block is robust.
+w_cols <- grep("^W_", colnames(pData(set_ruv)), value = TRUE)
+design <- model.matrix(
+  as.formula(paste("~condition +", paste(w_cols, collapse = " + "))),
+  data = pData(set_ruv)
+)
+
+y <- DGEList(counts = counts(set_ruv), group = coldata$condition)
+y <- calcNormFactors(y, method = "upperquartile")
+y <- estimateGLMCommonDisp(y, design)
+y <- estimateGLMTagwiseDisp(y, design)
+fit <- glmFit(y, design)
+lrt <- glmLRT(fit, coef = 2)  # Tests condition effect, adjusted for W_1..W_k
+
+results <- topTags(lrt, n = Inf)$table
+write.csv(results, "ruvseq_DE_results.csv")
+
+# ============================================================
+# FIX 6: NEW EXPORT FOR DOWNSTREAM MACHINE LEARNING
+# ============================================================
+cat("Regressing out estimated technical factors (W) from Log-CPM for Machine Learning...\n")
+log_cpm_matrix <- cpm(y, log = TRUE, prior.count = 2)
+w_covariates <- as.matrix(pData(set_ruv)[, w_cols, drop = FALSE])
+
+# Remove W_1 and W_2 effects using limma
+corrected_log_cpm <- limma::removeBatchEffect(log_cpm_matrix, covariates = w_covariates)
+
+# Save the batch-corrected, continuous expression matrix for your ML models
+write.csv(corrected_log_cpm, "master_normalized_counts.csv")
+
+cat("\nDone.\n")
+cat("Outputs:\n")
+cat("  ruvseq_before_correction.pdf\n")
+cat("  ruvseq_after_correction.pdf\n")
+cat("  ruvseq_DE_results.csv\n")
+cat("  master_normalized_counts.csv (Batch-corrected Log-CPM for your ML guy)\n")
+cat(sprintf("Strategy used: %s, k=%d\n", strategy, k))
