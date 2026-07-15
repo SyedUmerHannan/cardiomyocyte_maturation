@@ -1,0 +1,360 @@
+
+step6_summary_stats_and_pca.py
+
+Loads master_expression_matrix.csv + master_sample_metadata.csv (the outputs
+of step5), applies a low-expression gene filter, and reports:
+  - library sizes (with an explicit check for whether the matrix is already
+    CPM-normalized, in which case raw library size is NOT recoverable here)
+  - samples per study
+  - gene counts before/after filtering
+  - PCA colored by study and by maturity (day_estimate)
+
+Design choices (consistent with the rest of the pipeline):
+  - Hard-fail on missing files, misaligned samples, or missing marker genes.
+    No silent fallbacks.
+  - day_estimate is left as-is (including None/NaN) — never imputed.
+  - Meant to be run as a Colab cell (edit the constants below, then run the
+    whole cell). No argparse / no CLI args, so it won't SystemExit in Colab.
+
+
+import os
+import sys
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+# ---------------------------------------------------------------------------
+# CONFIG — edit these to match your Drive layout, or import from config.py
+# ---------------------------------------------------------------------------
+try:
+    import config
+    MASTER_MATRIX_PATH = config.MASTER_EXPRESSION_MATRIX_PATH
+    MASTER_METADATA_PATH = config.MASTER_SAMPLE_METADATA_PATH
+    OUTPUT_DIR = getattr(config, "SUMMARY_OUTPUT_DIR", "/content/drive/MyDrive/cardiac_maturation/summary_outputs")
+except ImportError:
+    print("[WARN] Could not import config.py — using hardcoded fallback paths. "
+          "Edit these constants directly if that's wrong.")
+    MASTER_MATRIX_PATH = os.environ.get("MASTER_MATRIX_PATH", "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master/CPM/master_expression_matrix.csv")
+    MASTER_METADATA_PATH = os.environ.get("MASTER_METADATA_PATH", "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master/CPM/master_sample_metadata.csv")
+    OUTPUT_DIR = os.environ.get("SUMMARY_OUTPUT_DIR", "/content/drive/MyDrive/cardiac_maturation/summary_outputs")
+
+# Marker genes that fit_maturation_curve.py depends on downstream.
+# Filtering must never silently drop these — if one disappears, that's a
+# real data-quality problem and should raise, not get papered over.
+MARKER_GENES = {
+    "TNNI3": "ENSG00000129991",
+    "MYH7": "ENSG00000092054",
+    "MYH6": "ENSG00000197616",
+    "TNNI1": "ENSG00000151632",
+}
+
+# Low-expression filter: keep a gene if its CPM exceeds CPM_THRESHOLD in at
+# least MIN_SAMPLE_FRACTION of samples.
+CPM_THRESHOLD = 1.0
+MIN_SAMPLE_FRACTION = 0.10
+
+# Number of most-variable (post-filter, log2CPM) genes to use for PCA.
+# Set to None to use all filtered genes.
+TOP_VAR_GENES_FOR_PCA = 2000
+
+STUDY_COLUMN = "series"          # column in metadata identifying the GEO series / study
+DAY_COLUMN = "day_estimate"      # column in metadata with the maturation timeline value
+
+# Sanity bounds for day_estimate. Values outside this range are almost
+# certainly a units bug upstream (e.g. age-in-years accidentally converted
+# to age-in-days and stored as day_estimate for non-differentiation samples,
+# which should have been left as None). Flagged loudly, not silently plotted.
+PLAUSIBLE_DAY_MIN = 0
+PLAUSIBLE_DAY_MAX = 20
+
+
+# ---------------------------------------------------------------------------
+# LOAD + VALIDATE
+# ---------------------------------------------------------------------------
+def load_inputs(matrix_path, metadata_path):
+    if not os.path.exists(matrix_path):
+        raise FileNotFoundError(f"Expression matrix not found: {matrix_path}")
+    if not os.path.exists(metadata_path):
+        raise FileNotFoundError(f"Sample metadata not found: {metadata_path}")
+
+    matrix = pd.read_csv(matrix_path, index_col=0)
+    metadata = pd.read_csv(metadata_path, index_col=0)
+
+    if matrix.columns.duplicated().any():
+        dupes = matrix.columns[matrix.columns.duplicated()].tolist()
+        raise ValueError(f"Duplicate sample columns in expression matrix: {dupes}")
+
+    missing_in_meta = set(matrix.columns) - set(metadata.index)
+    missing_in_matrix = set(metadata.index) - set(matrix.columns)
+
+    # A matrix sample with no metadata row is a real problem — hard fail.
+    if missing_in_meta:
+        raise ValueError(
+            f"{len(missing_in_meta)} matrix samples have no metadata row, "
+            f"e.g. {list(missing_in_meta)[:5]}"
+        )
+
+    # A metadata row with no matrix column is expected/benign: the matrix is
+    # the final, filtered sample set (e.g. GTEx non-cardiac tissue already
+    # excluded upstream), while metadata may still carry the full superset.
+    # Just report it and subset metadata down to the matrix — don't fail.
+    if missing_in_matrix:
+        print(
+            f"[INFO] {len(missing_in_matrix)} metadata rows have no matching matrix column "
+            "(expected if some samples, e.g. non-cardiac GTEx tissue, were excluded upstream "
+            f"of the matrix). Subsetting metadata to the {matrix.shape[1]} matrix samples.\n"
+            f"       Dropped examples: {list(missing_in_matrix)[:5]}"
+        )
+
+    if STUDY_COLUMN not in metadata.columns:
+        raise ValueError(
+            f"Expected metadata column '{STUDY_COLUMN}' not found. "
+            f"Available columns: {list(metadata.columns)}"
+        )
+    if DAY_COLUMN not in metadata.columns:
+        raise ValueError(
+            f"Expected metadata column '{DAY_COLUMN}' not found. "
+            f"Available columns: {list(metadata.columns)}"
+        )
+
+    # align order
+    metadata = metadata.loc[matrix.columns]
+
+    for symbol, ensg in MARKER_GENES.items():
+        if ensg not in matrix.index:
+            raise ValueError(f"Marker gene {symbol} ({ensg}) missing from expression matrix before filtering.")
+
+    return matrix, metadata
+
+
+# ---------------------------------------------------------------------------
+# LIBRARY SIZE CHECK
+# ---------------------------------------------------------------------------
+def report_library_sizes(matrix, out_dir):
+    col_sums = matrix.sum(axis=0)
+    mean_sum, std_sum = col_sums.mean(), col_sums.std()
+
+    is_cpm_normalized = mean_sum > 0 and (std_sum / mean_sum) < 0.01 and 9e5 < mean_sum < 1.1e6
+
+    if is_cpm_normalized:
+        print(
+            "[INFO] Column sums are ~1e6 with near-zero spread "
+            f"(mean={mean_sum:.1f}, std={std_sum:.4f}). This matrix is CPM-normalized, "
+            "so true sequencing library sizes were consumed during per-dataset "
+            "normalization (step3, by design) and are NOT recoverable from this file.\n"
+            "         Reporting 'genes detected per sample' (CPM > 0) as a QC proxy instead.\n"
+            "         If you need real raw library sizes, pull them from the pre-normalization "
+            "raw count files written in step2/step3."
+        )
+        detected_genes = (matrix > 0).sum(axis=0)
+        stats = detected_genes.describe()
+        detected_genes.to_csv(os.path.join(out_dir, "genes_detected_per_sample.csv"), header=["n_genes_detected"])
+        print(stats)
+        return {"type": "genes_detected_proxy", "series": detected_genes, "stats": stats}
+    else:
+        col_sums.to_csv(os.path.join(out_dir, "library_sizes.csv"), header=["library_size"])
+        stats = col_sums.describe()
+        print("[INFO] Column sums vary — treating these as real library sizes.")
+        print(stats)
+        return {"type": "library_size", "series": col_sums, "stats": stats}
+
+
+# ---------------------------------------------------------------------------
+# FILTERING
+# ---------------------------------------------------------------------------
+def filter_genes(matrix, cpm_threshold, min_sample_fraction):
+    n_samples = matrix.shape[1]
+    min_samples = max(1, int(np.ceil(min_sample_fraction * n_samples)))
+
+    passes = (matrix > cpm_threshold).sum(axis=1) >= min_samples
+    filtered = matrix.loc[passes]
+
+    for symbol, ensg in MARKER_GENES.items():
+        if ensg not in filtered.index:
+            raise RuntimeError(
+                f"Marker gene {symbol} ({ensg}) was removed by the low-expression filter "
+                f"(CPM > {cpm_threshold} in >= {min_samples}/{n_samples} samples). "
+                "This is treated as a data-quality error, not silently overridden — "
+                "check quantification for this gene before proceeding."
+            )
+
+    return filtered, min_samples
+
+
+# ---------------------------------------------------------------------------
+# PCA
+# ---------------------------------------------------------------------------
+def run_pca(filtered_matrix, top_n=None):
+    log_mat = np.log2(filtered_matrix + 1)
+
+    if top_n is not None and top_n < log_mat.shape[0]:
+        top_genes = log_mat.var(axis=1).sort_values(ascending=False).index[:top_n]
+        pca_input = log_mat.loc[top_genes]
+    else:
+        pca_input = log_mat
+
+    X = pca_input.T.values  # samples x genes
+    X_centered = X - X.mean(axis=0, keepdims=True)
+
+    pca = PCA(n_components=min(10, X_centered.shape[0] - 1))
+    scores = pca.fit_transform(X_centered)
+
+    pc_df = pd.DataFrame(
+        scores[:, :2],
+        index=pca_input.columns,
+        columns=["PC1", "PC2"],
+    )
+    var_explained = pca.explained_variance_ratio_[:2] * 100
+    return pc_df, var_explained, pca_input.shape[0]
+
+
+def plot_pca_by_study(pc_df, metadata, var_explained, out_path):
+    fig, ax = plt.subplots(figsize=(7, 6))
+    studies = metadata[STUDY_COLUMN].astype(str)
+    for study in sorted(studies.unique()):
+        mask = studies == study
+        ax.scatter(pc_df.loc[mask, "PC1"], pc_df.loc[mask, "PC2"], label=study, s=25, alpha=0.8)
+    ax.set_xlabel(f"PC1 ({var_explained[0]:.1f}% var)")
+    ax.set_ylabel(f"PC2 ({var_explained[1]:.1f}% var)")
+    ax.set_title("PCA colored by study")
+    ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8)
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=150)
+    plt.close(fig)
+    print(f"[SAVED] {out_path}")
+
+
+def flag_implausible_day_estimates(metadata, out_dir):
+    """
+    day_estimate should either be a real differentiation day (roughly
+    PLAUSIBLE_DAY_MIN..PLAUSIBLE_DAY_MAX) or None. Anything else — e.g. a
+    huge number like ~18000 — is almost certainly a units bug upstream
+    (age-in-years silently converted to age-in-days for a non-differentiation
+    sample, instead of being left as None). This is reported loudly and
+    written to disk, but does not block the run: it's a metadata QC signal,
+    not a matrix-integrity failure.
+    """
+    day = pd.to_numeric(metadata[DAY_COLUMN], errors="coerce")
+    implausible_mask = day.notna() & ((day < PLAUSIBLE_DAY_MIN) | (day > PLAUSIBLE_DAY_MAX))
+
+    if implausible_mask.any():
+        bad = metadata.loc[implausible_mask, [STUDY_COLUMN, DAY_COLUMN]].copy()
+        bad.to_csv(os.path.join(out_dir, "implausible_day_estimates.csv"))
+        print(
+            f"\n[WARNING] {implausible_mask.sum()} sample(s) have a {DAY_COLUMN} outside the "
+            f"plausible range [{PLAUSIBLE_DAY_MIN}, {PLAUSIBLE_DAY_MAX}]. This is very likely "
+            "a units bug upstream (e.g. age-in-years accidentally stored as age-in-days for a "
+            "non-differentiation sample that should have day_estimate=None), not real signal.\n"
+            f"         Flagged samples written to implausible_day_estimates.csv:\n{bad}"
+        )
+    return implausible_mask
+
+
+def plot_pca_by_maturity(pc_df, metadata, var_explained, out_path, implausible_mask):
+    fig, ax = plt.subplots(figsize=(7, 6))
+    day = pd.to_numeric(metadata[DAY_COLUMN], errors="coerce")
+
+    plausible = day.notna() & ~implausible_mask
+    missing = day.isna()
+    implausible = implausible_mask
+
+    sc = ax.scatter(
+        pc_df.loc[plausible, "PC1"], pc_df.loc[plausible, "PC2"],
+        c=day[plausible], cmap="viridis", s=25, alpha=0.9,
+    )
+    ax.scatter(
+        pc_df.loc[missing, "PC1"], pc_df.loc[missing, "PC2"],
+        c="lightgray", marker="x", s=30, alpha=0.8, label="No day_estimate (e.g. fetal/adult tissue)",
+    )
+    if implausible.any():
+        ax.scatter(
+            pc_df.loc[implausible, "PC1"], pc_df.loc[implausible, "PC2"],
+            facecolors="none", edgecolors="red", marker="^", s=60, linewidths=1.5,
+            label=f"day_estimate outside [{PLAUSIBLE_DAY_MIN},{PLAUSIBLE_DAY_MAX}] — likely a units bug, see console/CSV",
+        )
+    cbar = fig.colorbar(sc, ax=ax)
+    cbar.set_label("day_estimate (differentiation day)")
+    ax.set_xlabel(f"PC1 ({var_explained[0]:.1f}% var)")
+    ax.set_ylabel(f"PC2 ({var_explained[1]:.1f}% var)")
+    ax.set_title("PCA colored by maturity (day_estimate)")
+    ax.legend(loc="best", fontsize=7)
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=150)
+    plt.close(fig)
+    print(f"[SAVED] {out_path}")
+
+
+# ---------------------------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------------------------
+def main():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    print(f"Loading matrix from: {MASTER_MATRIX_PATH}")
+    print(f"Loading metadata from: {MASTER_METADATA_PATH}")
+    matrix, metadata = load_inputs(MASTER_MATRIX_PATH, MASTER_METADATA_PATH)
+
+    n_genes_before = matrix.shape[0]
+    n_samples = matrix.shape[1]
+    print(f"\n=== Loaded {n_genes_before} genes x {n_samples} samples ===")
+
+    # samples per study
+    per_study = metadata[STUDY_COLUMN].value_counts().sort_index()
+    per_study.to_csv(os.path.join(OUTPUT_DIR, "samples_per_study.csv"), header=["n_samples"])
+    print("\n=== Samples per study ===")
+    print(per_study)
+
+    # library size / detected-genes proxy (pre-filter)
+    print("\n=== Library size check (pre-filter) ===")
+    lib_info = report_library_sizes(matrix, OUTPUT_DIR)
+
+    # QC: flag day_estimate values that are non-null but outside a plausible
+    # differentiation-day range (a units bug, not real biology)
+    print(f"\n=== day_estimate sanity check (plausible range: [{PLAUSIBLE_DAY_MIN}, {PLAUSIBLE_DAY_MAX}]) ===")
+    implausible_day_mask = flag_implausible_day_estimates(metadata, OUTPUT_DIR)
+    if not implausible_day_mask.any():
+        print("No implausible day_estimate values found.")
+
+    # filtering
+    print(f"\n=== Filtering: CPM > {CPM_THRESHOLD} in >= {int(MIN_SAMPLE_FRACTION*100)}% of samples ===")
+    filtered_matrix, min_samples_required = filter_genes(matrix, CPM_THRESHOLD, MIN_SAMPLE_FRACTION)
+    n_genes_after = filtered_matrix.shape[0]
+    print(f"Genes before filtering: {n_genes_before}")
+    print(f"Genes after filtering:  {n_genes_after}  "
+          f"({n_genes_after / n_genes_before * 100:.1f}% retained; "
+          f"threshold required detection in >= {min_samples_required}/{n_samples} samples)")
+    print("All 4 marker genes confirmed present after filtering.")
+
+    summary = pd.DataFrame({
+        "metric": ["n_samples", "n_genes_before_filter", "n_genes_after_filter",
+                   "cpm_threshold", "min_sample_fraction"],
+        "value": [n_samples, n_genes_before, n_genes_after, CPM_THRESHOLD, MIN_SAMPLE_FRACTION],
+    })
+    summary.to_csv(os.path.join(OUTPUT_DIR, "filtering_summary.csv"), index=False)
+
+    # Save the filtered_matrix to a CSV file
+    filtered_matrix.to_csv(os.path.join(OUTPUT_DIR, "filtered_expression_matrix.csv"))
+    print(f"[SAVED] {os.path.join(OUTPUT_DIR, 'filtered_expression_matrix.csv')}")
+
+    # PCA
+    print(f"\n=== Running PCA (top {TOP_VAR_GENES_FOR_PCA or 'all'} variable genes, log2(CPM+1)) ===")
+    pc_df, var_explained, n_genes_used = run_pca(filtered_matrix, TOP_VAR_GENES_FOR_PCA)
+    print(f"Used {n_genes_used} genes for PCA. "
+          f"PC1={var_explained[0]:.1f}% var, PC2={var_explained[1]:.1f}% var")
+    pc_df.join(metadata[[STUDY_COLUMN, DAY_COLUMN]]).to_csv(
+        os.path.join(OUTPUT_DIR, "pca_scores.csv")
+    )
+
+    plot_pca_by_study(pc_df, metadata, var_explained, os.path.join(OUTPUT_DIR, "pca_by_study.png"))
+    plot_pca_by_maturity(
+        pc_df, metadata, var_explained,
+        os.path.join(OUTPUT_DIR, "pca_by_maturity.png"),
+        implausible_day_mask,
+    )
+
+    print(f"\nAll outputs written to: {OUTPUT_DIR}")
+
+
+if __name__ == "__main__":
+    main()
