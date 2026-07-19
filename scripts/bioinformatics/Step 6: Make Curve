@@ -1,0 +1,151 @@
+%%R
+
+# ============================================================
+# fit_maturation_curve.R (formerly stub fit_maturation_curve.py)
+# Cardiac Maturation AI Project
+#
+# Fits a continuous maturity score (0 = Embryonic-like, 1 = Adult-like)
+# using logistic regression trained ONLY on Embryonic and Adult samples,
+# then scores ALL samples (including Maturing and the single Fetal
+# validation point) against that fitted model.
+#
+# Design decisions (explicit, not defaulted silently):
+# - Fetal (n=1) is NEVER used to fit the model - included only as a
+#   plotted/reported validation point, since n=1 cannot support any
+#   regression term without massively overfitting to one sample.
+# - Model is trained on the four validated marker genes only
+#   (TNNI3, MYH7, MYH6, TNNI1), not the full transcriptome, to avoid
+#   overfitting given ~470 anchor samples vs ~17,000 genes.
+# - Hard-fails if expected sample groups, genes, or files are missing -
+#   no silent fallback values anywhere in this script.
+# ============================================================
+
+suppressMessages({
+  library(dplyr)
+})
+
+# ---- CONFIG (mirrors config.py path conventions) ----
+final_dir <- "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master/Final"
+expr_path <- file.path(final_dir, "master_expression_matrix_final.csv")
+meta_path <- file.path(final_dir, "master_sample_metadata_final.csv")
+output_path <- file.path(final_dir, "maturity_scores.csv")
+model_output_path <- file.path(final_dir, "maturity_clock_model.rds")
+
+marker_genes <- c(
+  TNNI3 = "ENSG00000129991",
+  MYH7  = "ENSG00000092054",
+  MYH6  = "ENSG00000197616",
+  TNNI1 = "ENSG00000151632"
+)
+
+# ---- LOAD ----
+if (!file.exists(expr_path)) stop(sprintf("Expression matrix not found: %s", expr_path))
+if (!file.exists(meta_path)) stop(sprintf("Metadata not found: %s", meta_path))
+
+expr <- read.csv(expr_path, row.names = 1, check.names = FALSE)
+meta <- read.csv(meta_path, row.names = 1)
+meta$condition <- factor(meta$condition, levels = c("Embryonic", "Maturing", "Fetal", "Adult"))
+
+common <- intersect(colnames(expr), rownames(meta))
+if (length(common) == 0) stop("No overlapping samples between expression matrix and metadata.")
+expr <- expr[, common]
+meta <- meta[common, , drop = FALSE]
+stopifnot(all(colnames(expr) == rownames(meta)))
+
+cat(sprintf("Loaded %d samples, %d genes.\n", ncol(expr), nrow(expr)))
+cat("Condition breakdown:\n")
+print(table(meta$condition))
+
+# ---- MARKER GENE CHECK (hard-fail, no silent partial fit) ----
+missing_markers <- setdiff(marker_genes, rownames(expr))
+if (length(missing_markers) > 0) {
+  stop(sprintf(
+    "Missing marker gene(s) in expression matrix: %s. Cannot fit maturity clock \
+     without all four validated markers.",
+    paste(names(marker_genes)[marker_genes %in% missing_markers], collapse = ", ")
+  ))
+}
+
+marker_expr <- t(log2(as.matrix(expr[marker_genes, , drop = FALSE]) + 1))
+colnames(marker_expr) <- names(marker_genes)  # TNNI3, MYH7, MYH6, TNNI1
+
+# ---- HARD ASSERTION: Fetal must be exactly the known single validation sample ----
+fetal_samples <- rownames(meta)[meta$condition == "Fetal"]
+if (length(fetal_samples) != 1) {
+  stop(sprintf(
+    "Expected exactly 1 Fetal sample (validation point only), found %d: %s. \
+     Refusing to proceed - Fetal must never be used to FIT the model.",
+    length(fetal_samples), paste(fetal_samples, collapse = ", ")
+  ))
+}
+cat(sprintf("\nConfirmed Fetal validation sample: %s (excluded from model fitting)\n", fetal_samples))
+
+# ---- BUILD TRAINING SET: Embryonic (label=0) and Adult (label=1) ONLY ----
+train_mask <- meta$condition %in% c("Embryonic", "Adult")
+train_samples <- rownames(meta)[train_mask]
+
+if (sum(meta$condition == "Embryonic") == 0 || sum(meta$condition == "Adult") == 0) {
+  stop("Training requires both Embryonic and Adult samples to be present and non-empty.")
+}
+
+train_df <- as.data.frame(marker_expr[train_samples, , drop = FALSE])
+train_df$label <- ifelse(meta[train_samples, "condition"] == "Adult", 1, 0)
+
+cat(sprintf("\nTraining set: %d Embryonic (label=0), %d Adult (label=1)\n",
+            sum(train_df$label == 0), sum(train_df$label == 1)))
+
+# ---- FIT LOGISTIC REGRESSION ----
+clock_model <- glm(label ~ TNNI3 + MYH7 + MYH6 + TNNI1,
+                    data = train_df, family = binomial())
+
+cat("\nModel summary:\n")
+print(summary(clock_model))
+
+# Sanity check: coefficient signs should match known biology
+# (TNNI3, MYH7 up with maturity -> positive coefficients expected;
+#  MYH6, TNNI1 down with maturity -> negative coefficients expected)
+coefs <- coef(clock_model)[-1]  # drop intercept
+cat("\nCoefficient signs (for biological plausibility check):\n")
+print(coefs)
+expected_positive <- c("TNNI3", "MYH7")
+expected_negative <- c("MYH6", "TNNI1")
+sign_check <- c(
+  setNames(coefs[expected_positive] > 0, expected_positive),
+  setNames(coefs[expected_negative] < 0, expected_negative)
+)
+cat("\nSigns match expected maturation biology?\n")
+print(sign_check)
+if (!all(sign_check)) {
+  cat("\nWARNING: One or more marker coefficients have an unexpected sign. \
+       This does not stop the script, but the resulting clock should be \
+       interpreted cautiously - inspect the model summary above.\n")
+}
+
+# ---- SCORE ALL SAMPLES (including Maturing and Fetal, held out from fitting) ----
+all_df <- as.data.frame(marker_expr)
+maturity_prob <- predict(clock_model, newdata = all_df, type = "response")
+
+results <- data.frame(
+  sample = rownames(meta),
+  condition = meta$condition,
+  series = meta$series,
+  day_estimate = meta$day_estimate,
+  maturity_score = maturity_prob[rownames(meta)]
+)
+
+# Explicitly flag which rows were used for fitting vs. scored only
+results$used_for_fitting <- results$condition %in% c("Embryonic", "Adult")
+
+cat("\nMaturity score summary by condition:\n")
+print(aggregate(maturity_score ~ condition, data = results, FUN = function(x) round(summary(x), 3)))
+
+write.csv(results, output_path, row.names = FALSE)
+saveRDS(clock_model, model_output_path)
+
+cat(sprintf("\nSaved: %s\n", output_path))
+cat(sprintf("Saved model: %s\n", model_output_path))
+
+cat(sprintf("\nFetal validation sample maturity score: %.3f\n",
+            results$maturity_score[results$sample == fetal_samples]))
+cat("(Expect this to land somewhere between Embryonic and Adult scores - \
+     a sanity check, not a fitted trend point.)\n")
