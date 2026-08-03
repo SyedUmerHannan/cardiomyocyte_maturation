@@ -1,0 +1,203 @@
+## step7_build_deseq_dataset.R
+## Cardiac Maturation AI — build DESeqDataSet from the master raw-count matrix
+## and v7_clean-style metadata (Embryonic / Maturing / Fetal / Adult).
+##
+## Colab-compatible: no argparse, config.py-style Sys.getenv fallbacks.
+## Run as an rpy2 %%R cell or via Rscript.
+
+suppressPackageStartupMessages({
+  library(DESeq2)
+})
+
+## ---------------------------------------------------------------------
+## 1. Paths (env override with hardcoded fallback, per config.py pattern)
+## ---------------------------------------------------------------------
+MASTER_MATRIX_PATH <- Sys.getenv(
+  "MASTER_MATRIX_PATH",
+  "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/master_expression_matrix_backup.csv"
+)
+MASTER_METADATA_PATH <- Sys.getenv(
+  "MASTER_METADATA_PATH",
+  "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/master_sample_metadata_updated.csv"
+)
+
+DDS_OUTPUT_PATH <- Sys.getenv(
+  "DDS_OUTPUT_PATH",
+  file.path(dirname(MASTER_MATRIX_PATH), "dds_full_condition_model.rds")
+)
+
+## ---------------------------------------------------------------------
+## 2. Marker genes (Ensembl IDs — never symbols; ground truth per project)
+## ---------------------------------------------------------------------
+MARKER_GENES <- c(
+  TNNI3 = "ENSG00000129991",
+  MYH7  = "ENSG00000092054",
+  MYH6  = "ENSG00000197616",
+  TNNI1 = "ENSG00000151632"
+)
+
+## ---------------------------------------------------------------------
+## 3. Load inputs
+## ---------------------------------------------------------------------
+if (!file.exists(MASTER_MATRIX_PATH)) {
+  stop("Master expression matrix not found at: ", MASTER_MATRIX_PATH)
+}
+if (!file.exists(MASTER_METADATA_PATH)) {
+  stop("Master metadata not found at: ", MASTER_METADATA_PATH)
+}
+
+expr_mat <- read.csv(MASTER_MATRIX_PATH, row.names = 1, check.names = FALSE)
+meta     <- read.csv(MASTER_METADATA_PATH, row.names = 1, stringsAsFactors = FALSE)
+
+## ---------------------------------------------------------------------
+## 4. Hard-fail validation checkpoints (raise, don't warn)
+## ---------------------------------------------------------------------
+
+# 4a. Marker genes present before any filtering
+missing_markers <- setdiff(MARKER_GENES, rownames(expr_mat))
+if (length(missing_markers) > 0) {
+  stop(
+    "Marker genes missing from expression matrix (Ensembl IDs): ",
+    paste(missing_markers, collapse = ", ")
+  )
+}
+
+# 4b. Duplicate columns / rows
+if (any(duplicated(colnames(expr_mat)))) {
+  stop("Duplicate sample columns found in expression matrix.")
+}
+if (any(duplicated(rownames(expr_mat)))) {
+  stop("Duplicate gene rows found in expression matrix.")
+}
+
+# 4c. 'condition' column must exist
+if (!"condition" %in% colnames(meta)) {
+  stop("Metadata is missing the required 'condition' column.")
+}
+
+# 4d. Explicit sample-universe alignment (never silently subset)
+common_samples   <- intersect(colnames(expr_mat), rownames(meta))
+matrix_only      <- setdiff(colnames(expr_mat), rownames(meta))
+metadata_only    <- setdiff(rownames(meta), colnames(expr_mat))
+
+if (length(common_samples) == 0) {
+  stop("No overlapping samples between expression matrix and metadata.")
+}
+if (length(matrix_only) > 0) {
+  message(
+    "NOTE: ", length(matrix_only),
+    " matrix column(s) have no metadata and will be dropped: ",
+    paste(head(matrix_only, 10), collapse = ", "),
+    if (length(matrix_only) > 10) ", ..." else ""
+  )
+}
+if (length(metadata_only) > 0) {
+  message(
+    "NOTE: ", length(metadata_only),
+    " metadata row(s) have no matrix column and will be dropped: ",
+    paste(head(metadata_only, 10), collapse = ", "),
+    if (length(metadata_only) > 10) ", ..." else ""
+  )
+}
+
+expr_mat <- expr_mat[, common_samples, drop = FALSE]
+meta     <- meta[common_samples, , drop = FALSE]
+
+# 4e. Fetal is optional in this run. If present, it must be exactly 1
+#     (GSM8102175, the only real fetal-tissue sample). If absent, that's
+#     fine — the model just runs on the remaining conditions.
+n_fetal <- sum(meta$condition == "Fetal", na.rm = TRUE)
+if (n_fetal > 1) {
+  stop("Expected at most 1 Fetal sample (GSM8102175), found ", n_fetal, ".")
+}
+if (n_fetal == 0) {
+  message("NOTE: No Fetal sample present in this metadata — proceeding without it.")
+}
+
+# 4f. Condition labels sanity check (built from whatever's actually present)
+allowed_conditions <- c("Embryonic", "Maturing", "Fetal", "Adult")
+present_conditions <- unique(meta$condition)
+unexpected <- setdiff(present_conditions, allowed_conditions)
+if (length(unexpected) > 0) {
+  stop("Unexpected condition label(s) found: ", paste(unexpected, collapse = ", "))
+}
+expected_conditions <- allowed_conditions[allowed_conditions %in% present_conditions]
+cat("Conditions present in this run:", paste(expected_conditions, collapse = ", "), "\n")
+
+## ---------------------------------------------------------------------
+## 5. Coerce to integer count matrix (DESeq2 requires raw integer counts)
+## ---------------------------------------------------------------------
+count_mat <- as.matrix(expr_mat)
+storage.mode(count_mat) <- "double"
+
+if (any(is.na(count_mat))) {
+  stop("NA values present in count matrix after sample-universe subsetting.")
+}
+if (any(count_mat < 0)) {
+  stop("Negative values found in count matrix — this is not a raw-count matrix.")
+}
+
+# Confirms these are (approximately) integer counts rather than CPM/normalized
+non_integer_frac <- mean(abs(count_mat - round(count_mat)) > 1e-6)
+if (non_integer_frac > 0.01) {
+  stop(
+    "More than 1% of values are non-integer (", round(non_integer_frac * 100, 2),
+    "%). This does not look like a raw-count matrix — check MASTER_MATRIX_PATH."
+  )
+}
+
+count_mat <- round(count_mat)
+storage.mode(count_mat) <- "integer"
+
+## ---------------------------------------------------------------------
+## 6. Build colData with Embryonic as reference level
+## ---------------------------------------------------------------------
+meta$condition <- factor(meta$condition, levels = expected_conditions)
+if ("Embryonic" %in% expected_conditions) {
+  meta$condition <- relevel(meta$condition, ref = "Embryonic")
+}
+
+## ---------------------------------------------------------------------
+## 7. Construct DESeqDataSet — full 4-condition model, design = ~condition
+## ---------------------------------------------------------------------
+dds <- DESeqDataSetFromMatrix(
+  countData = count_mat,
+  colData   = meta,
+  design    = ~ condition
+)
+
+## ---------------------------------------------------------------------
+## 8. Pre-filter low-count genes (keep marker genes regardless)
+## ---------------------------------------------------------------------
+keep <- rowSums(counts(dds) >= 10) >= 3
+keep[names(keep) %in% MARKER_GENES] <- TRUE
+dds <- dds[keep, ]
+
+# Re-verify markers survived filtering
+still_missing <- setdiff(MARKER_GENES, rownames(dds))
+if (length(still_missing) > 0) {
+  stop("Marker genes lost during filtering: ", paste(still_missing, collapse = ", "))
+}
+
+## ---------------------------------------------------------------------
+## 9. Run DESeq2
+## ---------------------------------------------------------------------
+## NOTE: if Fetal is present in this run, it's a singleton group (n=1).
+## DESeq2 will fit it fine for dispersion estimation (borrowing across
+## genes), but any contrast *against* Fetal has no within-group
+## replication — treat those p-values/LFCs as descriptive only,
+## consistent with the maturation clock's "Fetal held out as
+## validation-only" approach.
+dds <- DESeq(dds)
+
+cat("Sample counts per condition:\n")
+print(table(colData(dds)$condition))
+
+cat("\nResultsNames:\n")
+print(resultsNames(dds))
+
+## ---------------------------------------------------------------------
+## 10. Save
+## ---------------------------------------------------------------------
+saveRDS(dds, DDS_OUTPUT_PATH)
+cat("\nSaved DESeqDataSet to:", DDS_OUTPUT_PATH, "\n")
