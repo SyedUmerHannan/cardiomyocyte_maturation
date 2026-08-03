@@ -1,151 +1,351 @@
-%%R
+"""
+step13_fit_maturation_curve.py
 
-# ============================================================
-# fit_maturation_curve.R (formerly stub fit_maturation_curve.py)
-# Cardiac Maturation AI Project
-#
-# Fits a continuous maturity score (0 = Embryonic-like, 1 = Adult-like)
-# using logistic regression trained ONLY on Embryonic and Adult samples,
-# then scores ALL samples (including Maturing and the single Fetal
-# validation point) against that fitted model.
-#
-# Design decisions (explicit, not defaulted silently):
-# - Fetal (n=1) is NEVER used to fit the model - included only as a
-#   plotted/reported validation point, since n=1 cannot support any
-#   regression term without massively overfitting to one sample.
-# - Model is trained on the four validated marker genes only
-#   (TNNI3, MYH7, MYH6, TNNI1), not the full transcriptome, to avoid
-#   overfitting given ~470 anchor samples vs ~17,000 genes.
-# - Hard-fails if expected sample groups, genes, or files are missing -
-#   no silent fallback values anywhere in this script.
-# ============================================================
+Cardiac Maturation Clock — ratio-based maturation trajectory fitting.
 
-suppressMessages({
-  library(dplyr)
-})
+Project: iPSC-CM gene-expression-based maturation clock (KAUST, Umer et al.)
+Colab-compatible (no argparse). Imports config.py for hardcoded Drive-path fallbacks.
 
-# ---- CONFIG (mirrors config.py path conventions) ----
-final_dir <- "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master/Final"
-expr_path <- file.path(final_dir, "master_expression_matrix_final.csv")
-meta_path <- file.path(final_dir, "master_sample_metadata_final.csv")
-output_path <- file.path(final_dir, "maturity_scores.csv")
-model_output_path <- file.path(final_dir, "maturity_clock_model.rds")
+INPUT DATA ASSUMPTION: the expression matrix loaded here is assumed to already
+be batch-corrected via ComBat upstream of this script. This script does NOT
+apply, load, or reference RUVg / RUVSeq batch correction or any RUVg W factor
+in any way. There is no batch covariate added to the model here — batch
+correction is treated as already handled before this step, full stop.
 
-marker_genes <- c(
-  TNNI3 = "ENSG00000129991",
-  MYH7  = "ENSG00000092054",
-  MYH6  = "ENSG00000197616",
-  TNNI1 = "ENSG00000151632"
-)
+DESIGN NOTES (recovered from project history):
+------------------------------------------------
+- Ground truth marker genes are ENSEMBL IDs, never symbols:
+    TNNI3 : ENSG00000129991   (adult/mature troponin I isoform)
+    MYH7  : ENSG00000092054   (beta-myosin heavy chain, "slow"/mature)
+    MYH6  : ENSG00000197616   (alpha-myosin heavy chain, "fast"/embryonic-fetal)
+    TNNI1 : ENSG00000151632   (fetal/slow-skeletal troponin I isoform)
 
-# ---- LOAD ----
-if (!file.exists(expr_path)) stop(sprintf("Expression matrix not found: %s", expr_path))
-if (!file.exists(meta_path)) stop(sprintf("Metadata not found: %s", meta_path))
+- The clock is RATIO-based, not raw-expression based. This is a deliberate
+  design decision: marker genes correlating in the same direction on raw
+  expression reflects differentiation MAGNITUDE (how much cardiac tissue is
+  present), not maturation RATIO signal (how mature that tissue is). Two
+  canonical isoform-switch ratios:
 
-expr <- read.csv(expr_path, row.names = 1, check.names = FALSE)
-meta <- read.csv(meta_path, row.names = 1)
-meta$condition <- factor(meta$condition, levels = c("Embryonic", "Maturing", "Fetal", "Adult"))
+      MYH7 / MYH6   -> increases with maturation (beta MyHC replaces alpha)
+      TNNI3 / TNNI1  -> increases with maturation (adult TnI replaces fetal/ssTnI)
 
-common <- intersect(colnames(expr), rownames(meta))
-if (length(common) == 0) stop("No overlapping samples between expression matrix and metadata.")
-expr <- expr[, common]
-meta <- meta[common, , drop = FALSE]
-stopifnot(all(colnames(expr) == rownames(meta)))
+  A composite maturation score is the mean of the two log-ratios (after adding
+  a small pseudocount to avoid log(0)).
 
-cat(sprintf("Loaded %d samples, %d genes.\n", ncol(expr), nrow(expr)))
-cat("Condition breakdown:\n")
-print(table(meta$condition))
+- THREE developmental conditions (v7_clean labeling scheme, permanently
+  reduced from four), derived from the `day_estimate` metadata column:
+      Embryonic : day_estimate <= 15
+      Maturing  : 30 <= day_estimate <= 90
+      Adult     : condition label from source annotation (not day-derived)
 
-# ---- MARKER GENE CHECK (hard-fail, no silent partial fit) ----
-missing_markers <- setdiff(marker_genes, rownames(expr))
-if (length(missing_markers) > 0) {
-  stop(sprintf(
-    "Missing marker gene(s) in expression matrix: %s. Cannot fit maturity clock \
-     without all four validated markers.",
-    paste(names(marker_genes)[marker_genes %in% missing_markers], collapse = ", ")
-  ))
+- Held-out validation is done via k-fold cross-validation within the three
+  conditions (Embryonic/Maturing/Adult). There is no independent-group
+  held-out check anymore since Fetal is gone; this is the accepted,
+  permanent validation approach for this clock going forward.
+
+- HARD-FAIL PHILOSOPHY: missing data, unrecognized conditions, sample ID
+  collisions, and missing marker genes all raise errors. No silent defaults.
+
+- Anomalies are flagged to CSV (implausible_day_estimates.csv convention),
+  never silently dropped.
+"""
+
+import os
+import sys
+import numpy as np
+import pandas as pd
+from datetime import datetime
+
+# ---------------------------------------------------------------------------
+# Config import (Colab-compatible, hardcoded Drive-path fallbacks)
+# ---------------------------------------------------------------------------
+try:
+    import config
+except ImportError:
+    class config:
+        DRIVE_ROOT = "/content/drive/MyDrive/Research/Cardiac Maturation AI"
+        MASTER_MATRIX_PATH = os.path.join(DRIVE_ROOT, "master_expression_matrix.csv")
+        MASTER_METADATA_PATH = os.path.join(DRIVE_ROOT, "master_metadata_v7_clean.csv")
+        OUTPUT_DIR = os.path.join(DRIVE_ROOT, "outputs", "step13_maturation_clock")
+        ANOMALY_LOG_DIR = os.path.join(DRIVE_ROOT, "outputs", "anomaly_logs")
+
+os.makedirs(config.OUTPUT_DIR, exist_ok=True)
+os.makedirs(config.ANOMALY_LOG_DIR, exist_ok=True)
+
+# ---------------------------------------------------------------------------
+# Ground-truth marker genes (Ensembl IDs ONLY — never symbols)
+# ---------------------------------------------------------------------------
+MARKER_GENES = {
+    "TNNI3": "ENSG00000129991",
+    "MYH7":  "ENSG00000092054",
+    "MYH6":  "ENSG00000197616",
+    "TNNI1": "ENSG00000151632",
 }
 
-marker_expr <- t(log2(as.matrix(expr[marker_genes, , drop = FALSE]) + 1))
-colnames(marker_expr) <- names(marker_genes)  # TNNI3, MYH7, MYH6, TNNI1
+# Pseudocount for log-ratio computation on raw integer counts
+PSEUDOCOUNT = 1.0
 
-# ---- HARD ASSERTION: Fetal must be exactly the known single validation sample ----
-fetal_samples <- rownames(meta)[meta$condition == "Fetal"]
-if (length(fetal_samples) != 1) {
-  stop(sprintf(
-    "Expected exactly 1 Fetal sample (validation point only), found %d: %s. \
-     Refusing to proceed - Fetal must never be used to FIT the model.",
-    length(fetal_samples), paste(fetal_samples, collapse = ", ")
-  ))
-}
-cat(sprintf("\nConfirmed Fetal validation sample: %s (excluded from model fitting)\n", fetal_samples))
+# Condition day-boundaries (v7_clean scheme)
+EMBRYONIC_MAX_DAY = 15
+MATURING_MIN_DAY = 30
+MATURING_MAX_DAY = 90
 
-# ---- BUILD TRAINING SET: Embryonic (label=0) and Adult (label=1) ONLY ----
-train_mask <- meta$condition %in% c("Embryonic", "Adult")
-train_samples <- rownames(meta)[train_mask]
+# Fetal permanently removed from this pipeline. Only these three are valid.
+VALID_CONDITIONS = {"Embryonic", "Maturing", "Adult"}
 
-if (sum(meta$condition == "Embryonic") == 0 || sum(meta$condition == "Adult") == 0) {
-  stop("Training requires both Embryonic and Adult samples to be present and non-empty.")
-}
 
-train_df <- as.data.frame(marker_expr[train_samples, , drop = FALSE])
-train_df$label <- ifelse(meta[train_samples, "condition"] == "Adult", 1, 0)
+# ---------------------------------------------------------------------------
+# Loading
+# ---------------------------------------------------------------------------
+def load_inputs():
+    """
+    Load master matrix and metadata. Hard-fail on missing files.
+    No RUVg W factor is loaded — the expression matrix is assumed to already
+    be ComBat-normalized/batch-corrected upstream of this script.
+    """
+    for path, label in [
+        (config.MASTER_MATRIX_PATH, "master expression matrix"),
+        (config.MASTER_METADATA_PATH, "master metadata (v7_clean)"),
+    ]:
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"Required input missing ({label}): {path}")
 
-cat(sprintf("\nTraining set: %d Embryonic (label=0), %d Adult (label=1)\n",
-            sum(train_df$label == 0), sum(train_df$label == 1)))
+    expr = pd.read_csv(config.MASTER_MATRIX_PATH, index_col=0)
+    meta = pd.read_csv(config.MASTER_METADATA_PATH, index_col=0)
 
-# ---- FIT LOGISTIC REGRESSION ----
-clock_model <- glm(label ~ TNNI3 + MYH7 + MYH6 + TNNI1,
-                    data = train_df, family = binomial())
+    # Sample ID collision check (hard-fail philosophy)
+    if expr.columns.duplicated().any():
+        dupes = expr.columns[expr.columns.duplicated()].tolist()
+        raise ValueError(f"Duplicate sample IDs in expression matrix: {dupes}")
+    if meta.index.duplicated().any():
+        dupes = meta.index[meta.index.duplicated()].tolist()
+        raise ValueError(f"Duplicate sample IDs in metadata: {dupes}")
 
-cat("\nModel summary:\n")
-print(summary(clock_model))
+    # Marker genes must all be present — hard fail otherwise
+    missing_markers = [g for g, eid in MARKER_GENES.items() if eid not in expr.index]
+    if missing_markers:
+        raise ValueError(
+            f"Missing marker gene(s) in expression matrix: {missing_markers} "
+            f"(Ensembl IDs: {[MARKER_GENES[g] for g in missing_markers]})"
+        )
 
-# Sanity check: coefficient signs should match known biology
-# (TNNI3, MYH7 up with maturity -> positive coefficients expected;
-#  MYH6, TNNI1 down with maturity -> negative coefficients expected)
-coefs <- coef(clock_model)[-1]  # drop intercept
-cat("\nCoefficient signs (for biological plausibility check):\n")
-print(coefs)
-expected_positive <- c("TNNI3", "MYH7")
-expected_negative <- c("MYH6", "TNNI1")
-sign_check <- c(
-  setNames(coefs[expected_positive] > 0, expected_positive),
-  setNames(coefs[expected_negative] < 0, expected_negative)
-)
-cat("\nSigns match expected maturation biology?\n")
-print(sign_check)
-if (!all(sign_check)) {
-  cat("\nWARNING: One or more marker coefficients have an unexpected sign. \
-       This does not stop the script, but the resulting clock should be \
-       interpreted cautiously - inspect the model summary above.\n")
-}
+    return expr, meta
 
-# ---- SCORE ALL SAMPLES (including Maturing and Fetal, held out from fitting) ----
-all_df <- as.data.frame(marker_expr)
-maturity_prob <- predict(clock_model, newdata = all_df, type = "response")
 
-results <- data.frame(
-  sample = rownames(meta),
-  condition = meta$condition,
-  series = meta$series,
-  day_estimate = meta$day_estimate,
-  maturity_score = maturity_prob[rownames(meta)]
-)
+# ---------------------------------------------------------------------------
+# Condition assignment (v7_clean)
+# ---------------------------------------------------------------------------
+def assign_condition(row):
+    """
+    Assign one of the three v7_clean conditions per sample
+    (Embryonic / Maturing / Adult — Fetal permanently removed).
 
-# Explicitly flag which rows were used for fitting vs. scored only
-results$used_for_fitting <- results$condition %in% c("Embryonic", "Adult")
+    Reads the existing 'condition' column from metadata (populated upstream
+    for Adult samples that have no day_estimate, e.g. GTEx / GSE141910 mature
+    tissue). Hard-fails (raises) on unrecognized/ambiguous condition
+    assignment rather than silently defaulting. A "Fetal" label appearing in
+    metadata is treated as an error, not a valid category, since Fetal is no
+    longer part of this pipeline.
+    """
+    existing_label = row.get("condition", None)
 
-cat("\nMaturity score summary by condition:\n")
-print(aggregate(maturity_score ~ condition, data = results, FUN = function(x) round(summary(x), 3)))
+    if existing_label == "Fetal":
+        raise ValueError(
+            f"Sample {row.name} is labeled 'Fetal', but the Fetal condition "
+            f"has been permanently removed from this pipeline (GSM8102175 "
+            f"decision). Re-label this sample or exclude it upstream before "
+            f"running the clock — it cannot be silently routed into another "
+            f"condition."
+        )
 
-write.csv(results, output_path, row.names = FALSE)
-saveRDS(clock_model, model_output_path)
+    # Adult is label-derived (not day-estimate-derived), per project convention
+    if existing_label == "Adult":
+        return existing_label
 
-cat(sprintf("\nSaved: %s\n", output_path))
-cat(sprintf("Saved model: %s\n", model_output_path))
+    day = row.get("day_estimate", None)
+    if pd.isna(day) or day is None:
+        raise ValueError(
+            f"Sample {row.name} has no day_estimate and no Adult label — "
+            f"cannot assign condition. Hard-failing per project convention."
+        )
 
-cat(sprintf("\nFetal validation sample maturity score: %.3f\n",
-            results$maturity_score[results$sample == fetal_samples]))
-cat("(Expect this to land somewhere between Embryonic and Adult scores - \
-     a sanity check, not a fitted trend point.)\n")
+    if day <= EMBRYONIC_MAX_DAY:
+        return "Embryonic"
+    elif MATURING_MIN_DAY <= day <= MATURING_MAX_DAY:
+        return "Maturing"
+    else:
+        raise ValueError(
+            f"Sample {row.name} has day_estimate={day}, which falls outside "
+            f"Embryonic (<= {EMBRYONIC_MAX_DAY}) and Maturing "
+            f"({MATURING_MIN_DAY}-{MATURING_MAX_DAY}) windows, and is not "
+            f"labeled Fetal/Adult. Flagging as implausible rather than guessing."
+        )
+
+
+def build_condition_column(meta):
+    conditions = []
+    implausible = []
+
+    for sample_id, row in meta.iterrows():
+        try:
+            cond = assign_condition(row)
+            conditions.append(cond)
+        except ValueError as e:
+            implausible.append({"sample_id": sample_id, "reason": str(e)})
+            conditions.append(None)
+
+    meta = meta.copy()
+    meta["condition_v7_clean_assigned"] = conditions
+
+    if implausible:
+        anomaly_path = os.path.join(config.ANOMALY_LOG_DIR, "implausible_day_estimates.csv")
+        pd.DataFrame(implausible).to_csv(anomaly_path, index=False)
+        print(f"[WARN] {len(implausible)} sample(s) flagged as implausible -> {anomaly_path}")
+
+    # Hard-fail if ANY sample couldn't be assigned a condition — no silent drops
+    n_failed = meta["condition_v7_clean_assigned"].isna().sum()
+    if n_failed > 0:
+        raise ValueError(
+            f"{n_failed} sample(s) could not be assigned a valid condition. "
+            f"See {os.path.join(config.ANOMALY_LOG_DIR, 'implausible_day_estimates.csv')}. "
+            f"Resolve before proceeding (hard-fail policy — no silent defaults)."
+        )
+
+    unknown = set(meta["condition_v7_clean_assigned"].unique()) - VALID_CONDITIONS
+    if unknown:
+        raise ValueError(f"Unrecognized condition labels found: {unknown}")
+
+    return meta
+
+
+# ---------------------------------------------------------------------------
+# Ratio-based maturation score
+# ---------------------------------------------------------------------------
+def compute_maturation_score(expr):
+    """
+    Composite maturation score = mean of two log2 isoform-switch ratios:
+        log2((MYH7 + pc) / (MYH6 + pc))
+        log2((TNNI3 + pc) / (TNNI1 + pc))
+
+    `expr` is assumed to already be ComBat-normalized/batch-corrected before
+    reaching this function. This function does not renormalize and does not
+    apply any further batch correction (no RUVg, no W factor) — that stage is
+    considered complete upstream.
+    """
+    myh7 = expr.loc[MARKER_GENES["MYH7"]]
+    myh6 = expr.loc[MARKER_GENES["MYH6"]]
+    tnni3 = expr.loc[MARKER_GENES["TNNI3"]]
+    tnni1 = expr.loc[MARKER_GENES["TNNI1"]]
+
+    myh_ratio = np.log2((myh7 + PSEUDOCOUNT) / (myh6 + PSEUDOCOUNT))
+    tnn_ratio = np.log2((tnni3 + PSEUDOCOUNT) / (tnni1 + PSEUDOCOUNT))
+
+    score = pd.DataFrame({
+        "myh7_myh6_log2ratio": myh_ratio,
+        "tnni3_tnni1_log2ratio": tnn_ratio,
+    })
+    score["maturation_score"] = score[["myh7_myh6_log2ratio", "tnni3_tnni1_log2ratio"]].mean(axis=1)
+    return score
+
+
+# ---------------------------------------------------------------------------
+# Curve fitting + validation
+# ---------------------------------------------------------------------------
+def fit_curve(meta, score):
+    """
+    Fit maturation_score ~ condition_ordinal (Embryonic=0 < Maturing=1 < Adult=2).
+
+    No batch covariate is included here — the input expression matrix is
+    assumed to already be ComBat-normalized/batch-corrected upstream, so
+    there is no RUVg W factor (or any other batch term) to control for at
+    this stage.
+
+    Validation is k-fold cross-validation within these three conditions.
+    This is the permanent validation strategy for this clock: there is no
+    independent held-out group (Fetal) anymore, and none is expected going
+    forward.
+
+    Returns fitted model artifacts + a validation report dict.
+    """
+    from sklearn.linear_model import LinearRegression
+    from sklearn.model_selection import KFold, cross_val_score
+
+    df = meta.join(score, how="inner")
+
+    condition_order = {"Embryonic": 0, "Maturing": 1, "Adult": 2}
+
+    unexpected = set(df["condition_v7_clean_assigned"].unique()) - set(condition_order.keys())
+    if unexpected:
+        raise ValueError(
+            f"Unexpected condition(s) reached fit_curve: {unexpected}. "
+            f"Only Embryonic/Maturing/Adult are valid — Fetal is permanently "
+            f"removed from this pipeline."
+        )
+
+    train_df = df.copy()
+    train_df["condition_ordinal"] = train_df["condition_v7_clean_assigned"].map(condition_order)
+
+    scores_y = train_df["maturation_score"].values
+    X_full = train_df[["condition_ordinal"]].values
+
+    ordinal_model = LinearRegression().fit(X_full, scores_y)
+
+    cv = KFold(n_splits=min(5, len(train_df)), shuffle=True, random_state=42)
+    cv_scores = cross_val_score(ordinal_model, X_full, scores_y, cv=cv)
+
+    validation_report = {
+        "timestamp": datetime.now().isoformat(),
+        "n_embryonic": int((train_df["condition_v7_clean_assigned"] == "Embryonic").sum()),
+        "n_maturing": int((train_df["condition_v7_clean_assigned"] == "Maturing").sum()),
+        "n_adult": int((train_df["condition_v7_clean_assigned"] == "Adult").sum()),
+        "cv_r2_scores": cv_scores.tolist(),
+        "cv_r2_mean": float(np.mean(cv_scores)),
+        "note": (
+            "Permanent 3-condition clock (Embryonic/Maturing/Adult). Fetal "
+            "removed for good (GSM8102175 decision). No batch covariate used "
+            "(input assumed pre-ComBat-normalized; RUVg/W-factor correction "
+            "not applied here). Validation is k-fold CV within these three "
+            "conditions — accepted permanent approach, not a stopgap."
+        ),
+    }
+
+    return ordinal_model, validation_report, df
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+def main():
+    print("Loading inputs (expression matrix assumed ComBat-normalized already)...")
+    expr, meta = load_inputs()
+
+    print("Assigning v7_clean conditions...")
+    meta = build_condition_column(meta)
+
+    print("Computing ratio-based maturation scores (MYH7/MYH6, TNNI3/TNNI1)...")
+    score = compute_maturation_score(expr)
+
+    print("Fitting maturation curve (no batch covariate — ComBat already applied upstream)...")
+    model, validation_report, full_df = fit_curve(meta, score)
+
+    # Persist outputs
+    score_out = os.path.join(config.OUTPUT_DIR, "maturation_scores.csv")
+    full_df.to_csv(score_out)
+    print(f"Saved per-sample maturation scores -> {score_out}")
+
+    report_out = os.path.join(config.OUTPUT_DIR, "validation_report.json")
+    import json
+    with open(report_out, "w") as f:
+        json.dump(validation_report, f, indent=2)
+    print(f"Saved validation report -> {report_out}")
+
+    print("\n=== VALIDATION SUMMARY ===")
+    for k, v in validation_report.items():
+        if k != "cv_r2_scores":
+            print(f"  {k}: {v}")
+
+    return model, validation_report, full_df
+
+
+if __name__ == "__main__":
+    main()
