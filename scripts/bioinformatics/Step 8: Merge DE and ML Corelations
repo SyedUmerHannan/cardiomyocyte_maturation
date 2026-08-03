@@ -1,0 +1,172 @@
+"""
+step12_ml_deseq_overlap.py
+Cardiac Maturation AI — check overlap between:
+  (a) top "hub" genes from an ML-derived gene-gene connectivity matrix
+      (rows/columns = gene Ensembl IDs; entry [i,j] = how much gene i
+      affects gene j during maturation), and
+  (b) significant DE genes from DESeq2 (the union list from
+      step9_extract_de_genes.py).
+
+The connectivity matrix is NOT per-gene DE stats, so it can't be merged
+directly — it's first collapsed to one "hub score" per gene (total
+connectivity: sum of |row| + sum of |column|), then that ranked list is
+compared against the DESeq2 significant-gene set.
+
+Colab-compatible: no argparse, config.py-style env-var path fallbacks.
+
+Hard-fail philosophy: gene ID format mismatches (symbols instead of
+Ensembl IDs), non-square matrices, and missing input files are all
+surfaced explicitly rather than guessed around.
+"""
+
+import os
+import re
+import sys
+
+import pandas as pd
+
+# ---------------------------------------------------------------------
+# 1. Paths (env override with hardcoded fallback, per config.py pattern)
+# ---------------------------------------------------------------------
+ML_CONNECTIVITY_MATRIX_PATH = os.environ.get(
+    "ML_CONNECTIVITY_MATRIX_PATH",
+    "/content/drive/MyDrive/Research/Cardiac Maturation AI/gene_correlation_matrix_clustered.csv",
+)
+
+# Output of step9_extract_de_genes.py — one row per gene significant in
+# at least one contrast, with per-contrast log2FC/padj/baseMean.
+DE_GENES_UNION_CSV = os.environ.get(
+    "DE_GENES_UNION_CSV",
+    "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master/expression_de_genes_union.csv",
+)
+
+OUTPUT_DIR = os.environ.get(
+    "OVERLAP_OUTPUT_DIR",
+    "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/",
+)
+
+HUB_SCORES_CSV = os.path.join(OUTPUT_DIR, "ml_hub_gene_scores.csv")
+OVERLAP_CSV = os.path.join(OUTPUT_DIR, "ml_deseq_overlap_genes.csv")
+
+# ---------------------------------------------------------------------
+# 2. Parameters — explicit, not buried defaults
+# ---------------------------------------------------------------------
+TOP_N_HUB_GENES = int(os.environ.get("TOP_N_HUB_GENES", "200"))
+
+ENSEMBL_ID_PATTERN = re.compile(r"^ENSG\d{11}(\.\d+)?$")
+
+# ---------------------------------------------------------------------
+# 3. Hard-fail: input files must exist
+# ---------------------------------------------------------------------
+if not os.path.exists(ML_CONNECTIVITY_MATRIX_PATH):
+    sys.exit(f"ERROR: ML connectivity matrix not found at: {ML_CONNECTIVITY_MATRIX_PATH}")
+if not os.path.exists(DE_GENES_UNION_CSV):
+    sys.exit(
+        f"ERROR: DESeq2 union DE gene file not found at: {DE_GENES_UNION_CSV}. "
+        "Run step9_extract_de_genes.py first."
+    )
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+# ---------------------------------------------------------------------
+# 4. Load ML connectivity matrix
+# ---------------------------------------------------------------------
+conn = pd.read_csv(ML_CONNECTIVITY_MATRIX_PATH, index_col=0)
+
+if conn.shape[0] != conn.shape[1]:
+    sys.exit(
+        f"ERROR: connectivity matrix is not square ({conn.shape[0]} rows x "
+        f"{conn.shape[1]} columns). Expected gene x gene."
+    )
+if set(conn.index) != set(conn.columns):
+    only_in_rows = set(conn.index) - set(conn.columns)
+    only_in_cols = set(conn.columns) - set(conn.index)
+    sys.exit(
+        "ERROR: row and column gene sets don't match.\n"
+        f"  In rows only ({len(only_in_rows)}): {sorted(only_in_rows)[:10]}\n"
+        f"  In columns only ({len(only_in_cols)}): {sorted(only_in_cols)[:10]}"
+    )
+
+# Reorder columns to match row order explicitly (never assume pre-aligned)
+conn = conn.loc[conn.index, conn.index]
+
+# Hard-fail: gene IDs must be Ensembl IDs, matching project convention
+# (Ensembl IDs are ground truth; gene symbols are never used as keys)
+non_ensembl = [g for g in conn.index if not ENSEMBL_ID_PATTERN.match(str(g))]
+if non_ensembl:
+    sys.exit(
+        f"ERROR: {len(non_ensembl)} gene ID(s) in the connectivity matrix "
+        f"don't look like Ensembl IDs (e.g. {non_ensembl[:10]}). "
+        "Map gene symbols to Ensembl IDs before running this script — "
+        "Ensembl IDs are the project's ground-truth identifier, never symbols."
+    )
+
+print(f"Loaded connectivity matrix: {conn.shape[0]} genes x {conn.shape[0]} genes")
+
+# ---------------------------------------------------------------------
+# 5. Collapse to per-gene hub scores
+#    out_degree  = total influence this gene exerts on others (row sum)
+#    in_degree   = total influence this gene receives from others (col sum)
+#    total_score = out_degree + in_degree (used for ranking)
+# ---------------------------------------------------------------------
+abs_conn = conn.abs()
+out_degree = abs_conn.sum(axis=1)  # sum across columns, per row gene
+in_degree = abs_conn.sum(axis=0)   # sum across rows, per column gene
+
+hub_scores = pd.DataFrame({
+    "gene_id": conn.index,
+    "out_degree": out_degree.values,
+    "in_degree": in_degree.values,
+})
+hub_scores["total_score"] = hub_scores["out_degree"] + hub_scores["in_degree"]
+hub_scores = hub_scores.sort_values("total_score", ascending=False).reset_index(drop=True)
+
+hub_scores.to_csv(HUB_SCORES_CSV, index=False)
+print(f"Hub scores for all {len(hub_scores)} gene(s) -> {HUB_SCORES_CSV}")
+
+top_hub_genes = set(hub_scores.head(TOP_N_HUB_GENES)["gene_id"])
+print(f"Top {TOP_N_HUB_GENES} hub gene(s) selected by total_score.")
+
+# ---------------------------------------------------------------------
+# 6. Load DESeq2 significant DE gene set (union, from step9 output)
+# ---------------------------------------------------------------------
+de_union = pd.read_csv(DE_GENES_UNION_CSV)
+if "gene_id" not in de_union.columns:
+    sys.exit(f"ERROR: expected a 'gene_id' column in {DE_GENES_UNION_CSV}.")
+de_gene_ids = set(de_union["gene_id"])
+print(f"Loaded {len(de_gene_ids)} significant DE gene(s) (union across contrasts) from DESeq2.")
+
+# ---------------------------------------------------------------------
+# 7. Overlap
+# ---------------------------------------------------------------------
+overlap = top_hub_genes & de_gene_ids
+hub_only = top_hub_genes - de_gene_ids
+de_only = de_gene_ids - top_hub_genes
+
+jaccard = len(overlap) / len(top_hub_genes | de_gene_ids) if (top_hub_genes | de_gene_ids) else float("nan")
+
+print(f"\nOverlap: {len(overlap)} gene(s)")
+print(f"  Top hub genes only (not DE-significant): {len(hub_only)}")
+print(f"  DE-significant only (not top hub): {len(de_only)}")
+print(f"  Jaccard index: {jaccard:.3f}")
+
+# ---------------------------------------------------------------------
+# 8. Save overlap gene list with both hub score and DE stats attached
+# ---------------------------------------------------------------------
+overlap_rows = []
+hub_scores_indexed = hub_scores.set_index("gene_id")
+de_union_indexed = de_union.set_index("gene_id")
+
+for gene_id in sorted(overlap):
+    row = {"gene_id": gene_id}
+    row.update(hub_scores_indexed.loc[gene_id].to_dict())
+    row.update(de_union_indexed.loc[gene_id].to_dict())
+    overlap_rows.append(row)
+
+overlap_df = pd.DataFrame(overlap_rows)
+if len(overlap_df) > 0:
+    overlap_df = overlap_df.sort_values("total_score", ascending=False)
+overlap_df.to_csv(OVERLAP_CSV, index=False)
+print(f"\nOverlap gene details -> {OVERLAP_CSV}")
+
+print("\nDone.")
