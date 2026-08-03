@@ -1,0 +1,360 @@
+"""
+step4_combat_pca_comparison.py
+
+Runs two variants:
+  (a) "naive" ComBat  — batch = study/series, mod = NULL (no protection
+      of biological signal). This is the version most likely to destroy
+      real condition signal if batch and condition are confounded.
+  (b) "protected" ComBat — batch = study/series, mod = ~condition
+      (explicitly protects the condition effect from being removed).
+      NOTE: if batch and condition are (as previously found — 0% cross-
+      study same-day NN matches) essentially fully confounded, this call
+      may fail outright with a "confounded with batch" error from sva.
+      That failure IS the point: it's direct technical proof that a
+      naive second correction step is not just risky but can be
+      mathematically undefined in this dataset.
+
+For all three states (original VST, naive ComBat, protected ComBat if
+it runs), computes PCA and quantifies how much of PC1's variance is
+explained by condition vs. by batch (R^2 from simple OLS), so the
+before/after comparison is a number, not just an eyeballed plot.
+
+Colab-compatible: no argparse, config.py-style env-var path fallbacks,
+uses rpy2 to drive R/DESeq2/sva from Python.
+
+Hard-fail philosophy: missing columns, misaligned samples, and
+ComBat failures are surfaced explicitly, not caught-and-ignored.
+"""
+
+import os
+import sys
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+import rpy2.robjects as ro
+from rpy2.robjects import pandas2ri
+from rpy2.robjects.conversion import localconverter
+from rpy2.robjects.packages import importr, isinstalled
+
+# ---------------------------------------------------------------------
+# 1. Paths (env override with hardcoded fallback, per config.py pattern)
+# ---------------------------------------------------------------------
+DDS_PATH = os.environ.get(
+    "DDS_PATH",
+    "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/dds_full_condition_model.rds",
+)
+
+MASTER_METADATA_PATH = os.environ.get(
+    "MASTER_METADATA_PATH",
+    "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/master_sample_metadata_updated.csv",
+)
+
+OUTPUT_DIR = os.environ.get(
+    "COMBAT_PCA_OUTPUT_DIR",
+    "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/",
+)
+
+PCA_PLOT_PATH = os.path.join(OUTPUT_DIR, "combat_pca_comparison.png")
+VARIANCE_SUMMARY_CSV = os.path.join(OUTPUT_DIR, "combat_pca_variance_explained.csv")
+
+# Which metadata column identifies the batch/study. Adjust via env var
+# if your metadata uses a different column name.
+BATCH_COLUMN = os.environ.get("BATCH_COLUMN", "series")
+CONDITION_COLUMN = "condition"
+
+# Number of most-variable genes to use for PCA (speed + stability;
+# same gene subset applied consistently across all three matrices so
+# the comparison is apples-to-apples).
+N_TOP_VAR_GENES = int(os.environ.get("N_TOP_VAR_GENES", "2000"))
+
+# ---------------------------------------------------------------------
+# 2. Hard-fail: input files must exist
+# ---------------------------------------------------------------------
+if not os.path.exists(DDS_PATH):
+    sys.exit(f"ERROR: dds .rds file not found at: {DDS_PATH}")
+if not os.path.exists(MASTER_METADATA_PATH):
+    sys.exit(f"ERROR: master metadata not found at: {MASTER_METADATA_PATH}")
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+# ---------------------------------------------------------------------
+# 3. R environment: DESeq2 (already needed) + sva (for ComBat)
+# ---------------------------------------------------------------------
+for pkg in ("DESeq2", "sva"):
+    if not isinstalled(pkg):
+        print(f"{pkg} not found in this R environment — installing via BiocManager "
+              "(this can take several minutes on a fresh Colab runtime)...")
+        ro.r(f'''
+            if (!requireNamespace("BiocManager", quietly = TRUE)) {{
+              install.packages("BiocManager", repos = "https://cloud.r-project.org")
+            }}
+            BiocManager::install("{pkg}", update = FALSE, ask = FALSE)
+        ''')
+        if not isinstalled(pkg):
+            sys.exit(f"ERROR: {pkg} install via BiocManager did not succeed.")
+
+deseq2 = importr("DESeq2")
+sva = importr("sva")
+base = importr("base")
+
+ro.r(f'dds <- readRDS("{DDS_PATH}")')
+r_class = list(ro.r("class(dds)"))
+if "DESeqDataSet" not in r_class:
+    sys.exit(f"ERROR: object at {DDS_PATH} is not a DESeqDataSet (class: {r_class}).")
+
+# ---------------------------------------------------------------------
+# 4. VST transform (blind=TRUE — exploratory, not tied to the DE model)
+# ---------------------------------------------------------------------
+print("Running vst(dds, blind = TRUE)...")
+ro.r('vsd <- vst(dds, blind = TRUE)')
+ro.r('vst_mat <- as.data.frame(assay(vsd))')
+
+with localconverter(ro.default_converter + pandas2ri.converter):
+    vst_df = ro.conversion.rpy2py(ro.r("vst_mat"))
+vst_df = pd.DataFrame(vst_df)  # genes (rows) x samples (columns)
+
+sample_ids_r = list(ro.r("colnames(vsd)"))
+vst_df.columns = sample_ids_r
+
+print(f"VST matrix: {vst_df.shape[0]} genes x {vst_df.shape[1]} samples")
+
+# ---------------------------------------------------------------------
+# 5. Load + align metadata
+# ---------------------------------------------------------------------
+# --- condition: pulled directly from colData(dds), guaranteed aligned
+#     with the VST matrix since it's the exact data the model was fit on ---
+ro.r('coldata_df <- as.data.frame(colData(dds))')
+ro.r('coldata_df$sample_id <- rownames(coldata_df)')
+with localconverter(ro.default_converter + pandas2ri.converter):
+    coldata = ro.conversion.rpy2py(ro.r("coldata_df"))
+coldata = pd.DataFrame(coldata).set_index("sample_id")
+
+if CONDITION_COLUMN not in coldata.columns:
+    sys.exit(
+        f"ERROR: '{CONDITION_COLUMN}' not found in colData(dds). "
+        f"Available columns: {list(coldata.columns)}"
+    )
+
+# --- batch/series: pulled from the standalone metadata CSV, joined
+#     explicitly on the 'sample_id' column (NOT treated as the row index —
+#     this file uses sample_id as a plain column: sample_id, series,
+#     title, characteristics, day_estimate) ---
+raw_meta = pd.read_csv(MASTER_METADATA_PATH)
+if "sample_id" not in raw_meta.columns:
+    sys.exit(
+        f"ERROR: expected a 'sample_id' column in {MASTER_METADATA_PATH}. "
+        f"Available columns: {list(raw_meta.columns)}"
+    )
+if BATCH_COLUMN not in raw_meta.columns:
+    sys.exit(
+        f"ERROR: batch column '{BATCH_COLUMN}' not found in {MASTER_METADATA_PATH}. "
+        f"Available columns: {list(raw_meta.columns)}"
+    )
+raw_meta = raw_meta.set_index("sample_id")
+
+missing_series = set(coldata.index) - set(raw_meta.index)
+if missing_series:
+    sys.exit(
+        f"ERROR: {len(missing_series)} dds sample(s) have no matching "
+        f"'sample_id' row in {MASTER_METADATA_PATH}: {sorted(missing_series)[:10]}"
+    )
+
+meta = coldata.copy()
+meta[BATCH_COLUMN] = raw_meta.loc[meta.index, BATCH_COLUMN]
+
+missing_from_meta = set(vst_df.columns) - set(meta.index)
+if missing_from_meta:
+    sys.exit(
+        f"ERROR: {len(missing_from_meta)} sample(s) in vst matrix have no "
+        f"matching row in the combined metadata: {sorted(missing_from_meta)[:10]}"
+    )
+
+meta = meta.loc[vst_df.columns]  # explicit, ordered alignment — never implicit
+
+# Hard-fail: check for batch/condition confounding BEFORE attempting ComBat,
+# so this is diagnosed clearly rather than surfacing only as an opaque
+# ComBat/model.matrix error later.
+crosstab = pd.crosstab(meta[BATCH_COLUMN], meta[CONDITION_COLUMN])
+n_batches_per_condition = (crosstab > 0).sum(axis=0)
+print("\nBatch x condition cross-tab (sample counts):")
+print(crosstab)
+fully_confounded_conditions = n_batches_per_condition[n_batches_per_condition <= 1].index.tolist()
+if fully_confounded_conditions:
+    print(
+        f"\nWARNING: condition(s) {fully_confounded_conditions} appear in only "
+        "a single batch each — condition and batch are confounded for these "
+        "levels. A 'protected' ComBat call (mod = ~condition) may fail outright "
+        "for exactly this reason. Proceeding anyway so the failure (if any) is "
+        "captured explicitly below."
+    )
+
+# ---------------------------------------------------------------------
+# 6. Subset to top-N most variable genes (consistent across all matrices)
+# ---------------------------------------------------------------------
+gene_variances = vst_df.var(axis=1)
+top_genes = gene_variances.sort_values(ascending=False).head(N_TOP_VAR_GENES).index
+vst_top = vst_df.loc[top_genes]
+print(f"\nUsing top {len(top_genes)} most-variable genes for PCA comparison.")
+
+# ---------------------------------------------------------------------
+# 7. Push matrix + batch/condition vectors into R, run both ComBat variants
+# ---------------------------------------------------------------------
+with localconverter(ro.default_converter + pandas2ri.converter):
+    ro.globalenv["vst_top_r"] = vst_top
+    ro.globalenv["batch_vec"] = meta[BATCH_COLUMN].astype(str).tolist()
+    ro.globalenv["condition_vec"] = meta[CONDITION_COLUMN].astype(str).tolist()
+
+ro.r('vst_top_r <- as.matrix(vst_top_r)')
+ro.r('batch_vec <- factor(unlist(batch_vec))')
+ro.r('condition_vec <- factor(unlist(condition_vec))')
+
+print("\nRunning NAIVE ComBat (batch = study/series, mod = NULL)...")
+ro.r('''
+combat_naive_result <- tryCatch({
+  list(success = TRUE,
+       data = ComBat(dat = vst_top_r, batch = batch_vec, mod = NULL, par.prior = TRUE))
+}, error = function(e) {
+  list(success = FALSE, error = conditionMessage(e))
+})
+''')
+naive_success = bool(ro.r('combat_naive_result$success')[0])
+if naive_success:
+    with localconverter(ro.default_converter + pandas2ri.converter):
+        combat_naive = ro.conversion.rpy2py(ro.r('as.data.frame(combat_naive_result$data)'))
+    combat_naive = pd.DataFrame(combat_naive)
+    combat_naive.columns = vst_top.columns
+    print("  Naive ComBat completed.")
+else:
+    combat_naive = None
+    naive_error = str(ro.r('combat_naive_result$error')[0])
+    print(f"  Naive ComBat FAILED: {naive_error}")
+
+print("\nRunning PROTECTED ComBat (batch = study/series, mod = ~condition)...")
+ro.r('''
+combat_protected_result <- tryCatch({
+  mod <- model.matrix(~condition_vec)
+  list(success = TRUE,
+       data = ComBat(dat = vst_top_r, batch = batch_vec, mod = mod, par.prior = TRUE))
+}, error = function(e) {
+  list(success = FALSE, error = conditionMessage(e))
+})
+''')
+protected_success = bool(ro.r('combat_protected_result$success')[0])
+if protected_success:
+    with localconverter(ro.default_converter + pandas2ri.converter):
+        combat_protected = ro.conversion.rpy2py(ro.r('as.data.frame(combat_protected_result$data)'))
+    combat_protected = pd.DataFrame(combat_protected)
+    combat_protected.columns = vst_top.columns
+    print("  Protected ComBat completed.")
+else:
+    combat_protected = None
+    protected_error = str(ro.r('combat_protected_result$error')[0])
+    print(f"  Protected ComBat FAILED: {protected_error}")
+    print(
+        "  -> This is direct evidence that condition and batch are too "
+        "confounded in this dataset for ComBat to even attempt to separate "
+        "them, regardless of how it's configured."
+    )
+
+# ---------------------------------------------------------------------
+# 8. PCA + variance-explained quantification for each available state
+# ---------------------------------------------------------------------
+def run_pca(matrix_genes_by_samples: pd.DataFrame):
+    """matrix is genes x samples; PCA needs samples x genes."""
+    X = matrix_genes_by_samples.T.values
+    pca = PCA(n_components=2)
+    scores = pca.fit_transform(X)
+    return scores, pca.explained_variance_ratio_
+
+
+def r2_from_categorical(pc_values: np.ndarray, groups: pd.Series) -> float:
+    """R^2 of a one-way ANOVA: how much of PC variance is explained by group."""
+    grand_mean = pc_values.mean()
+    ss_total = ((pc_values - grand_mean) ** 2).sum()
+    ss_between = 0.0
+    for g in groups.unique():
+        mask = (groups == g).values
+        group_vals = pc_values[mask]
+        ss_between += len(group_vals) * (group_vals.mean() - grand_mean) ** 2
+    return ss_between / ss_total if ss_total > 0 else float("nan")
+
+
+states = {"Original (VST, no ComBat)": vst_top}
+if naive_success:
+    states["ComBat — naive (mod=NULL)"] = combat_naive
+if protected_success:
+    states["ComBat — protected (mod=~condition)"] = combat_protected
+
+variance_rows = []
+pca_results = {}
+
+for label, mat in states.items():
+    scores, explained = run_pca(mat)
+    pca_results[label] = (scores, explained)
+
+    r2_condition_pc1 = r2_from_categorical(scores[:, 0], meta[CONDITION_COLUMN])
+    r2_batch_pc1 = r2_from_categorical(scores[:, 0], meta[BATCH_COLUMN])
+
+    variance_rows.append({
+        "state": label,
+        "PC1_variance_ratio": explained[0],
+        "PC2_variance_ratio": explained[1],
+        "PC1_R2_by_condition": r2_condition_pc1,
+        "PC1_R2_by_batch": r2_batch_pc1,
+    })
+
+    print(
+        f"\n[{label}] PC1 explains {explained[0]*100:.1f}% of variance. "
+        f"Of that, R^2 by condition = {r2_condition_pc1:.3f}, "
+        f"R^2 by batch = {r2_batch_pc1:.3f}."
+    )
+
+variance_df = pd.DataFrame(variance_rows)
+variance_df.to_csv(VARIANCE_SUMMARY_CSV, index=False)
+print(f"\nVariance-explained summary -> {VARIANCE_SUMMARY_CSV}")
+
+# ---------------------------------------------------------------------
+# 9. Plot: rows = colored by condition / by batch, columns = each state
+# ---------------------------------------------------------------------
+n_states = len(states)
+fig, axes = plt.subplots(2, n_states, figsize=(6 * n_states, 11), squeeze=False)
+
+condition_categories = sorted(meta[CONDITION_COLUMN].unique())
+batch_categories = sorted(meta[BATCH_COLUMN].unique())
+
+cond_cmap = plt.get_cmap("tab10", max(len(condition_categories), 3))
+batch_cmap = plt.get_cmap("tab20", max(len(batch_categories), 3))
+
+for col_idx, (label, mat) in enumerate(states.items()):
+    scores, explained = pca_results[label]
+
+    # Row 0: colored by condition
+    ax = axes[0][col_idx]
+    for i, cat in enumerate(condition_categories):
+        mask = (meta[CONDITION_COLUMN] == cat).values
+        ax.scatter(scores[mask, 0], scores[mask, 1], s=25, color=cond_cmap(i), label=cat, alpha=0.8)
+    ax.set_title(f"{label}\ncolored by condition")
+    ax.set_xlabel(f"PC1 ({explained[0]*100:.1f}%)")
+    ax.set_ylabel(f"PC2 ({explained[1]*100:.1f}%)")
+    if col_idx == n_states - 1:
+        ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8)
+
+    # Row 1: colored by batch/study
+    ax = axes[1][col_idx]
+    for i, cat in enumerate(batch_categories):
+        mask = (meta[BATCH_COLUMN] == cat).values
+        ax.scatter(scores[mask, 0], scores[mask, 1], s=25, color=batch_cmap(i), label=cat, alpha=0.8)
+    ax.set_title(f"{label}\ncolored by {BATCH_COLUMN}")
+    ax.set_xlabel(f"PC1 ({explained[0]*100:.1f}%)")
+    ax.set_ylabel(f"PC2 ({explained[1]*100:.1f}%)")
+    if col_idx == n_states - 1 and len(batch_categories) <= 20:
+        ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=6)
+
+plt.tight_layout()
+plt.savefig(PCA_PLOT_PATH, dpi=150, bbox_inches="tight")
+print(f"\nPCA comparison plot -> {PCA_PLOT_PATH}")
+
+print("\nDone.")
