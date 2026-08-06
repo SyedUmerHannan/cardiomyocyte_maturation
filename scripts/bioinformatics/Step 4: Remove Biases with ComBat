@@ -1,31 +1,3 @@
-"""
-step4_combat_pca_comparison.py
-
-Runs two variants:
-  (a) "naive" ComBat  — batch = study/series, mod = NULL (no protection
-      of biological signal). This is the version most likely to destroy
-      real condition signal if batch and condition are confounded.
-  (b) "protected" ComBat — batch = study/series, mod = ~condition
-      (explicitly protects the condition effect from being removed).
-      NOTE: if batch and condition are (as previously found — 0% cross-
-      study same-day NN matches) essentially fully confounded, this call
-      may fail outright with a "confounded with batch" error from sva.
-      That failure IS the point: it's direct technical proof that a
-      naive second correction step is not just risky but can be
-      mathematically undefined in this dataset.
-
-For all three states (original VST, naive ComBat, protected ComBat if
-it runs), computes PCA and quantifies how much of PC1's variance is
-explained by condition vs. by batch (R^2 from simple OLS), so the
-before/after comparison is a number, not just an eyeballed plot.
-
-Colab-compatible: no argparse, config.py-style env-var path fallbacks,
-uses rpy2 to drive R/DESeq2/sva from Python.
-
-Hard-fail philosophy: missing columns, misaligned samples, and
-ComBat failures are surfaced explicitly, not caught-and-ignored.
-"""
-
 import os
 import sys
 
