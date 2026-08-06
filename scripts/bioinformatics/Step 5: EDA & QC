@@ -1,22 +1,3 @@
-
-step6_summary_stats_and_pca.py
-
-Loads master_expression_matrix.csv + master_sample_metadata.csv (the outputs
-of step5), applies a low-expression gene filter, and reports:
-  - library sizes (with an explicit check for whether the matrix is already
-    CPM-normalized, in which case raw library size is NOT recoverable here)
-  - samples per study
-  - gene counts before/after filtering
-  - PCA colored by study and by maturity (day_estimate)
-
-Design choices (consistent with the rest of the pipeline):
-  - Hard-fail on missing files, misaligned samples, or missing marker genes.
-    No silent fallbacks.
-  - day_estimate is left as-is (including None/NaN) — never imputed.
-  - Meant to be run as a Colab cell (edit the constants below, then run the
-    whole cell). No argparse / no CLI args, so it won't SystemExit in Colab.
-
-
 import os
 import sys
 import numpy as np
