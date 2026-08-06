@@ -1,24 +1,3 @@
-"""
-step12_ml_deseq_overlap.py
-Cardiac Maturation AI — check overlap between:
-  (a) top "hub" genes from an ML-derived gene-gene connectivity matrix
-      (rows/columns = gene Ensembl IDs; entry [i,j] = how much gene i
-      affects gene j during maturation), and
-  (b) significant DE genes from DESeq2 (the union list from
-      step9_extract_de_genes.py).
-
-The connectivity matrix is NOT per-gene DE stats, so it can't be merged
-directly — it's first collapsed to one "hub score" per gene (total
-connectivity: sum of |row| + sum of |column|), then that ranked list is
-compared against the DESeq2 significant-gene set.
-
-Colab-compatible: no argparse, config.py-style env-var path fallbacks.
-
-Hard-fail philosophy: gene ID format mismatches (symbols instead of
-Ensembl IDs), non-square matrices, and missing input files are all
-surfaced explicitly rather than guessed around.
-"""
-
 import os
 import re
 import sys
