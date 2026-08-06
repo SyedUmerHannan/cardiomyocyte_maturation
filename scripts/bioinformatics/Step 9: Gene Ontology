@@ -1,13 +1,3 @@
-# ============================================================
-# step17_ppi_network.py
-# Protein-protein interaction network analysis via STRING-db REST API.
-# Builds a PPI network for each contrast x direction gene set (UP/DOWN),
-# identifies hub genes by degree, and flags canonical maturation clock
-# marker genes (MYH7/MYH6/TNNI3/TNNI1) if present in the network.
-# Hard-fail philosophy: missing inputs, empty gene sets, or API failures
-# raise explicit errors rather than silently skipping.
-# ============================================================
-
 !pip install -q networkx
 
 import os
