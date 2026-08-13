@@ -1,0 +1,131 @@
+## ---- Cell 1: Install packages ----
+!pip install -q gseapy requests
+!pip install -q mygene
+
+
+## ---- Cell 3: Config and load inputs ----
+import pandas as pd
+import os
+
+BASE = "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/"
+LEADING_EDGE_FILE = BASE + "step_ppi_network/trusted_maturation_leading_edge_genes.csv"
+DE_FILE = BASE + "step_adult_vs_maturing_DE/Adult_vs_Maturing_DESeq2_results.csv"
+OUT_DIR = BASE + "step_tf_regulator/"
+os.makedirs(OUT_DIR, exist_ok=True)
+
+for f in [LEADING_EDGE_FILE, DE_FILE]:
+    if not os.path.exists(f):
+        raise FileNotFoundError(f"HARD FAIL: missing file: {f}")
+
+leading_edge = pd.read_csv(LEADING_EDGE_FILE)
+de_full = pd.read_csv(DE_FILE)
+
+print(f"Leading-edge genes: {leading_edge.shape[0]}")
+print(f"Full DE results: {de_full.shape[0]}")
+
+## ---- Cell 4a: Quick ORA test - ChEA TF enrichment on trusted leading-edge genes ----
+import gseapy as gp
+
+chea = gp.enrichr(
+    gene_list=leading_edge['gene_symbol'].tolist(),
+    gene_sets=['ChEA_2022'],
+    organism='human',
+    outdir=None
+)
+
+chea_res = chea.results.copy()
+chea_res = chea_res.sort_values('Adjusted P-value')
+chea_sig = chea_res[chea_res['Adjusted P-value'] < 0.05]
+
+chea_out = OUT_DIR + "ChEA_ORA_trusted_genes.csv"
+chea_res.to_csv(chea_out, index=False)
+
+print(f"ChEA ORA: {len(chea_sig)} significant TF terms (adj p<0.05)\n")
+print(chea_sig[['Term','Adjusted P-value','Overlap','Genes']].head(15).to_string(index=False))
+
+## ---- Cell 5: Build ranked gene x stat Series for regulon scoring (same pattern as your GSEA step) ----
+import mygene, time
+
+mg = mygene.MyGeneInfo()
+
+def batched_symbol_map(ensembl_ids, batch_size=300, max_retries=5):
+    ensembl_ids = list(set(ensembl_ids))
+    id2symbol = {}
+    for i in range(0, len(ensembl_ids), batch_size):
+        batch = ensembl_ids[i:i+batch_size]
+        attempt = 0
+        while attempt < max_retries:
+            try:
+                res = mg.querymany(batch, scopes="ensembl.gene", fields="symbol",
+                                    species="human", returnall=False)
+                for r in res:
+                    if "symbol" in r:
+                        id2symbol[r["query"]] = r["symbol"]
+                break
+            except Exception as e:
+                attempt += 1
+                wait = 2 ** attempt
+                print(f"Batch failed (attempt {attempt}): {e}. Retrying in {wait}s...")
+                time.sleep(wait)
+    return id2symbol
+
+id_col = "ensembl_id" if "ensembl_id" in de_full.columns else "gene_id"
+id2symbol = batched_symbol_map(de_full[id_col].tolist())
+
+de_full["symbol"] = de_full[id_col].map(id2symbol)
+de_full["stat"] = pd.to_numeric(de_full["stat"], errors="coerce")
+de_full = de_full.dropna(subset=["symbol","stat"])
+de_full["abs_stat"] = de_full["stat"].abs()
+de_full = de_full.sort_values("abs_stat", ascending=False).drop_duplicates("symbol", keep="first")
+
+print(f"Genes with symbol+stat for regulon scoring: {de_full.shape[0]}")
+
+## ---- Cell 6 (patch): dedupe before per-TF loop, reuse existing `net` and `gene_stat` ----
+import numpy as np
+from scipy import stats
+
+# collapse any duplicate TF-target edges before scoring
+net_dedup = net.drop_duplicates(subset=["TF", "target"], keep="first")
+print(f"Edges before dedup: {net.shape[0]} | after: {net_dedup.shape[0]}")
+
+gene_stat = de_full.set_index("symbol")["stat"]
+
+results = []
+for tf, grp in net_dedup.groupby("TF"):
+    targets = grp.groupby("target")["mor"].first()  # defensive - guarantees unique index even if dedup above missed anything
+    common = targets.index.intersection(gene_stat.index)
+    if len(common) < 5:
+        continue
+    x = targets.loc[common].to_numpy(dtype=float)
+    y = gene_stat.loc[common].to_numpy(dtype=float)
+    if len(x) != len(y):
+        print(f"SKIP {tf}: length mismatch x={len(x)} y={len(y)} - investigate")
+        continue
+    if np.std(x) == 0:
+        continue
+    slope, intercept, r, p, se = stats.linregress(x, y)
+    t_stat = slope / se if se > 0 else np.nan
+    results.append({"TF": tf, "activity_score": t_stat, "pvalue": p, "n_targets": len(common)})
+
+tf_results = pd.DataFrame(results).sort_values("activity_score", ascending=False)
+
+tf_out = OUT_DIR + "DoRothEA_TF_activity_Adult_vs_Maturing.csv"
+tf_results.to_csv(tf_out, index=False)
+
+print(f"\nSaved: {tf_out}")
+print(f"TFs scored: {tf_results.shape[0]}")
+print(f"\n=== Top 15 activated TFs (higher in Adult) ===")
+print(tf_results.head(15).to_string(index=False))
+print(f"\n=== Top 15 repressed TFs (higher in Maturing) ===")
+print(tf_results.tail(15).to_string(index=False))
+
+## ---- Cell 7: Check specifically for the candidate maturation regulators named in your original list ----
+candidates = ["ESRRA", "MEF2A", "MEF2C", "GATA4", "SRF", "PPARGC1A", "NRF1", "TFAM"]
+
+hits = tf_results[tf_results['TF'].isin(candidates)]
+print("Named candidate regulators - activity in Adult_vs_Maturing:")
+print(hits.to_string(index=False))
+
+missing = set(candidates) - set(tf_results['TF'])
+if missing:
+    print(f"\nNot found in DoRothEA regulon set: {missing}")
