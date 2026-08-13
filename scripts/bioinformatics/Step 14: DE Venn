@@ -1,0 +1,32 @@
+## ---- Venn using padj<0.05 AND |log2FC|>1 ----
+import pandas as pd
+from matplotlib_venn import venn3
+import matplotlib.pyplot as plt
+
+BASE = "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/"
+
+files = {
+    "Maturing_vs_Embryonic": "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/step_maturing_vs_embryonic_DE/Maturing_vs_Embryonic_DESeq2_results_FULL.csv",
+    "Adult_vs_Embryonic":  "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/step_adult_vs_embryonic_DE/Adult_vs_Embryonic_DESeq2_results_FULL.csv",
+    "Adult_vs_Maturing":     BASE + "step_adult_vs_maturing_DE/Adult_vs_Maturing_DESeq2_results.csv",
+}
+
+sig_sets = {}
+for label, path in files.items():
+    df = pd.read_csv(path)
+    id_col = "ensembl_id" if "ensembl_id" in df.columns else "gene_id"
+    sig = df[(df['padj'] < 0.05) & (df['log2FoldChange'].abs() > 1)][id_col]
+    sig_sets[label] = set(sig)
+    print(f"{label}: {len(sig_sets[label])} genes (padj<0.05, |log2FC|>1)")
+
+fig, ax = plt.subplots(figsize=(8,8))
+venn3([sig_sets[k] for k in files.keys()], set_labels=list(files.keys()), ax=ax)
+plt.title("DE genes (padj<0.05, |log2FC|>1) across contrasts")
+plt.tight_layout()
+plt.savefig(BASE + "step_results_figures/Fig9_venn_overlap.png")
+plt.show()
+
+core_maturation = sig_sets["Maturing_vs_Embryonic"] & sig_sets["Adult_vs_Embryonic"] & sig_sets["Adult_vs_Maturing"]
+pd.DataFrame({"ensembl_id": sorted(core_maturation)}).to_csv(
+    BASE + "step_results_figures/core_maturation_genes_all3contrasts.csv", index=False)
+print(f"\nCore genes (all 3 contrasts, effect-size filtered): {len(core_maturation)}")
