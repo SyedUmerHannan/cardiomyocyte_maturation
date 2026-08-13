@@ -1,0 +1,41 @@
+## ---- Cross-contrast pathway comparison ----
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+BASE = "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/"
+
+adult_v_mat = pd.read_csv(BASE + "step_gsea/Adult_vs_Maturing_Hallmark_GSEA.csv")
+mat_v_emb = pd.read_csv(BASE + "step_gsea/Maturing_vs_Embryonic_Hallmark_GSEA.csv")
+adult_v_emb = pd.read_csv(BASE + "step_gsea/Adult_vs_Embryonic_Hallmark_GSEA.csv")
+
+for df, label in [(adult_v_mat,"Adult_vs_Maturing"), (mat_v_emb,"Maturing_vs_Embryonic"), (adult_v_emb,"Adult_vs_Embryonic")]:
+    df['contrast'] = label
+    df['NES'] = df['NES'].astype(float)
+    df['FDR q-val'] = df['FDR q-val'].astype(float)
+
+combined = pd.concat([adult_v_mat, mat_v_emb, adult_v_emb], ignore_index=True)
+
+out_dir = BASE + "step_results_figures/"
+import os; os.makedirs(out_dir, exist_ok=True)
+combined.to_csv(out_dir + "GSEA_all3_combined.csv", index=False)
+
+pivot = combined.pivot_table(index='Term', columns='contrast', values='NES')
+pivot = pivot[['Maturing_vs_Embryonic','Adult_vs_Maturing','Adult_vs_Embryonic']]  # chronological order
+
+sig_terms = combined[combined['FDR q-val']<0.05]['Term'].unique()
+pivot_sig = pivot.loc[pivot.index.isin(sig_terms)].dropna(how='all')
+
+fig, ax = plt.subplots(figsize=(8, max(6,len(pivot_sig)*0.3)))
+sns.heatmap(pivot_sig, cmap="RdBu_r", center=0, annot=True, fmt=".1f", ax=ax,
+            cbar_kws={'label':'NES'})
+ax.set_title("Hallmark pathway NES across developmental transitions\n(chronological: Embryonic→Maturing→Adult)")
+plt.tight_layout()
+plt.savefig(out_dir + "Fig10_pathway_timing.png")
+plt.show()
+
+print(f"Significant terms in at least one contrast: {len(sig_terms)}")
+print(f"\nTrusted-category terms specifically:")
+trusted_check = ["Oxidative Phosphorylation","Fatty Acid Metabolism","Adipogenesis","Glycolysis",
+                  "G2-M Checkpoint","E2F Targets","Mitotic Spindle"]
+print(pivot.loc[pivot.index.isin(trusted_check)].round(2))
