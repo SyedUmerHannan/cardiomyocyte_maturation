@@ -1,0 +1,20 @@
+import re
+
+lincs = pd.read_csv(BASE + "step_drug_connectivity/LINCS_confound_excluded_connectivity.csv")
+
+def extract_compound(term):
+    m = re.search(r'24H-([A-Za-z0-9\-]+?)-[\d.]+$', term)
+    return m.group(1) if m else term
+
+lincs['compound'] = lincs['compound_context'].apply(extract_compound)
+best_per_compound = lincs.loc[lincs.groupby('compound')['combined_score'].idxmax()]
+top15 = best_per_compound.sort_values('combined_score', ascending=False).head(15)
+
+fig, ax = plt.subplots(figsize=(8,6))
+ax.barh(top15['compound'], top15['combined_score'], color='#1f77b4')
+ax.set_xlabel("Combined connectivity score (-log10 p, both directions)")
+ax.set_title("Top candidate compounds, confound-excluded signature")
+ax.invert_yaxis()
+plt.tight_layout()
+plt.savefig(FIG_DIR + "Fig11_drug_connectivity.png")
+plt.show()
