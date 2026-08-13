@@ -1,0 +1,132 @@
+## ---- Cell 1: Install packages ----
+!pip install -q requests networkx
+
+## ---- Cell 3: Load GSEA results, split into trusted-biology vs confound terms ----
+import pandas as pd
+import os
+
+BASE = "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/"
+GSEA_FILE = BASE + "step_gsea/Adult_vs_Maturing_Hallmark_GSEA.csv"
+OUT_DIR = BASE + "step_ppi_network/"
+os.makedirs(OUT_DIR, exist_ok=True)
+
+if not os.path.exists(GSEA_FILE):
+    raise FileNotFoundError(f"HARD FAIL: missing GSEA results: {GSEA_FILE}")
+
+gsea = pd.read_csv(GSEA_FILE)
+gsea['FDR q-val'] = gsea['FDR q-val'].astype(float)
+sig = gsea[gsea['FDR q-val'] < 0.25].copy()
+
+# Explicitly separate trusted maturation-biology terms from confound terms,
+# based on today's findings - this list is a judgment call, log it as such.
+TRUSTED_TERMS = [
+    "Oxidative Phosphorylation", "Fatty Acid Metabolism", "Adipogenesis",
+    "Glycolysis", "G2-M Checkpoint", "E2F Targets", "Mitotic Spindle"
+]
+CONFOUND_TERMS = [
+    "Interferon Gamma Response", "Interferon Alpha Response", "Allograft Rejection",
+    "Complement", "Inflammatory Response", "Epithelial Mesenchymal Transition"
+]
+
+trusted = sig[sig['Term'].isin(TRUSTED_TERMS)]
+confound = sig[sig['Term'].isin(CONFOUND_TERMS)]
+unclassified = sig[~sig['Term'].isin(TRUSTED_TERMS + CONFOUND_TERMS)]
+
+print(f"Trusted terms found: {len(trusted)} / {len(TRUSTED_TERMS)}")
+print(f"Confound terms found: {len(confound)} / {len(CONFOUND_TERMS)}")
+print(f"Unclassified significant terms (not yet categorized): {len(unclassified)}")
+if len(unclassified) > 0:
+    print(unclassified[['Term','NES','FDR q-val']].to_string(index=False))
+
+## ---- Cell 4: Extract union of leading-edge genes from trusted terms only ----
+if trusted.shape[0] == 0:
+    raise ValueError("HARD FAIL: no trusted terms matched - check TRUSTED_TERMS spelling against your GSEA Term column.")
+
+all_leading_genes = set()
+for _, row in trusted.iterrows():
+    genes = str(row['Lead_genes']).split(';')  # gseapy typically semicolon-delimits; adjust if comma-delimited
+    genes = [g.strip() for g in genes if g.strip()]
+    all_leading_genes.update(genes)
+
+all_leading_genes = sorted(all_leading_genes)
+print(f"Union of leading-edge genes across {len(trusted)} trusted terms: {len(all_leading_genes)} genes")
+
+pd.DataFrame({"gene_symbol": all_leading_genes}).to_csv(
+    OUT_DIR + "trusted_maturation_leading_edge_genes.csv", index=False)
+
+## ---- Cell 5: Query STRING API for interactions (confidence >= 400) ----
+import requests
+import time
+
+STRING_API_URL = "https://string-db.org/api"
+CONFIDENCE_THRESHOLD = 400  # matches your established convention
+
+def get_string_network(gene_list, species=9606, confidence=400, batch_size=300):
+    all_edges = []
+    for i in range(0, len(gene_list), batch_size):
+        batch = gene_list[i:i+batch_size]
+        params = {
+            "identifiers": "%0d".join(batch),
+            "species": species,
+            "required_score": confidence,
+            "network_type": "physical"
+        }
+        try:
+            resp = requests.get(f"{STRING_API_URL}/tsv/network", params=params, timeout=60)
+            resp.raise_for_status()
+            lines = resp.text.strip().split("\n")
+            if len(lines) < 2:
+                continue
+            header = lines[0].split("\t")
+            for line in lines[1:]:
+                vals = line.split("\t")
+                all_edges.append(dict(zip(header, vals)))
+        except Exception as e:
+            print(f"Batch {i}-{i+batch_size} failed: {e}")
+        time.sleep(1)  # be polite to the API
+    return pd.DataFrame(all_edges)
+
+edges_df = get_string_network(all_leading_genes, confidence=CONFIDENCE_THRESHOLD)
+
+if edges_df.shape[0] == 0:
+    raise ValueError("HARD FAIL: STRING returned zero edges - check gene symbol formatting or network connectivity.")
+
+print(f"Edges retrieved: {edges_df.shape[0]}")
+print(edges_df.columns.tolist())
+edges_df.to_csv(OUT_DIR + "STRING_network_edges.csv", index=False)
+
+## ---- Cell 6: Build network, compute hub gene rankings (degree + betweenness centrality) ----
+import networkx as nx
+
+# STRING TSV column names for gene symbols are typically preferredName_A / preferredName_B
+name_cols = [c for c in edges_df.columns if 'preferredName' in c]
+if len(name_cols) < 2:
+    raise ValueError(f"HARD FAIL: expected preferredName_A/B columns, got: {edges_df.columns.tolist()}")
+
+G = nx.Graph()
+for _, row in edges_df.iterrows():
+    G.add_edge(row[name_cols[0]], row[name_cols[1]],
+               score=float(row.get('score', 0)))
+
+print(f"Network: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
+
+degree_cent = nx.degree_centrality(G)
+betweenness_cent = nx.betweenness_centrality(G)
+
+hub_df = pd.DataFrame({
+    "gene_symbol": list(degree_cent.keys()),
+    "degree": [G.degree(g) for g in degree_cent.keys()],
+    "degree_centrality": list(degree_cent.values()),
+    "betweenness_centrality": [betweenness_cent[g] for g in degree_cent.keys()],
+}).sort_values("degree", ascending=False)
+
+hub_out = OUT_DIR + "PPI_hub_genes.csv"
+hub_df.to_csv(hub_out, index=False)
+
+print(f"\nTop 20 hub genes by degree:")
+print(hub_df.head(20).to_string(index=False))
+print(f"\nSaved: {hub_out}")
+
+# Also export edge list in Cytoscape-compatible format for a proper figure
+edges_df[[name_cols[0], name_cols[1], 'score']].to_csv(
+    OUT_DIR + "STRING_edges_for_cytoscape.csv", index=False)
