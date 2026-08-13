@@ -1,0 +1,28 @@
+## ---- LINCS ----
+gsea = pd.read_csv(BASE + "step_gsea/Adult_vs_Maturing_Hallmark_GSEA.csv")
+gsea['NES'] = gsea['NES'].astype(float)
+
+TRUSTED_POS = ["Oxidative Phosphorylation", "Fatty Acid Metabolism", "Adipogenesis"]
+TRUSTED_NEG = ["G2-M Checkpoint", "E2F Targets", "Mitotic Spindle"]
+
+pos_genes, neg_genes = set(), set()
+for _, row in gsea[gsea['Term'].isin(TRUSTED_POS)].iterrows():
+    pos_genes.update(g.strip() for g in str(row['Lead_genes']).split(';') if g.strip())
+for _, row in gsea[gsea['Term'].isin(TRUSTED_NEG)].iterrows():
+    neg_genes.update(g.strip() for g in str(row['Lead_genes']).split(';') if g.strip())
+
+print(f"Confound-excluded maturation-UP: {len(pos_genes)} | maturation-DOWN: {len(neg_genes)}")
+
+up_hits2 = gp.enrichr(gene_list=list(pos_genes), gene_sets=['LINCS_L1000_Chem_Pert_up'], organism='human', outdir=None).results
+down_hits2 = gp.enrichr(gene_list=list(neg_genes), gene_sets=['LINCS_L1000_Chem_Pert_down'], organism='human', outdir=None).results
+up_hits2['compound_context'] = up_hits2['Term']
+down_hits2['compound_context'] = down_hits2['Term']
+
+merged2 = up_hits2.merge(down_hits2, on='compound_context', suffixes=('_up','_down'))
+merged2['combined_score'] = -np.log10(merged2['Adjusted P-value_up']+1e-300) - np.log10(merged2['Adjusted P-value_down']+1e-300)
+merged2 = merged2.sort_values('combined_score', ascending=False)
+
+merged2.to_csv(BASE + "step_drug_connectivity/LINCS_confound_excluded_connectivity.csv", index=False)
+sig2 = merged2[(merged2['Adjusted P-value_up']<0.05)&(merged2['Adjusted P-value_down']<0.05)]
+print(f"Significant both directions: {len(sig2)}")
+print(sig2[['compound_context','combined_score']].head(20).to_string(index=False))
