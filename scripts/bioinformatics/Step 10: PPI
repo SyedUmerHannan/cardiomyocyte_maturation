@@ -1,213 +1,98 @@
-!pip install -q networkx
+## ---- Cell 1: Install ----
+!pip install -q requests networkx
 
-import os
-import time
-import requests
+## ---- Cell 3: Build trusted leading-edge gene sets per contrast, intersect ----
 import pandas as pd
-import networkx as nx
+
+BASE = "/content/drive/MyDrive/Research/Cardiac Maturation AI/Master Data/"
+
+gsea_files = {
+    "Maturing_vs_Embryonic": BASE + "step_gsea/Maturing_vs_Embryonic_Hallmark_GSEA.csv",
+    "Adult_vs_Maturing":     BASE + "step_gsea/Adult_vs_Maturing_Hallmark_GSEA.csv",
+    "Adult_vs_Embryonic":    BASE + "step_gsea/Adult_vs_Embryonic_Hallmark_GSEA.csv",
+}
+
+TRUSTED = ["Oxidative Phosphorylation", "Fatty Acid Metabolism", "Adipogenesis",
+           "Glycolysis", "G2-M Checkpoint", "E2F Targets", "Mitotic Spindle"]
+
+trusted_genes_per_contrast = {}
+for label, path in gsea_files.items():
+    df = pd.read_csv(path)
+    df['NES'] = df['NES'].astype(float)
+    sub = df[df['Term'].isin(TRUSTED)]
+    genes = set()
+    for _, row in sub.iterrows():
+        genes.update(g.strip() for g in str(row['Lead_genes']).split(';') if g.strip())
+    trusted_genes_per_contrast[label] = genes
+    print(f"{label}: {len(genes)} trusted leading-edge genes ({sub.shape[0]}/{len(TRUSTED)} terms found)")
+
+core_trusted = set.intersection(*trusted_genes_per_contrast.values())
+print(f"\nCore trusted genes (in all 3 contrasts' trusted leading-edges): {len(core_trusted)}")
+pd.DataFrame({"gene_symbol": sorted(core_trusted)}).to_csv(
+    BASE + "step_results_figures/core_trusted_genes_all3contrasts.csv", index=False)
+
+## ---- Cell 4: STRING network on confound-excluded core genes ----
+import requests, time, networkx as nx
+
+def get_string_network(gene_list, confidence=400, batch_size=300):
+    edges = []
+    for i in range(0, len(gene_list), batch_size):
+        batch = gene_list[i:i+batch_size]
+        params = {"identifiers":"%0d".join(batch), "species":9606,
+                   "required_score":confidence, "network_type":"physical"}
+        try:
+            r = requests.get("https://string-db.org/api/tsv/network", params=params, timeout=60)
+            r.raise_for_status()
+            lines = r.text.strip().split("\n")
+            if len(lines)>1:
+                header = lines[0].split("\t")
+                for line in lines[1:]:
+                    edges.append(dict(zip(header, line.split("\t"))))
+        except Exception as e:
+            print(f"Batch failed: {e}")
+        time.sleep(1)
+    return pd.DataFrame(edges)
+
+core_list = sorted(core_trusted)
+edges_df = get_string_network(core_list)
+if edges_df.shape[0] == 0:
+    raise ValueError("HARD FAIL: zero edges returned.")
+
+G = nx.Graph()
+for _, row in edges_df.iterrows():
+    G.add_edge(row['preferredName_A'], row['preferredName_B'])
+
+print(f"Confound-excluded core network: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
+edges_df.to_csv(BASE + "step_ppi_network/STRING_core_trusted_edges.csv", index=False)
+
+## ---- Cell 5: Hub/bridge ranking + plot ----
 import matplotlib.pyplot as plt
 
-# ---- Google Drive mount (Colab) ----
-from google.colab import drive
-if not os.path.ismount('/content/drive'):
-    drive.mount('/content/drive')
+degree_cent = nx.degree_centrality(G)
+betweenness = nx.betweenness_centrality(G)
+hub_df = pd.DataFrame({
+    "gene": list(degree_cent.keys()),
+    "degree": [G.degree(g) for g in degree_cent],
+    "betweenness": [betweenness[g] for g in degree_cent]
+}).sort_values("degree", ascending=False)
+hub_df.to_csv(BASE + "step_ppi_network/PPI_core_trusted_hubs.csv", index=False)
 
-# ---- CONFIG ----
-INPUT_DIR = "/content/"
-OUTPUT_DIR = "/content/"
+print("Top 15 by degree:")
+print(hub_df.head(15).to_string(index=False))
+print("\nTop 15 by betweenness:")
+print(hub_df.sort_values("betweenness", ascending=False).head(15).to_string(index=False))
 
-DE_FILES = {
-    "Maturing_vs_Embryonic": INPUT_DIR + "top_changed_genes__condition_Maturing_vs_Embryonic__with_symbols.csv",
-    "Adult_vs_Embryonic": INPUT_DIR + "top_changed_genes__condition_Adult_vs_Embryonic__with_symbols.csv",
-}
-PADJ_CUTOFF = 0.05
+bridge_genes = hub_df.sort_values("betweenness", ascending=False).head(8)['gene'].tolist()
+node_colors = ['#d62728' if n in bridge_genes else '#aec7e8' for n in G.nodes()]
+node_sizes = [G.degree(n)*10 for n in G.nodes()]
 
-STRING_API_BASE = "https://string-db.org/api"
-STRING_SPECIES = 9606  # human
-STRING_REQUIRED_SCORE = 400  # medium confidence (0-1000 scale); STRING default
-CALLER_IDENTITY = "kaust_cardiac_maturation_project"  # required by STRING API terms of use
-REQUEST_DELAY_SEC = 1.0  # STRING asks for max ~1 request/sec from scripts
-
-MATURATION_MARKER_GENES = {"MYH7", "MYH6", "TNNI3", "TNNI1"}  # from your maturation clock
-
-# ============================================================
-# STEP 1: Load DE files, hard-fail on missing/malformed
-# ============================================================
-de_data = {}
-for contrast_label, path in DE_FILES.items():
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"Missing DE file for contrast '{contrast_label}': {path}")
-    df = pd.read_csv(path)
-    required_cols = {"gene_symbol", "log2FoldChange", "padj"}
-    missing_cols = required_cols - set(df.columns)
-    if missing_cols:
-        raise ValueError(f"{path} is missing required columns: {missing_cols}")
-    de_data[contrast_label] = df
-
-# ============================================================
-# STEP 2: Split each contrast into UP / DOWN gene symbol sets
-# ============================================================
-gene_sets_by_contrast = {}
-for contrast_label, df in de_data.items():
-    sig = df[df["padj"] < PADJ_CUTOFF].copy()
-    if sig.empty:
-        raise ValueError(f"No genes pass padj < {PADJ_CUTOFF} for contrast '{contrast_label}'.")
-    up = sorted(set(sig.loc[sig["log2FoldChange"] > 0, "gene_symbol"].dropna()))
-    down = sorted(set(sig.loc[sig["log2FoldChange"] < 0, "gene_symbol"].dropna()))
-    gene_sets_by_contrast[(contrast_label, "UP")] = up
-    gene_sets_by_contrast[(contrast_label, "DOWN")] = down
-    print(f"{contrast_label}: {len(up)} UP, {len(down)} DOWN gene symbols")
-
-# ============================================================
-# STEP 3: Query STRING API for network edges among each gene set
-# ============================================================
-def query_string_network(gene_symbols, max_attempts=5, initial_delay=2):
-    """
-    Queries STRING's network endpoint for interactions AMONG the given genes
-    (not first-shell interaction partners -- keeps the network scoped to your
-    actual DE gene list, consistent with the hypergeometric background logic
-    used in the pathway step).
-    Returns a DataFrame of edges: preferredName_A, preferredName_B, score.
-    """
-    if not gene_symbols:
-        raise ValueError("Empty gene symbol list passed to query_string_network.")
-
-    identifiers = "%0d".join(gene_symbols)  # STRING's required separator for POST body
-    params = {
-        "identifiers": identifiers,
-        "species": STRING_SPECIES,
-        "required_score": STRING_REQUIRED_SCORE,
-        "caller_identity": CALLER_IDENTITY,
-    }
-
-    attempt, delay = 0, initial_delay
-    while attempt < max_attempts:
-        try:
-            response = requests.post(f"{STRING_API_BASE}/tsv/network", data=params, timeout=30)
-            response.raise_for_status()
-            break
-        except requests.exceptions.RequestException as e:
-            attempt += 1
-            print(f"    STRING API request failed (attempt {attempt}/{max_attempts}): {e}")
-            if attempt == max_attempts:
-                raise
-            time.sleep(delay)
-            delay *= 2
-
-    time.sleep(REQUEST_DELAY_SEC)  # be polite to STRING's rate limit
-
-    lines = response.text.strip().split("\n")
-    if len(lines) < 2:
-        # header only, no edges returned
-        return pd.DataFrame(columns=["preferredName_A", "preferredName_B", "score"])
-
-    header = lines[0].split("\t")
-    rows = [line.split("\t") for line in lines[1:]]
-    edges_df = pd.DataFrame(rows, columns=header)
-
-    required_edge_cols = {"preferredName_A", "preferredName_B", "score"}
-    missing_edge_cols = required_edge_cols - set(edges_df.columns)
-    if missing_edge_cols:
-        raise ValueError(f"STRING API response missing expected columns: {missing_edge_cols}. "
-                          f"Got columns: {list(edges_df.columns)}")
-
-    edges_df["score"] = edges_df["score"].astype(float)
-    return edges_df[["preferredName_A", "preferredName_B", "score"]]
-
-
-# ============================================================
-# STEP 4: Build network, compute hub genes, plot, save per contrast/direction
-# ============================================================
-all_node_summaries = []
-
-for (contrast_label, direction), gene_symbols in gene_sets_by_contrast.items():
-    if len(gene_symbols) < 2:
-        print(f"\nSkipping {contrast_label}/{direction}: fewer than 2 genes, no network possible")
-        continue
-
-    print(f"\nQuerying STRING for {contrast_label} / {direction} ({len(gene_symbols)} genes)...")
-    edges_df = query_string_network(gene_symbols)
-
-    edges_out_path = f"{OUTPUT_DIR}PPI_edges_{contrast_label}_{direction}.csv"
-    edges_df.to_csv(edges_out_path, index=False)
-
-    if edges_df.empty:
-        print(f"  0 edges returned (no interactions at STRING confidence >= {STRING_REQUIRED_SCORE}) "
-              f"-> {edges_out_path} (empty, saved for record)")
-        continue
-
-    # ---- Build networkx graph ----
-    G = nx.Graph()
-    G.add_nodes_from(gene_symbols)  # include isolated (no-edge) genes too
-    for _, row in edges_df.iterrows():
-        G.add_edge(row["preferredName_A"], row["preferredName_B"], weight=row["score"])
-
-    degrees = dict(G.degree())
-    isolated_nodes = [n for n, d in degrees.items() if d == 0]
-
-    node_summary = pd.DataFrame({
-        "gene_symbol": list(degrees.keys()),
-        "degree": list(degrees.values()),
-    }).sort_values("degree", ascending=False)
-    node_summary["contrast"] = contrast_label
-    node_summary["direction"] = direction
-    node_summary["is_maturation_marker"] = node_summary["gene_symbol"].isin(MATURATION_MARKER_GENES)
-    all_node_summaries.append(node_summary)
-
-    node_out_path = f"{OUTPUT_DIR}PPI_nodes_{contrast_label}_{direction}.csv"
-    node_summary.to_csv(node_out_path, index=False)
-
-    print(f"  {G.number_of_edges()} edges, {G.number_of_nodes()} nodes "
-          f"({len(isolated_nodes)} isolated, no interactions found) -> {edges_out_path}, {node_out_path}")
-
-    top_hubs = node_summary[node_summary["degree"] > 0].head(5)
-    if not top_hubs.empty:
-        print(f"  Top hub genes: {', '.join(top_hubs['gene_symbol'] + ' (' + top_hubs['degree'].astype(str) + ')')}")
-
-    markers_present = set(gene_symbols) & MATURATION_MARKER_GENES
-    if markers_present:
-        print(f"  Maturation clock marker genes in this set: {sorted(markers_present)}")
-
-    # ---- Plot network ----
-    fig, ax = plt.subplots(figsize=(10, 10))
-    connected_nodes = [n for n in G.nodes() if degrees[n] > 0]
-    G_connected = G.subgraph(connected_nodes)
-
-    if G_connected.number_of_nodes() == 0:
-        print(f"  No connected nodes to plot for {contrast_label}/{direction}")
-        plt.close(fig)
-        continue
-
-    pos = nx.spring_layout(G_connected, seed=42, k=0.5)
-
-    node_colors = ["#e74c3c" if n in MATURATION_MARKER_GENES else "#3498db"
-                   for n in G_connected.nodes()]
-    node_sizes = [200 + 100 * degrees[n] for n in G_connected.nodes()]
-
-    nx.draw_networkx_edges(G_connected, pos, alpha=0.3, ax=ax)
-    nx.draw_networkx_nodes(G_connected, pos, node_color=node_colors,
-                            node_size=node_sizes, alpha=0.85, ax=ax)
-    nx.draw_networkx_labels(G_connected, pos, font_size=8, ax=ax)
-
-    ax.set_title(f"PPI network: {contrast_label} ({direction})\n"
-                 f"STRING confidence >= {STRING_REQUIRED_SCORE}/1000 | "
-                 f"red = maturation clock marker gene")
-    ax.axis("off")
-
-    plot_path = f"{OUTPUT_DIR}PPI_network_{contrast_label}_{direction}.png"
-    plt.savefig(plot_path, dpi=150, bbox_inches="tight")
-    plt.show()
-    print(f"  Network plot -> {plot_path}")
-
-# ============================================================
-# STEP 5: Combined hub gene summary across all contrasts/directions
-# ============================================================
-if all_node_summaries:
-    combined_nodes_df = pd.concat(all_node_summaries, ignore_index=True)
-    combined_path = OUTPUT_DIR + "PPI_nodes_all_contrasts_combined.csv"
-    combined_nodes_df.to_csv(combined_path, index=False)
-    print(f"\nCombined hub gene summary -> {combined_path}")
-else:
-    print("\nNo networks were built (all gene sets had <2 genes).")
-
-print("\nDone. PPI network analysis complete.")
+fig, ax = plt.subplots(figsize=(10,10))
+pos = nx.spring_layout(G, seed=42, k=0.15)
+nx.draw_networkx_edges(G, pos, alpha=0.15, ax=ax)
+nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=node_sizes, ax=ax)
+nx.draw_networkx_labels(G, pos, labels={n:n for n in bridge_genes}, font_size=9, font_weight='bold', ax=ax)
+ax.set_title(f"Confound-excluded core PPI network ({G.number_of_nodes()} nodes)")
+ax.axis('off')
+plt.tight_layout()
+plt.savefig(BASE + "step_results_figures/Fig8b_PPI_core_trusted_FIXED.png")
+plt.show()
