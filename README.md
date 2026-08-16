@@ -1,28 +1,161 @@
 # cardiomyocyte_maturation
-Interpretable ML framework to identify transcriptomic signatures of iPSC-CM maturation . This repository uses RNA-seq data to isolate non-linear biomarkers via XGBoost and Random Forest, integrating Gene Regulatory Network (GRN) topology into a hybrid predictive engine to classify maturity states and identify maturation barriers.
-# **Machine Learning Identification of Transcriptomic Signatures of iPSC-Derived Cardiomyocyte Maturation**
 
-Human induced pluripotent stem cell-derived cardiomyocytes (**iPSC-CMs**) are essential for disease modeling and regenerative medicine, yet they are limited by an **immature phenotype** that resembles fetal rather than adult cells. This immaturity affects critical biological properties, including **metabolic activity, sarcomere organization, calcium handling, and electrophysiological behavior**. This repository provides an **interpretable machine learning framework** to bridge this maturation gap by identifying the molecular signatures that distinguish immature cells from mature adult cardiomyocytes.
+Interpretable ML framework to identify transcriptomic signatures of iPSC-CM maturation.
 
-### **Core Methodology**
-The project implements a six-step pipeline designed to identify complex molecular drivers of maturation:
+This repository implements a pipeline that processes bulk RNA-seq data, performs normalization and batch correction, identifies non-linear feature drivers using XGBoost and Random Forest, reconstructs gene regulatory networks (GRNs), and trains a hybrid classifier that integrates expression and network topology to predict cardiomyocyte maturity.
 
-1.  **Automated Data Curation:** Querying and downloading raw bulk RNA-seq datasets (e.g., **GSE122380**, **GSE131236**) and organizing them into standardized metadata buckets based on cell type and chronological culture day.
-2.  **Normalization & Batch Correction:** Utilizing the **ComBat package** to neutralize platform-specific batch effects, resulting in a single, unified master gene expression matrix mapped to gene symbols.
-3.  **Linear vs. Non-Linear Feature Selection:** After establishing a baseline of linear markers via traditional differential expression, the framework employs **XGBoost and Random Forest** to isolate "**Non-Linear Biomarkers**". These are high-importance genes often discarded by traditional statistics due to complex patterns like biphasic curves or threshold-switch behaviors.
-4.  **Topological GRN Reconstruction:** Mapping interactions between markers to build **Gene Regulatory Networks (GRNs)**. The framework computes stage-specific properties for every gene, including **node degree, hub centrality, and local clustering coefficients**.
-5.  **Hybrid Predictive Modeling:** A final **Hybrid Random Forest/XGBoost Classifier** is trained on a multi-dimensional input space that fuses gene expression data with network topology metrics. This allows the model to evaluate cell status based on how well a gene is integrated into its functional network hub.
+---
 
-### **Datasets Integrated**
-The framework draws on a diverse array of data modalities to ensure robust classification:
-*   **GSE122380:** A longitudinal time series across 16 time points.
-*   **GSE131236:** Normal cells at 30 and 90-day maturation stages.
-*   **GTEx LV:** Normal adult tissue samples used as a mature benchmark.
-*   **GSM8102175:** Fetal cell data for immature benchmarking.
-*   **GSE117192:** Comparative stress-response data (Hypoxia vs. Normoxia).
+## Quickstart — run the pipeline locally
 
-### **Key Deliverables**
-*   **Non-Linear Driver Index:** A catalog of transcriptomic drivers of maturation that traditional differential expression analysis fails to detect.
-*   **Stage-Specific GRN Profiles:** Visual and mathematical representations of how gene interactions shift during the transition from embryonic to adult phenotypes.
-*   **Hybrid Maturity Engine:** A trained and optimized predictive framework that combines expression and topology to accurately classify iPSC-CM maturity states.
-*   **Maturation Barrier Assessment:** Analytical pinpointing of specific network nodes where in vitro cultures deviate from native adult tissue pathways, providing targets for future intervention.
+1. Clone the repository:
+
+   git clone https://github.com/SyedUmerHannan/cardiomyocyte_maturation.git
+   cd cardiomyocyte_maturation
+
+2. Create a reproducible environment (recommended: conda/mamba):
+
+   # create and activate
+   conda create -n cardio python=3.9 -y
+   conda activate cardio
+
+   # install Python dependencies (if a requirements file exists)
+   if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+   # OR if an environment.yml is provided
+   if [ -f environment.yml ]; then conda env create -f environment.yml; fi
+
+3. Install R and required Bioconductor packages (used for ComBat / batch-correction):
+
+   # from an R session
+   install.packages("BiocManager")
+   BiocManager::install(c("sva", "limma", "edgeR"))
+
+   R >= 4.0 is recommended.
+
+4. Start Jupyter Lab / Notebook for interactive runs:
+
+   jupyter lab
+
+---
+
+## What to expect in this repo
+
+Typical layout (your clone may vary):
+
+- data/
+  - raw/            # raw downloads (FASTQ or processed expression tables)
+  - processed/      # normalized, batch-corrected matrices used by models
+  - metadata/       # sample metadata CSV/TSV mapping samples to labels/timepoints
+- notebooks/        # Jupyter notebooks for each pipeline step
+- scripts/          # convenience scripts for download, preprocessing, and training (if present)
+- src/              # reusable Python modules
+- results/          # trained models, metrics, and figures
+- models/           # saved model artifacts
+
+If any of these directories are missing, create them or update notebook/script paths accordingly.
+
+---
+
+## Provide or download data
+
+This project uses public RNA-seq datasets (examples below). You must either place data in `data/raw/` or run the repository's download utility (if provided).
+
+Datasets commonly used in analyses here:
+- GSE122380
+- GSE131236
+- GSE117192
+- GSM8102175 (fetal)
+- GTEx (left ventricle samples)
+
+Ways to supply data:
+- Run a download script (if present):
+  python scripts/download_geo.py --accessions GSE122380 GSE131236 --out data/raw/
+
+- Manually download processed expression tables and metadata from GEO/ENA and place them under `data/raw/` and `data/metadata/`.
+
+Important: Ensure a metadata CSV exists that maps sample IDs to labels (e.g., day/timepoint, dataset, cell type). Notebooks expect a metadata table path — open the notebook header cells to see or update parameters.
+
+---
+
+## Running the pipeline
+
+You can run the analysis in two modes: interactively via notebooks (recommended for first runs) or non-interactively using scripts.
+
+Interactive (recommended):
+1. Launch Jupyter Lab: `jupyter lab`
+2. Open notebooks in `notebooks/` and run them in this suggested order:
+   1. 00_data_curation.ipynb — download / organize data and build metadata
+   2. 01_preprocess_normalize.ipynb — preprocessing, normalization, and batch correction (ComBat)
+   3. 02_linear_baseline.ipynb — differential expression baseline analyses
+   4. 03_feature_selection.ipynb — XGBoost / Random Forest non-linear feature selection
+   5. 04_grn_reconstruction.ipynb — GRN reconstruction and topology calculations
+   6. 05_hybrid_model.ipynb — train and evaluate hybrid classifier
+
+If the exact notebook names differ, open the notebooks folder and follow the numbered order indicated in filenames or notebook titles.
+
+Non-interactive (scripts) — example commands (adapt paths/names to files present in the repo):
+
+- Download (example):
+  python scripts/download_geo.py --accessions GSE122380 GSE131236 --out data/raw/
+
+- Preprocess / normalize:
+  python scripts/preprocess.py --input data/raw/ --metadata data/metadata/samples.csv --out data/processed/
+
+- Batch correction (R script example):
+  Rscript scripts/batch_correct.R data/processed/expression_raw.csv data/processed/expression_combat.csv data/metadata/samples.csv
+
+- Train hybrid model:
+  python scripts/train_model.py --config configs/train.yaml --data data/processed/expression_combat.csv --out results/
+
+If scripts with these names aren't present, run the corresponding notebooks or inspect `scripts/` and `src/` to find actual filenames.
+
+Automate notebooks non-interactively using papermill (good for reproducible pipelines):
+
+  pip install papermill
+  papermill notebooks/00_data_curation.ipynb notebooks/out/00_data_curation_run.ipynb -p RAW_DIR data/raw -p OUT_DIR data/processed
+
+---
+
+## Reproducibility & best practices
+
+- Pin package versions using `environment.yml` or `requirements.txt`.
+- Set random seeds in notebooks and scripts for sklearn, xgboost, numpy, and torch (if used).
+- For large expression matrices, reduce memory pressure by using a set of highly variable genes (HVGs) during development.
+- Use GPU-accelerated XGBoost if available for faster training (install xgboost with GPU support).
+
+---
+
+## Typical outputs
+
+- data/processed/: normalized and ComBat-corrected expression matrices
+- results/feature_importances/: CSV tables of top non-linear drivers
+- results/grn/: edge lists and graph objects
+- models/: saved model artifacts
+- results/figures/: plots and figures used in manuscript
+
+---
+
+## Troubleshooting
+
+- Missing dependencies: install from `requirements.txt` or `environment.yml`. For R steps, ensure Bioconductor packages installed via BiocManager.
+- File not found: update notebook/script parameters to point to the correct data and metadata paths.
+- Memory / runtime errors: run on a machine with more memory or subset the gene set during development.
+
+---
+
+## Contributing
+
+Contributions welcome. Please open an issue describing the change or submit a pull request with tests and an example run.
+
+---
+
+## Contact & citation
+
+If you use this code, please cite the associated manuscript (if available) or contact the repository owner via GitHub: https://github.com/SyedUmerHannan
+
+---
+
+## License
+
+Add a LICENSE file to declare how the code can be reused. If there is no LICENSE file, the repository has no explicit open-source license.
